@@ -101,7 +101,11 @@ if(isset($_POST['submit']))
 					<option value="student">Student</option>
 					<option value="professor">Professor</option>
 				</select> </p>
-				<input type="submit" name="submit" value="Submit">
+				<form>
+				<input type="button" 
+				value="Submit"
+				onClick="parent.location='welcome.html'">
+				</form>
 				<p><a  href="signinpage.php">Sign In</a></p>
 				<p><a href="#">Forget Password?</a></p>
 			</form>
