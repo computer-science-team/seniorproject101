@@ -1,0 +1,58 @@
+
+html {
+  
+box-sizing: border-box;
+}
+
+
+*, *:before, *:after {
+  
+box-sizing: inherit;
+
+}
+
+
+
+body
+{
+	margin: 0;
+	padding: 0;
+	background: url(bg.jpg);
+	background-size: cover;
+	font-family: sans-serif;
+        font-type: bold;
+        
+}
+
+h1{
+   float: left;
+    width: 300px;
+    padding: 10px;
+	
+}
+
+.loginBox
+{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 350px;
+	padding: 80px 40px;
+	box-sizing: border-box;
+	height: 420px;
+	background: rgba(0,0,0,.6);
+        margin-right: -50%;
+    
+}
+
+.user 
+{
+    width: 100px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: calc(-100px/2);
+    left: calc(50% - 50px);
+}
