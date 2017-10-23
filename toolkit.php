@@ -1,4 +1,5 @@
 <?php
+session_start();
 $univid= 1;
 //var_dump($_SESSION['university']);
 //echo $username;
@@ -20,6 +21,7 @@ $queryResult2 = $mysqli->query($selectFirstQuery);
 $foundRows = $queryResult->num_rows;
 $foundRows2 = $queryResult2->num_rows;
 $result_array = array();
+$result_array2 = array();
 
         echo '<table border="1">';
         while ($row=mysqli_fetch_assoc($queryResult)) {
@@ -29,6 +31,7 @@ $result_array = array();
                 echo "<td>" . $row['url'] . "</td>";
                 echo "</tr>";
 		$result_array[] = $row['url'];
+		$result_array2[] = $row['toolname'];
             
         }
         echo "</table>";
@@ -47,16 +50,15 @@ $result_array = array();
 
 	    var b = <?php echo json_encode($foundRows2); ?>;
 	    var js_array =<?php echo json_encode($result_array);?>;
+	    var js_array2 =<?php echo json_encode($result_array2);?>;
             var arrOptions = new Array();
 
-            for (var i = 0; i < b; i++) {
-                arrOptions[i] = js_array[i];
-            }
+                arrOptions= js_array;
 
             for (var i = 0; i < arrOptions.length; i++) {
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
-                btnShow.value = "Show Me Option";
+                btnShow.value = js_array2[i];
                 var optionPar = arrOptions[i];
                 btnShow.onclick = (function(opt) {
     		return function() {
@@ -72,5 +74,8 @@ $result_array = array();
 		window.open(value);
             }        
         </script>
+
+
+
     </body>
-</html>
+</html> 
