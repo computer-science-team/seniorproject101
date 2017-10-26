@@ -2,29 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Transparent Login Form</title>
-		<link rel="stylesheet" href="../css/styles.css">
+		<title>Login Form</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
 	</head>
-	<body>
-	 <div class = "loginBox center-block">
-	  <div class = "container">
-	    
-			
-		   <div class="form-group center-block">
-		  
-			  <h2>Log In Here</h2>
-			  <form method="post">
-				<p>Username</p>
-				<input type="text" name="username" placeholder="username">
-				<p>Password: </p>
-				<input type="Password" name="password" placeholder="*********">
-				<input type="submit" name="login" value="Login" class="btn btn-primary>
-				<p><a href="#">Forget Password?</a></p>
-				
-			   </form>
-		   </div>
-		
-	  </div>
-	 </div>
+	<body class="loginpage">
+        <div class="wrapper">
+          <form class="form-signin">       
+              <h2 class="form-signin-heading">Please login</h2>
+              <p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
+              <p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
+              
+              <p><button class="btn" type="submit" >Login</button></p>    
+          </form>
+  </div>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>
