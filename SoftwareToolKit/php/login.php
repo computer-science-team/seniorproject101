@@ -52,7 +52,6 @@ if(isset($_POST['signin']))
         
         $_SESSION['university']= $university;
         
-        header("location:lastpage.php");
     //while
     
  }  //if $result 
@@ -82,7 +81,7 @@ if(isset($_POST['signin']))
               <h2 class="form-signin-heading">Please login</h2>
               <p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
               <p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
-              <p><button class="btn" type="submit" onclick = "welcome.php" >Login</button></p>    
+              <input type="submit" name="submit" value="Log In">   
           </form>
   </div>
     <script src="../js/jquery-3.2.1.min.js"></script>
