@@ -13,7 +13,7 @@ session_start();
     <?php 
 $servername = "localhost";
 $user = "root";
-$passwd = "qdj4ay";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
     $sql = "SELECT username, avatar FROM users";

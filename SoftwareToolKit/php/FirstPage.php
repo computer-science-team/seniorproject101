@@ -30,7 +30,7 @@ if($foundRows > 0)
     	$_SESSION['univid'] = $row['univid'];
     }
     echo "<br/>You will be redirected to the Sign up page.";
-    header( "refresh:4; url=signup.php" );
+    header( "refresh:2; url=signup.php" );
 }
 else{
     echo "<br/>Your college is not in our database";

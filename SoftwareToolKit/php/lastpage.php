@@ -8,7 +8,7 @@ $univid= ($_SESSION['univid']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "qdj4ay";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -49,7 +49,7 @@ if($foundRows > 0)
 	  <body>
 		<div class="loginBox">
 		<p> </p>
-		<p><a  href="main.php">Log Out</a></p>	
+		<p><a  href="FirstPage.php">Log Out</a></p>	
 					
 			
 			
