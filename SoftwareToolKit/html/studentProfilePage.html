@@ -4,22 +4,17 @@
 		<meta charset="utf-8">
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		<style>
 			input.hidden {
-			position: absolute;
-			left: -9999px;
+				position: absolute;
+				left: -9999px;
 			}
-
-			#profile-image1 {
-			cursor: pointer;
-			width: 100px;
-			height: 100px;
-			border:2px solid #03b1ce ;}
-			.tital{ font-size:16px; font-weight:500;}
+			h4{
+			font-size:25px
+			}
+			.tital{ font-size:25px; font-weight:500;}
+			.data{ font-size:25px; font-weight:500;}
 			.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
 		</style>
 	</head>
@@ -35,7 +30,7 @@
 			  <li class="active"><a href="#">Home</a></li>
 			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-				  <li><a href="#">Edit Profile</a></li>
+				  <li><a href="editStudentProfilePage.html">Edit Profile</a></li>
 				  <li><a href="#">Change Password</a></li>
 				  <li><a href="#">Settings</a></li>
 				</ul>
@@ -44,92 +39,84 @@
 			</ul>
 		  </div>
 		</nav>	
+		<!-- Page menu ends here -->
 		
-		<!-- TEMP CODE STARTS HERE-->
+		<!-- Profile CODE STARTS HERE-->
 		<div class="container">
 	<div class="row">     
         
        <div class="col-md-7 ">
 
-<div class="panel panel-default">
-  <div class="panel-heading">  <h4 >My Profile</h4></div>
-   <div class="panel-body">
-		
-            <div class="col-sm-6">
-            <h4 style="color:#00b1b1;">Dharmik Pandya </h4></span>
-              <span><p>Aspirant</p></span>            
-            </div>
-            <div class="clearfix"></div>
-            <hr style="margin:5px 0 5px 0;">
+			<div class="panel panel-default">
+			  <div class="panel-heading">  <h4 >My Profile</h4></div>
+			   <div class="panel-body">
+					
+						<div class="col-sm-6 data">
+						<h2 style="color:#00b1b1;">Dharmik Pandya </h2></span>
+						  <span><p>Student</p></span>            
+						</div>
+						<div class="clearfix"></div>
+						<hr style="margin:5px 0 px 0;">
     
               
-<div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 ">Dharmik</div>
-     <div class="clearfix"></div>
-<div class="bot-border"></div>
+				<div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 data ">Dharmik</div>
+					 <div class="clearfix"></div>
+				<div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> Pandya</div>
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+				<div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7 data"> Pandya</div>
+				  <div class="clearfix"></div>
+				<div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Date Of Birth:</div><div class="col-sm-7">04 Dec 1994</div>
+				<div class="col-sm-5 col-xs-6 tital " >University</div><div class="col-sm-7 data">Rowan University</div>
+					<div class="clearfix"></div>
+				<div class="bot-border"></div>
 
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+				<div class="col-sm-5 col-xs-6 tital " >Major:</div><div class="col-sm-7 data">Computer Science</div>
 
-<div class="col-sm-5 col-xs-6 tital " >Place Of Birth:</div><div class="col-sm-7">EARTH</div>
+				 <div class="clearfix"></div>
+				<div class="bot-border"></div>
 
- <div class="clearfix"></div>
-<div class="bot-border"></div>
+				<div class="col-sm-5 col-xs-6 tital " >Year:</div><div class="col-sm-7 data">Senior</div>
 
-<div class="col-sm-5 col-xs-6 tital " >Nationality:</div><div class="col-sm-7">Indian</div>
+				  <div class="clearfix"></div>
+				<div class="bot-border"></div>
 
- <div class="clearfix"></div>
-<div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Religion:</div><div class="col-sm-7">Hindu</div>
+				<div class="col-sm-5 col-xs-6 tital " >Date Of Birth:</div><div class="col-sm-7 data">04 Dec 1994</div>
+
+				  <div class="clearfix"></div>
+				<div class="bot-border"></div>
+
+
+				<div class="col-sm-5 col-xs-6 tital " >Age:</div><div class="col-sm-7 data">22</div>
+
+				 <div class="clearfix"></div>
+				<div class="bot-border"></div>
+
+				<div class="col-sm-5 col-xs-6 tital " >About Me:</div><div class="col-sm-7 data">Description about me will be posted here.</div>
+
+				 <div class="clearfix"></div>
+				<div class="bot-border"></div>
 
 
             <!-- /.box-body -->
-          </div>
+				</div>
           <!-- /.box -->
 
-        </div>
+				</div>
        
             
-    </div> 
-    </div>
-</div>  
-    <script>
-              $(function() {
-    $('#profile-image1').on('click', function() {
-        $('#profile-image-upload').click();
-    });
-});       
-              </script> 
-       
-       
-       
-       
-       
-       
-       
-       
-       
-   </div>
-</div>
-
-
-
-
-         
-		<!-- TEMO CODE ENDS HERE -->
-        <!-- page menu ends here -->
+			</div> 
+			</div>
+			</div>
+		</div>
+	</div>
+    
+		<!-- Profile CODE ENDS HERE -->
+        
 		<script src="../js/jquery-3.2.1.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
         
 	</body>
 </html>
