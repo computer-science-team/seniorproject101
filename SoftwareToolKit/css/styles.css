@@ -66,6 +66,19 @@ p {
     background-color: white;
     border-color: white;
 }
+
+.cancelbtn-primary {
+    color: #fff;
+    background-color: transparent;
+    border-color: white;
+    margin-bottom: 5px;
+	
+}
+.cancelbtn-primary:hover {
+    color: #27A967;
+    background-color: white;
+    border-color: white;
+}
 .glyphicon-large {
     font-size: 100px;
 }
@@ -115,6 +128,7 @@ p {
 	  border-bottom-left-radius: 0;
 	  border-bottom-right-radius: 0;
       color:black;
+	  width: 100%;
 	}
 
 	
@@ -127,4 +141,14 @@ p {
 .btn {
   color: #0D031A !importnat; 
   
+}
+
+.cbtn {
+    width: auto;
+    float: right;
+	margin-top: -44px;
+}
+
+.describeYourSelf{
+	width: 100%;
 }
