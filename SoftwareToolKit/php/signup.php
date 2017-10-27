@@ -1,3 +1,4 @@
+<!-- PHP code which will connect to database and that way a user can sign up -->
 <?php
 if (isset($_POST['submit'])){
 session_start();//starts session
@@ -81,8 +82,8 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
             $_SESSION['univeristy']=$university;
             //var_dump($_SESSION['username']);
             echo 'You will be redirected shortly';
-            header( "refresh:6; url=lastpage.php" );
-           // header("location:welcome1.php");
+            header( "refresh:3; url= lastpage.php" );
+           // header("location:lastpage.php");
         }
         else
         {
@@ -92,6 +93,7 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 }
 }//post
 ?>
+<!-- PHP code ends here -->
 <!doctype html>
 <html>
 	<head>
@@ -102,11 +104,24 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 	</head>
 	<body class = "singinpage">
 	<!-- Page menu starts here -->
-		<div class="signUpBox">
-			<h2>Sign Up!</h2>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			<!-- navbar-brand can come in handy to switch ToolKit with desired UniversityToolKit-->
+			  
+			</div>
+			<ul class="nav navbar-nav">
+			  <li class="active"><a href="../index.html">Home</a></li>
+			</ul>
+		  </div>
+		</nav>	
+		<!-- Page menu ends here -->
+        <div class = "wrapper">
+		<div class="form-signin">
+			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form method="post">
-				<p>Name : </p>
-				<input type="text" name="fullname" placeholder="name" value="<?php if(isset($_POST['fullname'])){ echo $_POST['fullname'];} ?>"/>
+				<p>Name</p>
+				<input type="text" name="fullname" placeholder="name" value="<?php if(isset($_POST['fullname'])){ echo $_POST['fullname'];} ?>">
 				<p>Gender</p>
 				<label class="radio-inline">
 					<input type="radio" name="optradio"  value="Male"<?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Male') 
@@ -120,28 +135,30 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 					<input type="radio" name="optradio" value="Other"  <?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Other') 
 					     echo ' checked="checked"'; ?>>Other
 				</label>
-				<p>Birthdate: </p> 
-				<input type="date" name="dob" placeholder="MM/DD/YYYY"  value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>"/> 
+				<p>Birthdate: </p>
+				<input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>">
 				<p>Email: </p>
-				<input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"/> 
+				<input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>">
 				<p>Username: </p>
-				<input type="text" name="username" placeholder="Enter Email or Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>"/>
+				<input type="text" name="username" placeholder="Enter Email or Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>">
 				<p>Password: </p>
-				<input type="Password" name="password" placeholder="*********" value="<?php if(isset($_POST['password'])){ echo $_POST['password'];} ?>"/> 
-				<p>Faculty: 
-				<select name='role'>
+				<input type="Password" name="password" placeholder="*********" value="<?php if(isset($_POST['password'])){ echo $_POST['password'];} ?>">
+				<p>Faculty:</p>
+				<p><select name='role'>
 					<option value="no" <?php if (isset($_POST['role']) && $_POST['role'] == 'no') 
 					     echo ' selected="selected"'; ?>>No</option>
-					<option value="yes" <?php if (isset($_POST['role']) && $_POST['role'] == 'yes') 
-					    echo ' selected="selected"'; ?>>Yes</option>
-				</select></p>
-				
-				<input type="submit" name="submit" value="Submit">
-				<p><a  href="login.php">Log In</a></p>
-				<p><a href="forgot.php">Forget Password?</a></p>
+					<option value="yes"<?php if (isset($_POST['role']) && $_POST['role'] == 'yes') 
+					    echo ' selected="selected"'; ?> >Yes</option>
+				</select> </p>
+				<form>
+				 <input type="submit" name="submit" value="Submit">  
+				<p><a href="login.php"> Log In</a></p>
+				<p><a href="#">Forget Password?</a></p>
 				<p><a href="FirstPage.php">Main Page</a></p>
-			</form>
-		</div>   
+			   </form>
+            </form>
+		</div>
+        </div>    
         <script src="../js/jquery-3.2.1.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
 		
