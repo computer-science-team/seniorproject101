@@ -1,0 +1,138 @@
+body {
+    background: #3E4649;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+.indexpage{
+    color: #f7f7f7;
+}
+.loginpage{
+   color:black; 
+}
+.singinpage{
+    color:black;
+}
+h1,
+h2 {
+    font-weight: bold;
+    color:black;
+}
+p {
+    font-size: 16px;
+    color: black;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.jumbotron {
+    background: #27A967;
+    color: white;
+    text-align: center;
+}
+.jumbotron p {
+    color: white;
+    font-size: 26px;
+}
+.navbar-inverse {
+    background: #2E2F31;
+    border: 0;
+}
+.dropdown-menu {
+    background: #2E2F31;
+    border-radius: 0;
+    border: 0;
+}
+.navbar-inverse .navbar-nav li a {
+    color: #f7f7f7;
+    font-size: 16px;
+}
+.navbar-inverse .navbar-nav li a:hover {
+    background: #27A967;
+}
+.navbar-inverse .navbar-nav .dropdown-menu li a:hover {
+    background: #2C463C;
+}
+.dropdown-menu li a {
+    padding: 10px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: transparent;
+    border-color: white;
+    margin-bottom: 5px;
+}
+.btn-primary:hover {
+    color: #27A967;
+    background-color: white;
+    border-color: white;
+}
+.glyphicon-large {
+    font-size: 100px;
+}
+.call-to-action {
+    text-align: center;
+}
+.call-to-action p {
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+
+.wrapper {	
+	margin-top: 80px;
+    margin-bottom: 80px;
+    
+    
+    
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color:#27A967; 
+  border: 2px solid white;
+}
+
+	.form-control {
+	  position: relative;
+      black;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+    
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+      color:black;
+	}
+
+.form-signin-heading{
+    color: black;
+}
+
+.btn {
+  color: #0D031A !importnat; 
+  
+}
+
+input.hidden {
+				position: absolute;
+				left: -9999px;
+			}
+h4{
+font-size:25px
+}
+.tital{ font-size:25px; font-weight:500;}
+.data{ font-size:25px; font-weight:500;}
+.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	

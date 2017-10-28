@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- Author: Krunal Patel -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Edit Faculty Profile Page</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+	</head>
+	<body class = "singinpage">
+        <div class = "wrapper">
+		<div class="form-signin">
+			<h2 class="form-signin-heading">Edit Profile for a Faculty</h2>
+			<form method="post">
+				<p>Name: <input type="text" name="fullname" placeholder="name"></p>
+				 
+                <p>University: <input type ="text" name="University Name" placeholder="University Name"></p>
+                
+				
+				
+				<p>Worrking Hours: 
+				<select name=''>
+					<option value="FullTime">FullTime</option>
+					<option value="PartTime">PartTime</option>
+					
+				</select> </p>
+                
+				<p>Email: <input type="email" name="email" placeholder="Email"></p>
+				
+				<p>Gender: 
+				<select name='gender'>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Other">Other</option>
+				</select> </p>
+				<p>Birthdate: <input type="date" name="dob" placeholder="MM/DD/YYYY"> </p>
+				
+				<p>Tell us about your self: <textarea class = "describeYourSelf" rows="5" >Describe your self...</textarea></p>
+				<hr>
+				<!-- Submit button should take student to toolkit page -->
+                <p><button class="btn" type="submit"><a href = "facultyProfilPage.html">Submit Changes</a></button></p> 
+					<!-- This button will get in handy when a Student edits the page.
+					 This Page will also direct them to main took kit page -->
+					 <div class = "cbtn"> 
+                         <p><button class="btn" type="submit"><a href = "facultyProfilPage.html">Cancel</a></button></p>
+					</div>
+                
+        
+			</form>
+    
+		</div>
+        </div>
+           
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        
+	</body>
+</html>
