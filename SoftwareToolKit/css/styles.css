@@ -66,19 +66,6 @@ p {
     background-color: white;
     border-color: white;
 }
-
-.cancelbtn-primary {
-    color: #fff;
-    background-color: transparent;
-    border-color: white;
-    margin-bottom: 5px;
-	
-}
-.cancelbtn-primary:hover {
-    color: #27A967;
-    background-color: white;
-    border-color: white;
-}
 .glyphicon-large {
     font-size: 100px;
 }
@@ -128,12 +115,8 @@ p {
 	  border-bottom-left-radius: 0;
 	  border-bottom-right-radius: 0;
       color:black;
-	  width: 100%;
 	}
 
-	
-      
-   
 .form-signin-heading{
     color: black;
 }
@@ -143,12 +126,13 @@ p {
   
 }
 
-.cbtn {
-    width: auto;
-    float: right;
-	margin-top: -44px;
+input.hidden {
+				position: absolute;
+				left: -9999px;
+			}
+h4{
+font-size:25px
 }
-
-.describeYourSelf{
-	width: 100%;
-}
+.tital{ font-size:25px; font-weight:500;}
+.data{ font-size:25px; font-weight:500;}
+.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
