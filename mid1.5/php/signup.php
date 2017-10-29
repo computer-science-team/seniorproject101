@@ -75,7 +75,17 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
         . "VALUES ('$fullname','$dob', '$gender','$username','$email','$password','$role','$univid')";
         if ($mysqli->query($sql)==true)
         {
-           
+	    $selectFirstQuery = "SELECT id FROM users WHERE username  = '". $username ."'";
+            $queryResult = $mysqli->query($selectFirstQuery);
+            $foundRows = $queryResult->num_rows;
+            if($foundRows > 0)
+            {
+                echo 'id found';
+                while($row=mysqli_fetch_assoc($queryResult)){
+                    $id=$row['id'];
+                }
+            }
+            $_SESSION['id']=$id;
             $_SESSION['username']=$username;
             $_SESSION['univid']=$univid;
             //var_dump($_SESSION['univid']);
