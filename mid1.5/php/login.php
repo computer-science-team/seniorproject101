@@ -1,5 +1,3 @@
-<!-- Adding php code which will connect to database. User can log back in anytime.-->
-
 <?php 
 session_start();
 $servername = "localhost";
@@ -49,9 +47,29 @@ if(isset($_POST['signin']))
             $university = $row['name'];
             }
         }
-        
+        //Display user toolkit
+        $selectFirstQuery = "SELECT id,faculty FROM users WHERE username  = '". $username ."'";
+        $queryResult = $mysqli->query($selectFirstQuery);
+        $foundRows = $queryResult->num_rows;
+        if($foundRows > 0)
+        {
+            echo 'id found';
+            while($row=mysqli_fetch_assoc($queryResult)){
+                $id=$row['id'];
+                $role=$row['role'];
+            }
+        $_SESSION['role']=$role;
+        $_SESSION['id']=$id;
+        $_SESSION['username']=$username;
         $_SESSION['university']= $university;
         
+        header("location:lastpage.php");
+        
+        }
+        else
+        {
+            echo "There's an issue";
+        }
     //while
     
  }  //if $result 
@@ -65,9 +83,8 @@ if(isset($_POST['signin']))
  
     
  ?>
-
-<!-- Php code ends here but will be injected in HTML below-->
-<!doctype html>
+ 
+ <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -75,16 +92,24 @@ if(isset($_POST['signin']))
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
+
 	<body class="loginpage">
-        <div class="wrapper">
-          <form class="form-signin">       
-              <h2 class="form-signin-heading">Please login</h2>
-              <p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
-              <p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
-              <input type="submit" name="submit" value="Log In">   
-          </form>
-  </div>
-    <script src="../js/jquery-3.2.1.min.js"></script>
+		<div class="signInBox">
+			<div class="wrapper">
+			
+			<form method="post" class="form-signin">
+                                <h2 class="form-signin-heading">Please login</h2>
+
+				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
+              			<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
+				<input type="submit" name="signin" value="Log In">
+				<p><a href="forgot.php">Forget Password?</a></p>
+				<p><a  href="main.php">Main Page</a></p>
+				
+			</form>
+		</div>
+		</div>
+	    <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>

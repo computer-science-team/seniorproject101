@@ -1,8 +1,6 @@
 <?php
-session_start();//starts session
-$_SESSION['message'] = '';
-
-$username = $_SESSION['username'];
+session_start();
+$id = ($_SESSION['id']);
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -19,29 +17,29 @@ else
 {
     //echo "Good";
     //$username=$_POST['username'];
-    $password = md5($_POST['password']);
-    $password2 = md5($_POST['password2']);
+    $password = ($_POST['password']);
+    $password2 = ($_POST['password2']);
     
     if ($password==$password2)
     {
-        $sql= "UPDATE users SET password= '".$password."' WHERE username = '".$username."'";
+        $sql= "UPDATE users SET name= '".$password."' WHERE id = '".$id."'";
         
         if ($mysqli->query($sql) === TRUE)
         {
             echo 'Password successfully updated! 
 You will be redirected to the Log In page';
-            //header("location: signinpage.php");
-            header( "refresh:4; url=login.php" );
+            header( "refresh:4; url = profilePage.php" );
         } 
         else
         {
-            echo 'Passwords do not match!';
+            echo 'Name can not be changed';
         }
     }
     
     else 
     {
-    echo 'Password can not be changed';
+    echo 'Names do not match!';
+    
     }
 }
 }//if isset
@@ -51,15 +49,15 @@ You will be redirected to the Log In page';
 <!doctype html>
 <html>
 	<body>
-		<div class="changePassword">
-			<h2>Change Password</h2>
+		<div class="changeName">
+			<h2>Change Name</h2>
 			<form method="post">
-				<p>Password</p>
-				<input type="password" name="password" placeholder="password">
-				<p>Confirm Password </p>
-				<input type="password" name="password2" placeholder="confirm password">
+				<p>Name</p>
+				<input type="text" name="password" placeholder="name">
+				<p>Confirm Name </p>
+				<input type="text" name="password2" placeholder="confirm name">
 				<p> </p>
-				<input type="submit" name="submit" value="Change Password">
+				<input type="submit" name="submit" value="Change name">
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>

@@ -86,14 +86,12 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
                 }
             }
             $_SESSION['id']=$id;
+
             $_SESSION['username']=$username;
             $_SESSION['univid']=$univid;
-            //var_dump($_SESSION['univid']);
             $_SESSION['univeristy']=$university;
-            //var_dump($_SESSION['username']);
             echo 'You will be redirected shortly';
             header( "refresh:3; url= lastpage.php" );
-           // header("location:lastpage.php");
         }
         else
         {
@@ -163,7 +161,7 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 				<form>
 				 <input type="submit" name="submit" value="Submit">  
 				<p><a href="login.php"> Log In</a></p>
-				<p><a href="#">Forget Password?</a></p>
+				<p><a href="forgotPassword.php">Forget Password?</a></p>
 				<p><a href="FirstPage.php">Main Page</a></p>
 			   </form>
             </form>

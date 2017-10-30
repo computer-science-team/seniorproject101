@@ -1,8 +1,6 @@
 <?php
-session_start();//starts session
-$_SESSION['message'] = '';
-
-$username = $_SESSION['username'];
+session_start();
+$id = ($_SESSION['id']);
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -19,29 +17,29 @@ else
 {
     //echo "Good";
     //$username=$_POST['username'];
-    $password = md5($_POST['password']);
-    $password2 = md5($_POST['password2']);
+    $email = ($_POST['email']);
+    $email2 = ($_POST['email2']);
     
-    if ($password==$password2)
+    if ($email == $email2)
     {
-        $sql= "UPDATE users SET password= '".$password."' WHERE username = '".$username."'";
+        $sql= "UPDATE users SET email= '".$email."' WHERE id = '".$id."'";
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Password successfully updated! 
+            echo 'Email successfully updated! 
 You will be redirected to the Log In page';
             //header("location: signinpage.php");
-            header( "refresh:4; url=login.php" );
+            header( "refresh:4; url = profilePage.php" );
         } 
         else
         {
-            echo 'Passwords do not match!';
+            echo 'Password can not be changed';
         }
     }
     
     else 
     {
-    echo 'Password can not be changed';
+	echo 'Passwords do not match!';
     }
 }
 }//if isset
@@ -51,15 +49,15 @@ You will be redirected to the Log In page';
 <!doctype html>
 <html>
 	<body>
-		<div class="changePassword">
-			<h2>Change Password</h2>
+		<div class="changeEmail">
+			<h2>Change Email</h2>
 			<form method="post">
-				<p>Password</p>
-				<input type="password" name="password" placeholder="password">
-				<p>Confirm Password </p>
-				<input type="password" name="password2" placeholder="confirm password">
+				<p>Email</p>
+				<input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>">
+				<p>Confirm Email</p>
+				<input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>">
 				<p> </p>
-				<input type="submit" name="submit" value="Change Password">
+				<input type="submit" name="submit" value="Change email">
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>

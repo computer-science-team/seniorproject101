@@ -196,7 +196,8 @@ if(isset($_POST['Add'])){
 		<p><a  href="facultySearch.php" class="btn btn-warning btn-xs" role= "button" style="position: absolute; left: 0%; right:90%; bottom: 13%;"><?php $_SESSION['id']=$id;
 		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Faculty Search</a>	
 		<p><a  href="universitysearch.php" class="btn btn-info btn-xs" role= "button" style="position: absolute; left: 0%; right:90%; bottom: 17%;"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Search All Universities</a>	
+		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Search All Universities</a>
+		<p><a  href="profilePage.php" class="btn btn-danger btn-xs" role= "button" style="position: absolute; left: 0%; right:90%; bottom: 21%;">Profile</a>	
 		
 		</body>
     <div class="div">
