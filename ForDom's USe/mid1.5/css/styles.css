@@ -146,18 +146,24 @@ color:white;
     text-align: left;
 }
 
-/* Edit by Dharmik 11/4/2017
-changing button style for Login in LoginPage.php*/
- input[type=submit] {
-    background-color: red;
+/* Edit by Dharmik 11/4/2017 V2
+changing button style for Login in LoginPage.php.
+V2
+css for buttons calls with name="signin" instead 
+of type=submit that way only each button is 
+selected for particulr page
+NOTE: button css below will only work for login in page button*/
+input[name="signin"] {
+    background-color: black;
     border: none;
     color: white;
-    padding: 8px 16px;
+    padding: 8px 56px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+	border-radius: 25px;
 }
 
- input[type=submit]:hover {
-    background: maroon;
+ input[name="signin"]:hover {
+    background: red;
 }
