@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- Author: Krunal Patel -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SignUp!</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+	</head>
+	<body class = "singinpage">
+        <div class = "wrapper">
+		<div class="form-signin">
+			<h2 class="form-signin-heading">Sign Up!</h2>
+			<form method="post">
+				<p>Name</p>
+				<input type="text" name="fullname" placeholder="name">
+				<p>Gender: </p>
+				<select name='gender'>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Other">Other</option>
+				</select> 
+				<p>Birthdate: </p>
+				<input type="date" name="dob" placeholder="MM/DD/YYYY">
+                <p>University</p>
+                <input type ="text" name="University Name" placeholder="University Name">
+				<p>Email: </p>
+				<input type="email" name="email" placeholder="Email">
+				<p>Username: </p>
+				<input type="text" name="username" placeholder="Enter Email or Username">
+				<p>Password: </p>
+				<input type="Password" name="password" placeholder="*********">
+				<p>I am:</p>
+				<p><select name='role'>
+					<option value="student">Student</option>
+					<option value="professor">Professor</option>
+				</select> </p>
+				<form>
+				 <button class="btn" type="submit">Signin</button>   
+				<p><a href="login.html"> Login</a></p>
+				<p><a href="#">Forget Password?</a></p>
+			   </form>
+            </form>
+		</div>
+        </div>    
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        
+	</body>
+</html>
