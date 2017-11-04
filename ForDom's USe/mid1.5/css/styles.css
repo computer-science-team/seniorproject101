@@ -1,5 +1,5 @@
 body {
-    background: #3E4649;
+    background: url(bg.jpg);;
     
     font-family: 'Montserrat', sans-serif;
 }
@@ -124,7 +124,6 @@ p {
 
 .btn {
   color: #0D031A !importnat; 
-  
 }
 
 input.hidden {
@@ -145,4 +144,20 @@ color:white;
 }
 .facultySearchPage{
     text-align: left;
+}
+
+/* Edit by Dharmik 11/4/2017
+changing button style for Login in LoginPage.php*/
+ input[type=submit] {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+ input[type=submit]:hover {
+    background: maroon;
 }
