@@ -167,3 +167,10 @@ input[name="signin"] {
  input[name="signin"]:hover {
     background: red;
 }
+/*
+ This changes the color for hypertext for each page such as "Forget password?", "Login Here"
+ or "Signup"
+*/
+a{
+	color: #000080;
+}
