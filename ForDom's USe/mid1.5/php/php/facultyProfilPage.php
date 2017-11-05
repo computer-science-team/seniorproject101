@@ -7,7 +7,7 @@ $runivid= ($_SESSION['univid']);
 //var_dump($_SESSION['university']);
 $servername = "localhost";
 $username = "root";
-$password = "kkp123";
+$password = "rowanphysicssweng";
 $dbname = "accounts";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

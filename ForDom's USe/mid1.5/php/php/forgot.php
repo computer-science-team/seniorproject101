@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -60,7 +60,7 @@ if(isset($_POST['submit']))
 				<p>Birthdate
 				<br><input type="date" name="dob" placeholder="MM/DD/YYYY"> </p>
 				<p> 
-				<input type="submit" name="submit" value="Change Password"></p>
+				<input type="submit" name="submitbut" value="Change Password"></p>
 				<p><a  href="main.php">Main Page</a></p>
 				<p><a  href="login.php">Sign In</a></p>				
 				

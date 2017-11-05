@@ -6,7 +6,7 @@ session_start();//starts session
  $university=$_SESSION['university'];
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -159,7 +159,7 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 					    echo ' selected="selected"'; ?> >Yes</option>
 				</select></p>
 				<form>
-				 <input type="submit" name="submit" value="Submit">  
+				 <input type="submit" name="submitbut" value="Submit">  
 				<p><a href="login.php"> Log In</a></p>
 				<p><a href="forgotPassword.php">Forget Password?</a></p>
 				<p><a href="FirstPage.php">Main Page</a></p>

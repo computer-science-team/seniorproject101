@@ -2,7 +2,7 @@
 session_start();
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
@@ -102,7 +102,7 @@ if(isset($_POST['signin']))
 
 				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
               			<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
-				<input type="submit" name="signin" value="Log In">
+				<input type="submit" name="submitbut" value="Log In">
 				<p><a href="forgot.php">Forget Password?</a></p>
 				<p><a  href="main.php">Main Page</a></p>
 				

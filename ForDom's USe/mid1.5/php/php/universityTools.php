@@ -10,7 +10,7 @@ $runivid= ($_SESSION['runivid']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection

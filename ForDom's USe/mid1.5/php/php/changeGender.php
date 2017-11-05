@@ -3,7 +3,7 @@ session_start();
 $id = ($_SESSION['id']);
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -66,7 +66,7 @@ You will be redirected to the profile page';
 					     echo ' checked="checked"'; ?>>Other
                 </label></p>
                 <p>
-                    <input type="submit" name="submit" value="Change gender"></p>
+                    <input type="submit" name="submitbut" value="Change gender"></p>
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>

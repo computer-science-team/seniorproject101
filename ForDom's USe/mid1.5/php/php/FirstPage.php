@@ -55,7 +55,7 @@ else{
 				
 				<p>Name of your University: 
 				<input type="text" name="university" placeholder="Enter university name here" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
-				<input type="submit" name="unibut" value="Submit"></p>
+				<input type="submit" name="submitbut" value="Submit"></p>
 				
 				<p>Already have an account?<a href="login.php"> Log In</a></p>
 				<p><a href="forgot.php">Forget Password?</a></p>

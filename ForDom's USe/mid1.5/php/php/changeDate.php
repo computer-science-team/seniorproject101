@@ -3,7 +3,7 @@ session_start();
 $id = ($_SESSION['id']);
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -54,7 +54,7 @@ else
 				<p>Birthdate:
 				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>"> </p>
 				<p> 
-				<input type="submit" name="submit" value="Change date"></p>
+				<input type="submit" name="submitbut" value="Change date"></p>
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>

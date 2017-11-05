@@ -7,7 +7,7 @@ $runivid= ($_SESSION['univid']);
 //var_dump($_SESSION['university']);
 $servername = "localhost";
 $username = "root";
-$password = "kkp123";
+$password = "rowanphysicssweng";
 $dbname = "accounts";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,7 +23,7 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>StudentProfilePage</title>
+    <title>Student Profile Page</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
     
@@ -93,7 +93,7 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
       <div class="col-md-4">
           <a href="#"><span class="glyphicon glyphicon-road glyphicon-large" aria-hidden="true"></span></a>
         <h3>GuideLine of success</h3>
-        <p>Our site will give you easy and quick guide of success in your university for CS. </p>
+        <p style=" color:red; font-weight:600;"  >Our site will give you easy and quick guide of success in your university for CS. </p>
       </div>
       <div class="col-md-4">
         <a href="#"><span class="glyphicon glyphicon-floppy-disk glyphicon-large" aria-hidden="true"></span></a>

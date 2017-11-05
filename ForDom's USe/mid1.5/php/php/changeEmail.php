@@ -3,7 +3,7 @@ session_start();
 $id = ($_SESSION['id']);
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -65,7 +65,7 @@ You will be redirected to the Log In page';
 				<p>Confirm Email
 				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
 				<p> 
-				<input type="submit" name="submit" value="Change email"></p>
+				<input type="submit" name="submitbut" value="Change email"></p>
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>

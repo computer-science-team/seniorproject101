@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
    
     $servername = "localhost";
     $user = "root";
-    $passwd = "kkp123";
+    $passwd = "rowanphysicssweng";
     $dbname ="accounts";
     $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
     // Check connection
@@ -130,7 +130,7 @@ if (isset($_POST['submit'])){
 				
 		
 		<p> </p>
-		<input type="submit" name="submit" value="submit">	
+		<input type="submit" name="submitbut" value="submit">	
 		<p><a  href="main.php" class="btn btn-danger btn-xs" role= "button" style="position: absolute; left: 0%; right:90%; bottom: 5%;">Log Out</a>	
 		<p><a  href="recommendeduniversity.php" class="btn-success btn-xs" role= "button" style="position: absolute; left: 0%; right:90%; bottom: 9%;"><?php $id=$_SESSION['id'];
 		$username=$_SESSION['username']; $runiversity=$_SESSION['runiversity'];  $_SESSION['runivid']=$runivid; ?>Your University's Recommended Tools</a>			

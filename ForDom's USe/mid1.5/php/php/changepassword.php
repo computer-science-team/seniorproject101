@@ -5,7 +5,7 @@ $_SESSION['message'] = '';
 $username = $_SESSION['username'];
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -67,7 +67,7 @@ You will be redirected to the Log In page';
 				<p>Confirm Password 
 				<br><input type="password" name="password2" placeholder="confirm password"></p>
 				<p> 
-				<input type="submit" name="submit" value="Change Password"></p>
+				<input type="submit" name="submitbut" value="Change Password"></p>
 				<p><a href="signuppage.php">Sign Up</a></p>
 				<p><a  href="signinpage.php">Log In</a></p>				
 				<p><a href="professororstudent.php">Main Page</a></p>
