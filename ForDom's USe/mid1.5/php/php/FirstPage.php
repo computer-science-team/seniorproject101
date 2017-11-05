@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $university = $_POST['university'];
 //var_dump($university);
@@ -53,12 +53,11 @@ else{
 			<h2>Welcome!</h2>
 			<form method="post">
 				
-				<p>Name of your University: </p>
-				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
-				<input type="submit" name="submit" value="Submit">
+				<p>Name of your University: 
+				<input type="text" name="university" placeholder="Enter university name here" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
+				<input type="submit" name="unibut" value="Submit"></p>
 				
-				<p>Already have an account?</p>
-				<p><a href="login.php">Log In</a></p>
+				<p>Already have an account?<a href="login.php"> Log In</a></p>
 				<p><a href="forgot.php">Forget Password?</a></p>
 				
 			</form>
