@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "Liger124!";
+$passwd = "";
 $dbname ="accounts";
 $university = $_POST['university'];
 //var_dump($university);
