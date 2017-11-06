@@ -66,7 +66,7 @@ You will be redirected to the profile page';
 					     echo ' checked="checked"'; ?>>Other
                 </label></p>
                 <p>
-                    <input type="submit" name="submit" value="Change gender"></p>
+                    <input type="submit" name="submitbut" value="Change gender"></p>
 				<p><a href="signup.php">Sign Up</a></p>
 				<p><a  href="login.php">Log In</a></p>				
 				
