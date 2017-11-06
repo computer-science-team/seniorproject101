@@ -65,7 +65,7 @@ You will be redirected to the Log In page';
 				<p>Confirm Email
 				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
 				<p> 
-				<input type="submit" name="submit" value="Change email"></p>
+				<input type="submit" name="submitbut" value="Change email"></p>
 				<p><a href="signup.php">Sign Up</a></p>
 				<p><a  href="login.php">Log In</a></p>				
 				
