@@ -124,16 +124,8 @@ if (isset($_POST['submit'])){
                     if($foundRows > 0)
                     {
                        
-                        echo "<table border='1'>";
-                        echo "<tr><td>Here are your tools :</td>";
-                        echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Visit Site</td><rr>";
-                        while($row=mysqli_fetch_assoc($queryResult)){
-                            
-                            
-                            echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><input type='submit' name='Visit' value = {$row['url']}></td>";
-                            
-                            
-                        }//while
+                        
+                        
                     }//rows  
                 }//if mysql
             }//else
@@ -148,7 +140,7 @@ if (isset($_POST['submit'])){
 		<p>Location:</p> 
 				<p><input type="text" name="url" placeholder="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'];} ?>"/> </p>
 				
-		
+		<p> <input type="submit" name="submit" value="submit"></p>
 				
 	  
     </form>
