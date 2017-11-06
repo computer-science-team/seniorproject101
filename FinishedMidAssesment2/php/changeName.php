@@ -66,7 +66,7 @@ You will be redirected to the Log In page';
 				<p>Confirm Name 
 				<br><input type="text" name="name2" placeholder="confirm name"></p>
 				<p> 
-				<input type="submit" name="submit" value="Change name"></p>
+				<input type="submit" name="submitbut" value="Change name"></p>
 				<p><a href="signup.php">Sign Up</a></p>
 				<p><a  href="login.php">Log In</a></p>				
 				
