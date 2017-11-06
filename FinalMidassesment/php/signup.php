@@ -6,7 +6,7 @@ session_start();//starts session
  $university=$_SESSION['university'];
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
