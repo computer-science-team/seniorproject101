@@ -54,7 +54,7 @@ else
 				<p>Birthdate:
 				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>"> </p>
 				<p> 
-				<input type="submit" name="submit" value="Change date"></p>
+				<input type="submit" name="submitbut" value="Change date"></p>
 				<p><a href="signup.php">Sign Up</a></p>
 				<p><a  href="login.php">Log In</a></p>				
 				
