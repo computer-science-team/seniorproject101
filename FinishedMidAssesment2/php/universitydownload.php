@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
             $_SESSION['message'] = '';
             $servername = "localhost";
             $user = "root";
-            $passwd = "Liger124!";
+            $passwd = "";
             $dbname ="accounts";
             $runiversity = $_POST['university'];
             $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
