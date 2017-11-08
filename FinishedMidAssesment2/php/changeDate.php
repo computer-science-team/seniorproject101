@@ -1,6 +1,7 @@
 <?php
 session_start();
 $id = ($_SESSION['id']);
+$role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -25,7 +26,15 @@ else
         if ($mysqli->query($sql) === TRUE)
         {
             echo 'Birthday was successfully updated! You will be redirected to your profile';
-            header( "refresh:4; url = profilePage.php" );
+	 $role2 = "yes";
+            
+	 if (strcmp($role, $role2) !== 0){
+        		header("location:studentProfilePage.php");
+			
+			}
+	 else{
+		header("location:facultyProfilePage.php");
+		    }
         } 
         else
         {
