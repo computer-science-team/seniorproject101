@@ -1,0 +1,10 @@
+univerityTools.php - where statement with private added
+tools table- private column added
+addTools2.php - option value private added
+universitysearch.php - user's own university no longer shows in university search
+linked lastpage.php to universitysearch.php
+universityRegister.php - private option  added to tools. This file will be used by faculty to register a university
+existingUniversity.php -  private option   added to tools. This file is used to add tools to an existing university
+studentProfilePage.php - guidelines icon is clicked it stays on page and downloads the file. message is displayed if file is unavilable
+universitydownload.php - no longer asks for university. runs in the background. if file is present it automatically downloads it
+universities table has been updated to upload club files
