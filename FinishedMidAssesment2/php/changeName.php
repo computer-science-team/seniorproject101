@@ -1,6 +1,7 @@
 <?php
 session_start();
 $id = ($_SESSION['id']);
+$role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -26,13 +27,22 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Password successfully updated! 
-You will be redirected to the Log In page';
-            header( "refresh:4; url = profilePage.php" );
+            echo 'Name is successfully updated! You will be redirected to the profile page';
+	$role2 = "yes";
+            
+            if (strcmp($role, $role2) !== 0){
+        		header("location:studentProfilePage.php");
+			
+			}
+		else{
+		header("location:facultyProfilePage.php");
+		    }
+            
         } 
         else
         {
             echo 'Name can not be changed';
+
         }
     }
     
@@ -61,10 +71,10 @@ You will be redirected to the Log In page';
 			<h2>Change Name</h2>
 			<form method="post">
 				<p>Name
-				<br><input type="text" name="name" placeholder="name"></p>
+				<br><input type="text" name="password" placeholder="name"></p>
 
 				<p>Confirm Name 
-				<br><input type="text" name="name2" placeholder="confirm name"></p>
+				<br><input type="text" name="password2" placeholder="confirm name"></p>
 				<p> 
 				<input type="submit" name="submit" value="Change name"></p>
 				<p><a href="signup.php">Sign Up</a></p>
