@@ -45,8 +45,9 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
 			<ul class="nav navbar-nav navbar-right">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-				   <li><a href="changepassword.php">Change Password</a></li>
-				  <li><a href="changeName.php">Change Name</a></li>
+		  <li><a href="changepassword.php">Change Password</a></li>
+		  <li><a href="changeUsername.php">Change Username</a></li>
+		  <li><a href="changeName.php">Change Name</a></li>
                   <li><a href="changeEmail.php">Change Email</a></li>
                   <li><a href="changeGender.php">Change Gender</a></li>
                   <li><a href="changeDate.php">Change Date</a></li>
