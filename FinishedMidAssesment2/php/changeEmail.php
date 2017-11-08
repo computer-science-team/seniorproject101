@@ -1,6 +1,7 @@
 <?php
 session_start();
 $id = ($_SESSION['id']);
+$role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -26,10 +27,16 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Email successfully updated! 
-You will be redirected to the Log In page';
-            //header("location: signinpage.php");
-            header( "refresh:4; url = profilePage.php" );
+            echo 'Email successfully updated! You will be redirected to the Log In page';
+	 $role2 = "yes";
+            
+	 if (strcmp($role, $role2) !== 0){
+        		header("location:studentProfilePage.php");
+			
+			}
+	 else{
+		header("location:facultyProfilePage.php");
+		    }
         } 
         else
         {
