@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $university = $_POST['university'];
 //var_dump($university);
@@ -23,14 +23,14 @@ $foundRows = $queryResult->num_rows;
 if($foundRows > 0)
 {   
      $_SESSION['university']= $university;
-    echo "<br/>Your college has been found.";
+    //echo "<br/>Your college has been found.";
     while($row = mysqli_fetch_assoc($queryResult)){
     	//echo $row['univid'];
     	//$univid=$row['univid'];
     	$_SESSION['univid'] = $row['univid'];
     }
-    echo "<br/>You will be redirected to the Sign up page.";
-    header( "refresh:2; url=signup.php" );
+    //echo "<br/>You will be redirected to the Sign up page.";
+    header( "refresh:0; url=loadingpage.php" );
 }
 else{
     echo "<br/>Your college is not in our database";
