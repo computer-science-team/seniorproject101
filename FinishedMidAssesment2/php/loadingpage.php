@@ -33,18 +33,22 @@ display: block;
 
 h2{
 	color: red;
+	font-size: 50px;
+}
+p{
+	font size: 40px;
 }
 
 </style>
 </head>
 <body>
-
+<div class="container">
 <div class="loader"></div>
 <center>
 <h2>Your University was found... </h2>
-<p> Pelase wait... You will be redirected shortly.</p>
+<h3> Pelase wait... You will be redirected shortly to Sign up page.</h3>
 </center>
-
+</div>
 
 </body>
 </html>
