@@ -29,6 +29,7 @@ if($foundRows > 0)
     	//$univid=$row['univid'];
     	$_SESSION['univid'] = $row['univid'];
     }
+	$UniversityFound = "Your University was found...";
     //echo "<br/>You will be redirected to the Sign up page.";
     header( "refresh:0; url=loadingpage.php" );
 }
@@ -54,7 +55,7 @@ else{
 			<form method="post">
 				
 				<p>Name of your University: </p>
-				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
+				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>" required/>
 				<input type="submit" name="submit" value="Submit">
 				
 				<p>Already have an account?</p>
