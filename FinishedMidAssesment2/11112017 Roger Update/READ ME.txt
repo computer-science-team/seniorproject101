@@ -1,0 +1,5 @@
+addTools2.php - If a faculty adds a public tool then it will be automatically added to the university. Private tools will not be added to the unviversity. This file MUST BE RENAMED before using. The other addTools2.php file is needed for the student. That file does not add anything to the university. It only adds to the user
+
+universitydownload.php - The wrong file was uploaded the other day in the 11082017 Roger update. I have now uploaded the latest file. I have tested both uploading and downloading on my laptop
+
+Also if you guys move the pages around this may cause errors with the session variables. If you move a page from a location please look at the previous page that it was connected to and adjust the session(reference) variable accordingly.
