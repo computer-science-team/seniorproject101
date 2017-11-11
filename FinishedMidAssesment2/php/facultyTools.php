@@ -1,19 +1,15 @@
-<?php
+<?php 
 session_start();
+$id = ($_SESSION['id']);
 $fid = $_SESSION['fid'];
-//echo $fid;
-//echo $faculty;
-$id = $_SESSION['id'];
-$username = $_SESSION['username'];
-$univid = $_SESSION['univid'];
+$username = ($_SESSION['username']);
+$runiversity= ($_SESSION['university']);
+$runivid= ($_SESSION['univid']);
+//var_dump($_SESSION['university']);
+//echo $username;
 $servername = "localhost";
-$university=$_SESSION['university'];
-$faculty = $_SESSION['faculty'];
-//echo "look";
-//echo $faculty;
-//echo $faculty;
 $user = "root";
-$passwd = ";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -34,95 +30,103 @@ if(isset($_POST['Visit'])){
     $var=$_POST['Visit'];
     
     header('location:' . $var);
+
 }
+
+
+$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
+$queryResult = $mysqli->query($selectFirstQuery);
+$queryResult2 = $mysqli->query($selectFirstQuery);
+$foundRows = $queryResult->num_rows;
+$foundRows2 = $queryResult2->num_rows;
+$result_array = array();
+$result_array2 = array();
+
+        while ($row=mysqli_fetch_assoc($queryResult)) {
+		$result_array[] = $row['url'];
+		$result_array2[] = $row['toolname'];
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
 //adds tool to student's tool kit
 if(isset($_POST['Add'])){
     
-    $var=($_POST['Add']);
-    $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."' AND idnums = '".$id."'";
+   $var=($_POST['Add']);
+   $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."' AND idnums = '".$id."'";
+   $queryResult = $mysqli->query($selectFirstQuery);
+   $foundRows = $queryResult->num_rows;
+   $foundRows2 = $foundRows;
+   
+   //if tool found then tool is already in kit
+   if($foundRows > 0)
+   {
+    echo "<br/> ".$var. " is already in your toolkit";
+   
+        
+   }
+   //if tool not found add to student's toolkit
+   else{
+     //Get tool from university
+     $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."'";
     $queryResult = $mysqli->query($selectFirstQuery);
     $foundRows = $queryResult->num_rows;
-    $foundRows2 = $foundRows;
-    
-    //if tool found then tool is already in kit
     if($foundRows > 0)
     {
-        echo "<br/> ".$var. " is already in your toolkit";
-        
-        
-    }
-    //if tool not found add to student's toolkit
-    else{
-        //Get tool from faculty
-        $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."'";
-        $queryResult = $mysqli->query($selectFirstQuery);
-        $foundRows = $queryResult->num_rows;
-        if($foundRows > 0)
-        {
-            while($row=mysqli_fetch_assoc($queryResult)){
-                $tool= $row['toolname'];
-                $cat=$row['category'];
-                
-                
-            }//while
-        }//if
-        
-        //insert tool into tool table
-        $sql = "INSERT INTO tools(idnums, category, toolname, url)"
-            . "VALUES ('$id','$cat', '$tool','$var')";
-            if ($mysqli->query($sql)==true)
-            {
-                echo "<br/> ".$tool. " was successfully added to your toolkit";
-                //Display user tool kit
-                //  echo "<br/>Here are the tools associated with "  .$university. ":";
-                $selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
-                $queryResult = $mysqli->query($selectFirstQuery);
-                $foundRows = $queryResult->num_rows;
-                //if found tool kit displayed tool added
-                if($foundRows > 0)
-                {
-                    echo "<table border='1'>";
-                    echo "<br/>Here are your tools :";
-                    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Visit Site</td><rr>";
-                    while($row=mysqli_fetch_assoc($queryResult)){
-                        
-                        
-                        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><input type='submit' name='Visit' value = {$row['url']}></td>";
-                        
-                        //refresh header dont create table
-                    }
-                    
-                }
-            }
-            else
-            {
-                echo 'Error: tool could not be added';
-            }
-    }//else
-    
-    
-}
-?>
+       while($row=mysqli_fetch_assoc($queryResult)){
+          $tool= $row['toolname'];
+          $cat=$row['category'];
+          
+          
+       }//while
+    }//if
+   
+   //insert tool into tool table
+   $sql = "INSERT INTO tools(idnums, category, toolname, url)"
+       . "VALUES ('$id','$cat', '$tool','$var')";
+       if ($mysqli->query($sql)==true)
+       {
+	header("Refresh:0");
+           
+       }
+	else
+	{
+	echo 'Error: tool could not be added';
+	}
+   }//else
 
+
+}
+ 
+
+
+?>
 <!DOCTYPE html>
 
 <html>
-<head>
+		
+	<html>
+		
+	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FacultyToolpage</title>
+    <title>StudentToolpage</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
     
 </head>
-
-    
- 
-       
-       
-       <body>
-           <nav class="navbar navbar-inverse navbar-static-top">
+    <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -131,101 +135,107 @@ if(isset($_POST['Add'])){
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Faculty Search</a>
+			<a class="navbar-brand" href="#">UniversityTools</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 				  
-				  
-				  <li><a href="buildTools.php">Add Your Own Tools</a></li>
-                  
-                  <li><a href="facultySearch.php"><?php $id=$_SESSION['id'];
-		$username=$_SESSION['username']; $university=$_SESSION['university'];  $_SESSION['univid']=$univid; ?>Faculty Search</a></li>
+				  <li><a href="studentProfilePage.php">Profile Page</a></li>
+				  <li><a href="universitysearch.php"><?php $_SESSION['id']=$id;
+		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$fid; ?>Search All Universities</a></li>
+                  <li><a href="facultySearch.php"><?php $_SESSION['id']=$id;
+		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$fid; ?>Faculty Search</a></li>
+                 
 				</ul>
 			  </li>
-                
                 <li><a href="../index.html">Logout</a></li>
-                
 			</ul>
 		</div>
 	</div>
 </nav>
-        
-           <div class="jumbotron">
-           <div class="container">
-           <div class="facultyTools">
+      
+	
+      
+	  	<div class="jumbotron">
+        <div class="container">  
+		<div class="loginBox">
+		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
 		 <form method="post">
-        <input type='submit' name="View" value='View Your Toolkit'>
+		
 		<?php
-		//faculty member's tools
-		echo $username.",here is" .$faculty. "'s tools";
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $fid ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
 		$foundRows = $queryResult->num_rows;
-		//if row is found get toolkit of university faculty
+		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    
+		    echo"this is all the tools for the university";
 		    echo "<table border='1'>";
-		    //echo "<br/>Here are the tools associated with "  .$university. ":";
 		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
 		           
-		        
+		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
 		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><input type='submit' name='Add' value = {$row['url']}></td>";
 		            
 		    }
 		   
-		}
+		}//ifr] rows
 		//User toolkit
-		if(((isset($_POST['Add'])) && ($foundRows2 > 0))||(isset($_POST['View']))){
-		    
-		    
-		    $selectFirstQuery = "SELECT * FROM tools WHERE idnums = '".$id."'";
-		    $queryResult = $mysqli->query($selectFirstQuery);
-		    $foundRows = $queryResult->num_rows;
-		    //display toolkit  not adding tool
-		    if($foundRows > 0){
-		        
-		        
-		        echo "<table border='1'>";
-		        echo "<br/> Here are your tools:";
-		        echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Visit Site</td><rr>";
-		        while($row=mysqli_fetch_assoc($queryResult)){
-		            
-		            
-		            echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><input type='submit' name='Visit' value = {$row['url']}></td>";
-		        }//while
-		    }//foundRows
-		    //
-		    else{
-		        echo "You don't have a toolkit. Add tools to create one";
-		    }//
-		    //used if there is a $_POST['Add']
-		    //if(isset($_POST['Add'])&&(foundRows2>0)){
-		    //    echo "working";
-		    //  $var=($_POST['Add']);
-		    //  echo .$_POST['Add']. " is already in your toolkit";
-		    
-		    //}
-		}//isset
-		//echo "<br/><input type='submit' name='LogOut' value = 'Add your own tools'>";
 		
 		?>
-		
 		</form>
-                
-         </div>
-        </div>
-        </div>
 		
+		 <div id="divButtons">
+
+        </div>
+	<p id="demo"></p>
+        
+	
+
+
+
+        <script type="text/javascript">
+	    
+	    var b = <?php echo json_encode($foundRows2); ?>;
+	    var js_array =<?php echo json_encode($result_array);?>;
+	    var js_array2 =<?php echo json_encode($result_array2);?>;
+            var arrOptions = new Array();
+
+                arrOptions= js_array;
+
+            for (var i = 0; i < arrOptions.length; i++) {
+                var btnShow = document.createElement("input");
+                btnShow.setAttribute("type", "button");
+                btnShow.value = js_array2[i];
+                var optionPar = arrOptions[i];
+                btnShow.onclick = (function(opt) {
+    		return function() {
+      		showParam(opt);
+   		};
+		})(arrOptions[i]);
+
+                document.getElementById('divButtons').appendChild(btnShow);
+            }
+
+            function showParam(value) {
+
+                
+		window.open(value);
+            }        
+        </script>
+             
+		
+            </div>
+            </div>
+</div>
+		
+
 		</body>
     
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-   
 </html>
