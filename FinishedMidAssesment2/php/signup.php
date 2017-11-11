@@ -111,9 +111,11 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 ?>
 <!-- PHP code ends here -->
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SignUp!</title>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
