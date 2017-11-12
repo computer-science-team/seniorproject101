@@ -1,6 +1,10 @@
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,8 +94,8 @@ if(isset($_POST['submit1'])){
             $runivid=$_SESSION['runivid'];
             
             //checking if a file exists to prevent university from having more than 1 
-            //guideline for success
-            $sql="SELECT guide_path FROM universities WHERE univid='".$runivid."' AND guide_path IS NOT NULL";
+            //list of clubs
+            $sql="SELECT club_path FROM universities WHERE univid='".$runivid."' AND club_path IS NOT NULL";
             $queryResult=$mysqli->query($sql);
             
             $foundRows = $queryResult->num_rows;
@@ -99,7 +103,7 @@ if(isset($_POST['submit1'])){
                 
                 while($row = mysqli_fetch_assoc($queryResult)){
                     
-                    $pdfname = $row['guide_path'];
+                    $pdfname = $row['club_path'];
                     
                 }
                 
@@ -128,7 +132,7 @@ if(isset($_POST['submit1'])){
                 $file_name_new =  uniqid('',true). '.'.$file_ext;
                 $dst = 'ListOfClub/'. $file_name_new;
                 move_uploaded_file($_FILES["f"]["tmp_name"],$dst);
-                $query = "UPDATE universities SET guide_fname = '".$fnm."', guide_path = '".$dst."' WHERE univid = '".$runivid."'";
+                $query = "UPDATE universities SET club_fname = '".$fnm."', club_path = '".$dst."' WHERE univid = '".$runivid."'";
                 if($mysqli->query($query)== true){
                     echo "<br/>File Uploaded.";
                 }
