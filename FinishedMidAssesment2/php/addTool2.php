@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$role = $_SESSION['role'];
+//$role = $_SESSION['role'];
 $id = $_SESSION['id'];
 $username = $_SESSION['username'];
 $runiversity = $_SESSION['runiversity'];
@@ -61,13 +61,11 @@ if (isset($_POST['submit'])){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+html lang="en"
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>New Tool</title>
-  		
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
   		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
 </head>  
@@ -104,8 +102,9 @@ if (isset($_POST['submit'])){
             $toolname = $_POST['toolname'];
             $category = $_POST['category'];
             $url = $_POST['url'];
+            $private = $_POST['private'];
             //check if tool is already in tool kit
-            $selectFirstQuery = "SELECT url FROM tools WHERE url  = '". $url ."'";
+            $selectFirstQuery = "SELECT url FROM tools WHERE url  = '". $url ."' AND idnums = '".$id."'";
             $queryResult = $mysqli->query($selectFirstQuery);
             $foundRows = $queryResult->num_rows;
             //if >0 then tool is in toolkit
@@ -115,7 +114,7 @@ if (isset($_POST['submit'])){
             }//if
             else{
     
-                $sql = "INSERT INTO tools(idnums, category, toolname, url)" . "VALUES ('$id','$category', '$toolname','$url')";
+                $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$id','$category', '$toolname','$url', '$private')";
             
                 if ($mysqli->query($sql)==true){
                     echo 'Tool added';
@@ -130,17 +129,46 @@ if (isset($_POST['submit'])){
                         
                     }//rows  
                 }//if mysql
+                //university
+                if($private=='no'){
+                    $selectFirstQuery = "SELECT url FROM tools WHERE url  = '". $url ."' AND idnums = '".$runivid."' ";
+                    $queryResult = $mysqli->query($selectFirstQuery);
+                    $foundRows = $queryResult->num_rows;
+                    //if >0 then tool is in university's toolkit already
+                    if($foundRows > 0){
+                        
+                        echo "</br>".$url." is already in the university's kit. It can not be added to the university";
+                    }//if
+                    else{
+                        
+                        $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$runivid','$category', '$toolname','$url', '$private')";
+                        
+                        if ($mysqli->query($sql)==true){
+                            echo "</br> Tool has been added to the university";
+                            
+                        }//if mysql
+                    }
+                    
+                }//private
+                   
             }//else
     }//
     ?>
          
-        <p>You must create at least one tool</p>
-		<p>Tool:</p> 
-				<p><input type="text" name="toolname" placeholder="toolname" value="<?php if(isset($_POST['toolname'])){ echo $_POST['toolname'];} ?>" /></p>
-		<p>Category:</p> 
-				<p><input type="text" name="category" placeholder="category" value="<?php if(isset($_POST['category'])){ echo $_POST['category'];} ?>"/> </p>
-		<p>Location:</p> 
-				<p><input type="text" name="url" placeholder="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'];} ?>"/> </p>
+        <p>By creating your tool</p>
+		<p>Tool: 
+				<br><input type="text" name="toolname" placeholder="toolname" value="<?php if(isset($_POST['toolname'])){ echo $_POST['toolname'];} ?>" /></p>
+		<p>Category: 
+				<br><input type="text" name="category" placeholder="category" value="<?php if(isset($_POST['category'])){ echo $_POST['category'];} ?>"/> </p>
+		<p>Location: 
+				<br><input type="text" name="url" placeholder="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'];} ?>"/> </p>
+            <p>Private Tool:
+				<br><select name='private'>
+					<option value="no" <?php if (isset($_POST['private']) && $_POST['private'] == 'No') 
+					     echo ' selected="selected"'; ?>>No</option>
+					<option value="yes"<?php if (isset($_POST['private']) && $_POST['private'] == 'Yes') 
+					    echo ' selected="selected"'; ?> >Yes</option>
+				</select></p>
 				
 		<p> <input type="submit" name="submit" value="submit"></p>
 				
