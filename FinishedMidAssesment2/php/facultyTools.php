@@ -162,7 +162,7 @@ if(isset($_POST['Add'])){
 		        
 		           
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><input type='submit' name='Add' value = {$row['url']}></td>";
+		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><button type='submit' name='Add' value = {$row['url']}>Add</button></td>";
 		            
 		    }
 		   
