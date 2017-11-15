@@ -8,7 +8,7 @@ $runivid= ($_SESSION['univid']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "Liger124!";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -29,10 +29,7 @@ if(isset($_POST['Visit'])){
     $var=$_POST['Visit'];
     
     header('location:' . $var);
-
 }
-
-
 $selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
 $queryResult = $mysqli->query($selectFirstQuery);
 $queryResult2 = $mysqli->query($selectFirstQuery);
@@ -40,23 +37,11 @@ $foundRows = $queryResult->num_rows;
 $foundRows2 = $queryResult2->num_rows;
 $result_array = array();
 $result_array2 = array();
-
         while ($row=mysqli_fetch_assoc($queryResult)) {
 		$result_array[] = $row['url'];
 		$result_array2[] = $row['toolname'];
             
         }
-
-
-
-
-
-
-
-
-
-
-
 //adds tool to student's tool kit
 if(isset($_POST['Add'])){
     
@@ -102,12 +87,8 @@ if(isset($_POST['Add'])){
 	echo 'Error: tool could not be added';
 	}
    }//else
-
-
 }
  
-
-
 ?>
 <!DOCTYPE html>
 
@@ -172,9 +153,11 @@ if(isset($_POST['Add'])){
 		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
-		           
+		    $url2 = $row['url'];
+		    $pieceOfURL = substr($url2, 0, 30);    
+   
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><button type='submit' name='Add' value = {$row['url']}>Add</button></td>";
+		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>$pieceOfURL</td><td><button type='submit' name='Add' value = {$row['url']}>Add</button></td>";
 		            
 		    }
 		   
@@ -199,9 +182,7 @@ if(isset($_POST['Add'])){
 	    var js_array =<?php echo json_encode($result_array);?>;
 	    var js_array2 =<?php echo json_encode($result_array2);?>;
             var arrOptions = new Array();
-
                 arrOptions= js_array;
-
             for (var i = 0; i < arrOptions.length; i++) {
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
@@ -212,12 +193,9 @@ if(isset($_POST['Add'])){
       		showParam(opt);
    		};
 		})(arrOptions[i]);
-
                 document.getElementById('divButtons').appendChild(btnShow);
             }
-
             function showParam(value) {
-
                 
 		window.open(value);
             }        
@@ -235,4 +213,3 @@ if(isset($_POST['Add'])){
         <script src="../js/bootstrap.min.js"></script>
 
 </html>
-
