@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 $id = ($_SESSION['id']);
@@ -13,6 +14,7 @@ $passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
+
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
