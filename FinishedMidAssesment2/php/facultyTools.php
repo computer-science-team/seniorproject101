@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 $id = ($_SESSION['id']);
@@ -9,10 +10,11 @@ $runivid= ($_SESSION['univid']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "Liger124!";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
+
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -104,6 +106,7 @@ if(isset($_POST['Add'])){
 	font-size: 25px;
 	color: black;
 	border: 1px solid black;
+	
 	}
 	th{
 	color: white;
@@ -172,12 +175,14 @@ if(isset($_POST['Add'])){
 		    echo"These are all the tools for the university";
 		    echo "<table border='5' style ='border-collapse: collapse;
     width: 100%;'>";
-		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
+		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
-		           
-		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th>{$row['url']}</th><th ><button style = 'margin-left: 30%;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
+		    $url2 = $row['url'];
+		    $pieceOfURL = substr($url2, 0, 30);
+			     
+		        
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: red; margin-left: 30%;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
 		            
 		    }
 		   
@@ -193,30 +198,7 @@ if(isset($_POST['Add'])){
 
 
 
-        <script type="text/javascript">
-	    
-	    var b = <?php echo json_encode($foundRows2); ?>;
-	    var js_array =<?php echo json_encode($result_array);?>;
-	    var js_array2 =<?php echo json_encode($result_array2);?>;
-            var arrOptions = new Array();
-                arrOptions= js_array;
-            for (var i = 0; i < arrOptions.length; i++) {
-                var btnShow = document.createElement("input");
-                btnShow.setAttribute("type", "button");
-                btnShow.value = js_array2[i];
-                var optionPar = arrOptions[i];
-                btnShow.onclick = (function(opt) {
-    		return function() {
-      		showParam(opt);
-   		};
-		})(arrOptions[i]);
-                document.getElementById('divButtons').appendChild(btnShow);
-            }
-            function showParam(value) {
-                
-		window.open(value);
-            }        
-        </script>
+       
              
 		
             </div>
