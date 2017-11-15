@@ -9,7 +9,7 @@ $runivid= ($_SESSION['univid']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -97,6 +97,20 @@ if(isset($_POST['Add'])){
 		
 <html lang="en">
   <head>
+	<style>
+	td {
+    text-align: center;
+    padding: 12px;
+	font-size: 25px;
+	color: black;
+	border: 1px solid black;
+	}
+	th{
+	color: white;
+	border: 1px solid black;
+	}
+	
+	</style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,13 +170,14 @@ if(isset($_POST['Add'])){
 		if($foundRows > 0)
 		{
 		    echo"These are all the tools for the university";
-		    echo "<table border='1'>";
-		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
+		    echo "<table border='5' style ='border-collapse: collapse;
+    width: 100%;'>";
+		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
 		           
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td><button type='submit' name='Add' value = {$row['url']}>Add</button></td>";
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th>{$row['url']}</th><th ><button style = 'margin-left: 30%;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
 		            
 		    }
 		   
