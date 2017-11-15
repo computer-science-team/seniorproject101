@@ -215,3 +215,17 @@ input[name="submit"] {
 /*css styling for submit button in firstpage.php
 ends here
 */
+/*css style for tables starts here */
+td {
+    text-align: center;
+    padding: 12px;
+	font-size: 25px;
+	color: black;
+	border: 1px solid black;
+	
+	}
+th{
+	color: white;
+	border: 1px solid black;
+	}
+/*css style for tables ends here*/
