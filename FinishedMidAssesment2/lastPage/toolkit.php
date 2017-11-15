@@ -6,7 +6,7 @@ $univid=$_SESSION['univid'];
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "Liger124!";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -32,7 +32,7 @@ $result_array3 = array();
 ?>
 <html>
     <head>
-	<table id="table"><tr></tr></table>
+	<table id="table" border="1"><tr></tr></table>
 	
     </head>
     <body>
@@ -69,9 +69,12 @@ $result_array3 = array();
 		var cell3 = row.insertCell(2);
 		var cell4 = row.insertCell(3);
 		
+		var shortURL = js_array[i].substring(0,30);
+
+
 		cell.innerHTML = js_array2[i];
 		cell2.innerHTML = js_array3[i];
-		cell3.innerHTML = js_array[i];
+		cell3.innerHTML = shortURL;
 	
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
@@ -92,13 +95,13 @@ $result_array3 = array();
     		var header = table.createTHead();
     		var row = header.insertRow(0);
     		var cell = row.insertCell(0);
-   		cell.innerHTML = "<b>Name</b>";
+   		cell.innerHTML = "<center><b><h2>Name</h2></b></center>";
 		var cell = row.insertCell(1);
-		cell.innerHTML = "<b>Category</b>";
+		cell.innerHTML = "<center><b><h2>Category</h2></b></center>";
 		var cell = row.insertCell(2);
-		cell.innerHTML = "<b>Url</b>";
+		cell.innerHTML = "<center><b><h2>Url</h2></b></center>";
 		var cell = row.insertCell(3);
-		cell.innerHTML = "<b>Tools</b>";
+		cell.innerHTML = "<center><b><h2>Tools</h2></b></center>";
 		}
 
 		myFunction();
@@ -122,8 +125,7 @@ th, td {
     text-align: left;
     padding: 8px;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #2BFF00}
 
 </style>
 
