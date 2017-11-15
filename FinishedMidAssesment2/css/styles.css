@@ -216,16 +216,21 @@ input[name="submit"] {
 ends here
 */
 /*css style for tables starts here */
-td {
+tr{
+		padding: 0 auto;
+	}
+	td {
     text-align: center;
     padding: 12px;
-	font-size: 25px;
+	font-size: 26px;
 	color: black;
 	border: 1px solid black;
-	
 	}
-th{
+	
+	th{
 	color: white;
 	border: 1px solid black;
+	font-size: 25px;
+
 	}
 /*css style for tables ends here*/
