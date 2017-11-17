@@ -1,7 +1,7 @@
 <?php
 session_start();//starts session
-$runivid=$_SESSION['runivid'];
-$runiversity=$_SESSION['runiversity'];
+$runivid=$_SESSION['univid'];
+$runiversity=$_SESSION['university'];
 //$university = "Rowan University";
 //$univid= "1";
 $id=$_SESSION['id'];
@@ -16,8 +16,8 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if(isset($_POST['view'])){
-    $_SESSION['univid']=$univid;
-    $_SESSION['university']=$university;
+    //$_SESSION['univid']=$univid;
+    //$_SESSION['university']=$university;
     $_SESSION['fid']=$_POST['view'];//facultyid
     $_SESSION['id']=$id;//student
     $_SESSION['runivid']=$runivid;
@@ -38,8 +38,8 @@ if(isset($_POST['view'])){
 ?>
    
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
