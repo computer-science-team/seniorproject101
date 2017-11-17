@@ -124,13 +124,14 @@ if(isset($_POST['Delete'])){
 		if($foundRows > 0)
 		{
 		    
-		    echo "<table border='1'>";
-		    echo "<tr><td>Name</td><td>Category</td><td>Delete from toolkit</td><rr>";
-		    while($row=mysqli_fetch_assoc($queryResult)){
-		        
-		           
-		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td><input type='submit' name='Delete' value = {$row['url']}></td>";
+		    echo "<table border='5' style ='border-collapse: collapse;
+    width: 100%;'>";
+		   echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
+		    while($row=mysqli_fetch_assoc($queryResult)){    
+		    $url2 = $row['url'];
+		    $pieceOfURL = substr($url2, 0, 30);
+			     
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: red; margin-left: 30%;' type='submit' name='Delete' value = {$row['url']}>Delete</button></th>";
 		            
 		    }
 		   
