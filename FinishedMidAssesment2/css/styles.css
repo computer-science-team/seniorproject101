@@ -233,4 +233,22 @@ tr{
 	font-size: 25px;
 
 	}
+
+table {border: 5px solid white;
+	border-collapse:collapse;
+	width:100%;
+    
+}
+th, td,h2 {
+    text-align: left;
+    padding: 8px;
+    color:beige;
+}
+tr:nth-child(even){background-color:seagreen}
+    
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+  background-color: #550055;
+  color:#eeeeee;
+}
+
 /*css style for tables ends here*/
