@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{
-  background: white;
+  background:#423E3A;
   }
   
 .loader {
@@ -34,8 +34,8 @@ display: block;
   100% { transform: rotate(360deg); }
 }
 
-h2{
-	color: red;
+h2,h3{
+	color: white;
 	font-size: 50px;
 }
 p{
@@ -55,3 +55,4 @@ p{
 
 </body>
 </html>
+
