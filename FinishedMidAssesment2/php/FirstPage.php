@@ -22,29 +22,77 @@ $foundRows = $queryResult->num_rows;
 //if row is found email is in use
 if($foundRows > 0)
 {   
-     $_SESSION['university']= $university;
-    //echo "<br/>Your college has been found.";
+$_SESSION['university']= $university;
+$pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the </p>
+</div>
+ 
+ 
+</body>
+</html>';
+print $pageStart;
+ 
     while($row = mysqli_fetch_assoc($queryResult)){
     	//echo $row['univid'];
     	//$univid=$row['univid'];
     	$_SESSION['univid'] = $row['univid'];
     }
-	$UniversityFound = "Your University was found...";
-    //echo "<br/>You will be redirected to the Sign up page.";
-    header( "refresh:0; url=loadingpage.php" );
+    echo "<br/>You will be redirected to the Sign up page.";
+    header( "refresh:2; url=loadingpage.php" );
 }
 else{
-    echo "<br/>Your college is not in our database";
-    echo "<br/>Please return at a later date to see if your university has been added";
+$pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="Unable to find your university.">
+  <p>Your university was not found in our database.. <br>You will be redirected to sign up page shortly.. </p>
+</div>
+ 
+ 
+</body>
+</html>';
+header( "refresh:2; url=signup.php" );
+print $pageStart;
 }
 }//isset
 ?>
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+	<head>
+	<meta charset="utf-8">
 		<title>Welcome!</title>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
@@ -57,7 +105,7 @@ else{
 			<form method="post">
 				
 				<p>Name of your University: </p>
-				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>" required/>
+				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
 				<input type="submit" name="submit" value="Submit">
 				
 				<p>Already have an account?</p>
