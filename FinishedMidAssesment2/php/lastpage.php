@@ -65,7 +65,7 @@ $result_array3 = array();
 		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Search All Universities</a></li>
                   <li><a href="facultySearch.php"><?php $_SESSION['id']=$id;
 		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Faculty Search</a></li>
-                 <li><a href="addTool2.php">Add Your Own Tools</a></li>
+                 
                     
                   <li><a href="deleteTools.php"><?php $_SESSION['id']=$id;
 		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Delete Tool</a></li>    
