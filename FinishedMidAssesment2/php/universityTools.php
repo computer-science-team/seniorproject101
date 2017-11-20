@@ -149,7 +149,7 @@ if(isset($_POST['Add'])){
 		if($foundRows > 0)
 		{
 		    echo"this is all the tools for the university";
-		    echo "<table border='1'>";
+		    echo "<table border='1' id='table'>";
 		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
