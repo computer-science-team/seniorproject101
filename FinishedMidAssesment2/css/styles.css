@@ -235,6 +235,7 @@ tr{
 	}
 
 table {border: 5px solid white;
+	overflow: auto;
 	border-collapse:collapse;
 	width:100%;
     
