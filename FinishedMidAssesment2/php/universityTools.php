@@ -116,17 +116,7 @@ if(isset($_POST['Add'])){
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-				  
-				  <li><a href="studentProfilePage.php">Profile Page</a></li>
-				  <li><a href="universitysearch.php"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Search All Universities</a></li>
-                  <li><a href="facultySearch.php"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>Faculty Search</a></li>
-                 
-				</ul>
-			  </li>
+               
                 <li><a href="../index.html">Logout</a></li>
 			</ul>
 		</div>
@@ -140,16 +130,23 @@ if(isset($_POST['Add'])){
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
 		 <form method="post">
+             
+    <div id="divButtons">
+
+    </div>
+	<p id="demo"></p>
 		
 		<?php
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $runivid ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
 		$foundRows = $queryResult->num_rows;
 		//if row is get toolkit of university
+    
+        
 		if($foundRows > 0)
 		{
-		    echo"this is all the tools for the university";
-		    echo "<table border='1' id='table'>";
+		    echo"these are all the tools for the university";
+		    echo "<table border='1' id='table'>"; 
 		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
 		        
@@ -167,10 +164,7 @@ if(isset($_POST['Add'])){
 		?>
 		</form>
 		
-		 <div id="divButtons">
-
-        </div>
-	<p id="demo"></p>
+		
         
 	
 
