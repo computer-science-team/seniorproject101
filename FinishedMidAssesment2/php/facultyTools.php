@@ -159,12 +159,12 @@ if(isset($_POST['Add'])){
         <div class="container">  
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
-            <div id="divButtons">
+            
+		 <form method="post">
+		<div id="divButtons">
 
         </div>
-	<p id="demo"></p>
-		 <form method="post">
-		
+	    <p id="demo"></p>
 		<?php
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $fid ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
@@ -172,8 +172,8 @@ if(isset($_POST['Add'])){
 		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    echo"These are all the tools for the university";
-		    echo "<table border='5' id = 'table'style ='border-collapse: collapse; 
+		    echo"These are all the tools for the Fculty Member";
+		    echo "<table border='5' id = 'table' style ='border-collapse: collapse; 
     width: 100%;'>";
 		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
@@ -193,7 +193,30 @@ if(isset($_POST['Add'])){
 		</form>
 		
 		 
-        
+        <script type="text/javascript">
+	    
+	    var b = <?php echo json_encode($foundRows2); ?>;
+	    var js_array =<?php echo json_encode($result_array);?>;
+	    var js_array2 =<?php echo json_encode($result_array2);?>;
+            var arrOptions = new Array();
+                arrOptions= js_array;
+            for (var i = 0; i < arrOptions.length; i++) {
+                var btnShow = document.createElement("input");
+                btnShow.setAttribute("type", "button");
+                btnShow.value = js_array2[i];
+                var optionPar = arrOptions[i];
+                btnShow.onclick = (function(opt) {
+    		return function() {
+      		showParam(opt);
+   		};
+		})(arrOptions[i]);
+                document.getElementById('divButtons').appendChild(btnShow);
+            }
+            function showParam(value) {
+                
+		window.open(value);
+            }        
+        </script>
 	
 
 
