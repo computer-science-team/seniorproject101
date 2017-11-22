@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $id = ($_SESSION['id']);
@@ -6,6 +5,7 @@ $fid = $_SESSION['fid'];
 $username = ($_SESSION['username']);
 $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
+$role = ($_SESSION['role']);
 //var_dump($_SESSION['university']);
 //echo $username;
 $servername = "localhost";
@@ -14,7 +14,6 @@ $passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
-
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -92,6 +91,15 @@ if(isset($_POST['Add'])){
    }//else
 }
  
+$role2 = "yes";
+$go = "";            
+            if (strcmp($role, $role2) !== 0){
+        		$go = "studentProfilePage.php";
+			
+			}
+		else{
+		$go ="facultyProfilePage.php";
+		    }
 ?>
 <!DOCTYPE html>
 
@@ -139,7 +147,7 @@ if(isset($_POST['Add'])){
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 				  
-				  <li><a href="studentProfilePage.php">Profile Page</a></li>
+				  <li><a href= "<?php echo $go ?>">Profile Page</a></li>
 				  <li><a href="universitysearch.php"><?php $_SESSION['id']=$id;
 		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$fid; ?>Search All Universities</a></li>
                   <li><a href="facultySearch.php"><?php $_SESSION['id']=$id;
@@ -159,12 +167,12 @@ if(isset($_POST['Add'])){
         <div class="container">  
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
-            
+           
 		 <form method="post">
-		<div id="divButtons">
+		 <div id="divButtons">
 
         </div>
-	    <p id="demo"></p>
+	     <p id="demo"></p>
 		<?php
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $fid ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
@@ -172,8 +180,8 @@ if(isset($_POST['Add'])){
 		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    echo"These are all the tools for the Fculty Member";
-		    echo "<table border='5' id = 'table' style ='border-collapse: collapse; 
+		    echo"These are all the tools for the fculty member";
+		    echo "<table border='5' style ='border-collapse: collapse;
     width: 100%;'>";
 		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
@@ -192,8 +200,7 @@ if(isset($_POST['Add'])){
 		?>
 		</form>
 		
-		 
-        <script type="text/javascript">
+		  <script type="text/javascript">
 	    
 	    var b = <?php echo json_encode($foundRows2); ?>;
 	    var js_array =<?php echo json_encode($result_array);?>;
@@ -217,6 +224,7 @@ if(isset($_POST['Add'])){
 		window.open(value);
             }        
         </script>
+        
 	
 
 
