@@ -148,10 +148,8 @@ $go = "";
 				<ul class="dropdown-menu">
 				  
 				  <li><a href= "<?php echo $go ?>">Profile Page</a></li>
-				  <li><a href="universitysearch.php"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$fid; ?>Search All Universities</a></li>
-                  <li><a href="facultySearch.php"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$fid; ?>Faculty Search</a></li>
+				  <li><a href="universitysearch.php">Search All Universities</a></li>
+                  <li><a href="facultySearch.php">Faculty Search</a></li>
                  
 				</ul>
 			  </li>
