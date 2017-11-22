@@ -2,8 +2,7 @@
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
-$runiversity= ($_SESSION['university']);
-$runivid= ($_SESSION['univid']);
+$runivid= ($_SESSION['runivid']);
 $role = ($_SESSION['role']);
 //var_dump($_SESSION['university']);
 //echo $username;
