@@ -2,6 +2,8 @@
 session_start();//starts session
 $runivid=$_SESSION['univid'];
 $runiversity=$_SESSION['university'];
+
+$university=$_SESSION['university'];
 //$university = "Rowan University";
 //$univid= "1";
 $id=$_SESSION['id'];
@@ -78,8 +80,8 @@ if(isset($_POST['view'])){
         $queryResult = $mysqli->query($selectFirstQuery);
         $foundRows = $queryResult->num_rows;
     if($foundRows > 0){
-        echo "<table border='1'>";
-        echo "<br/>Here are faculty from ".$runiversity. ":";
+        echo "<table border='1'  id='table'>";
+        echo "<br/>Here are faculty from ".$university. ":";
         echo "<tr><td>Faculty Name</td><td>View Tools</td><rr>";
         while($row=mysqli_fetch_assoc($queryResult)){
             
