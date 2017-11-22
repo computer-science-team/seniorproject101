@@ -11,7 +11,7 @@ $role = ($_SESSION['role']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "Liger124!";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
