@@ -6,8 +6,8 @@ session_start();//starts session
 //$univid= "1";
 $id=$_SESSION['id'];
 $username=$_SESSION['username'];
-$runiversiy=$_SESSION['runiversity'];
-$runivid = $_SESSION['runivid'];
+$runiversiy=$_SESSION['university'];
+$runivid = $_SESSION['univid'];
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -18,12 +18,9 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if(isset($_POST['view'])){
-    $_SESSION['univid']=$_POST['view'];
     $_SESSION['id']=$id;
     $_SESSION['username']=$username;
-    $_SESSION['university']=$university;
-    $_SESSION['runiversity']=$runiversity;
-    $_SESSION['runivid']=$runivid;
+    $_SESSION['runivid']=$_POST['view'];
     //$_SESSION['fid']=$_POST['view'];//facultyid
     $_SESSION['id']=$id;//student
     if ($mysqli == true){
@@ -33,7 +30,7 @@ if(isset($_POST['view'])){
           $university =$row['name'];
         }
     }
-    $_SESSION['university']=$university;
+   // $_SESSION['university']=$university;
    // $_SESSION['faculty']=$_POST{$row['name']};//var not set
     //$var=$_POST['view'];
    // echo $_SESSION['faculty'];
@@ -42,8 +39,8 @@ if(isset($_POST['view'])){
 ?>
    
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
