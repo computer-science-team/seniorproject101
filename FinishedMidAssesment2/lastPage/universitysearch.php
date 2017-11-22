@@ -7,7 +7,7 @@ session_start();//starts session
 $id=$_SESSION['id'];
 $username=$_SESSION['username'];
 $runiversiy=$_SESSION['university'];
-$runivid = $_SESSION['runivid'];
+$runivid = $_SESSION['univid'];
 $servername = "localhost";
 $user = "root";
 $passwd = "Liger124!";
