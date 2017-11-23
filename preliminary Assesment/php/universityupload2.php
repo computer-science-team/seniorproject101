@@ -69,7 +69,7 @@ if(isset($_POST['submit1'])){
         $_SESSION['message'] = '';
         $servername = "localhost";
         $user = "root";
-        $passwd = "kkp123";
+        $passwd = "";
         $dbname ="accounts";
         
         $runiversity = $_POST['university'];
