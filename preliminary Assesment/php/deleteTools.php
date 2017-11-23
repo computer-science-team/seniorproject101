@@ -11,7 +11,7 @@ if (!empty($_SESSION['message'])) {
 }
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
