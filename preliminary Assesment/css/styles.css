@@ -1,0 +1,256 @@
+body {
+    background: #3E4649;;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+.indexpage{
+    color: #f7f7f7;
+}
+.loginpage{
+   color:black; 
+}
+.singinpage{
+    color:black;
+}
+h1,
+h2 {
+    font-weight: bold;
+    color:black;
+}
+p {
+    font-size: 16px;
+    color: black;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.jumbotron {
+    background: #27A967;
+    color: white;
+    text-align: center;
+    font-size: 26px;
+    overflow-x: auto;
+}
+.jumbotron p {
+    color: white;
+    font-size: 26px;
+}
+.navbar-inverse {
+    background: #2E2F31;
+    border: 0;
+}
+.dropdown-menu {
+    background: #2E2F31;
+    border-radius: 0;
+    border: 0;
+}
+.navbar-inverse .navbar-nav li a {
+    color: #f7f7f7;
+    font-size: 16px;
+}
+.navbar-inverse .navbar-nav li a:hover {
+    background: #27A967;
+}
+.navbar-inverse .navbar-nav .dropdown-menu li a:hover {
+    background: #2C463C;
+}
+.dropdown-menu li a {
+    padding: 10px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: transparent;
+    border-color: white;
+    margin-bottom: 5px;
+}
+.btn-primary:hover {
+    color: #27A967;
+    background-color: white;
+    border-color: white;
+}
+.glyphicon-large {
+    font-size: 100px;
+}
+.call-to-action {
+    text-align: center;
+}
+.call-to-action p {
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+
+.wrapper {	
+	margin-top: 80px;
+    margin-bottom: 80px;
+    
+    
+    
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color:#27A967; 
+  border: 2px solid white;
+}
+
+	.form-control {
+	  position: relative;
+      color:black;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+    
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+      color:black;
+	}
+
+.form-signin-heading{
+    color: black;
+}
+
+.btn {
+  color: #0D031A !importnat; 
+}
+
+input.hidden {
+				position: absolute;
+				left: -9999px;
+			}
+h4{
+font-size:25px;
+}
+.tital{ font-size:25px; font-weight:500;}
+.data{ font-size:25px; font-weight:500;}
+.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
+
+.studentPpage{
+font-size:26px 
+color:white;  
+    
+}
+.facultySearchPage{
+    text-align: left;
+}
+.facultyTools{
+    text-align: left;
+    color:white;
+}
+.universitySearchPage{
+    text-align: left;
+}
+.universityTools{
+    text-align: left;
+    color:white; 
+}
+.universityupload{
+    text-align: left;
+    color:white;
+}
+.universitydownload{
+  text-align: left;
+    color:white;  
+}
+
+/* Edit by Dharmik 11/4/2017 V2
+changing button style for Login in LoginPage.php.
+V2
+css for buttons calls with name="signin" instead 
+of type=submit that way only each button is 
+selected for particulr page
+NOTE: button css below will only work for login in page button*/
+input[name="signin"] {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 8px 56px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+	border-radius: 25px;
+}
+
+ input[name="signin"]:hover {
+    background: red;
+}
+/*
+ This changes the color for hypertext for each page such as "Forget password?", "Login Here"
+ or "Signup"
+*/
+a{
+	color: #000080;
+}
+
+/*
+css styling for submit button in firstpage.php
+starts here
+edited by Dharmik 11/4/2017 
+*/
+input[name="submit"] {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 3px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+ input[name="submit"]:hover {
+    background: maroon;
+}
+/*css styling for submit button in firstpage.php
+ends here
+*/
+/*css style for tables starts here */
+tr{
+		padding: 0 auto;
+	}
+	td {
+    text-align: center;
+    padding: 12px;
+	font-size: 26px;
+	color: black;
+	border: 1px solid black;
+	}
+	
+	th{
+	color: white;
+	border: 1px solid black;
+	font-size: 25px;
+
+	}
+
+table {border: 5px solid white;
+	overflow: auto;
+	border-collapse:collapse;
+	width:100%;
+    
+}
+th, td,h2 {
+    text-align: left;
+    padding: 8px;
+    color:beige;
+}
+tr:nth-child(even){background-color:seagreen}
+    
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+  background-color: #550055;
+  color:#eeeeee;
+}
+
+/*css style for tables ends here*/
