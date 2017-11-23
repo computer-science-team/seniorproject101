@@ -8,7 +8,7 @@ $role = ($_SESSION['role']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -147,7 +147,10 @@ $go = "";
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
 		 <form method="post">
-		
+		 <div id="divButtons">
+
+        </div>
+	     <p id="demo"></p>
 		<?php
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $runivid ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
@@ -155,7 +158,7 @@ $go = "";
 		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    echo"this is all the tools for the university";
+		    echo"These are all the tools for the university";
 		    echo "<table border='1'>";
 		    echo "<tr><td>Name</td><td>Category</td><td>Website</td><td>Add to Toolkit</td><rr>";
 		    while($row=mysqli_fetch_assoc($queryResult)){
@@ -174,10 +177,7 @@ $go = "";
 		?>
 		</form>
 		
-		 <div id="divButtons">
-
-        </div>
-	<p id="demo"></p>
+		 
         
 	
 
