@@ -14,7 +14,6 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 //echo "Connected successfully";
-
 $checked = (isset($_POST['optradio']))?true:false;
 if (!$_POST['fullname']){
    echo "<br/>-Please enter your name";
@@ -42,7 +41,6 @@ if (!$_POST['role']){
 }
 if(isset($_POST['submit']) && isset($_POST['optradio'])){
     
-
     $fullname = $_POST['fullname'];
     $gender=$_POST['optradio'];
     $dob=$_POST['dob'];
@@ -86,7 +84,6 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
                 }
             }
             $_SESSION['id']=$id;
-
             $_SESSION['username']=$username;
             $_SESSION['univid']=$univid;
             $_SESSION['univeristy']=$university;
@@ -138,9 +135,9 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 		<div class="form-signin">
 			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form method="post">
-				<p>Name
+				<p>Name:
 				<br><input type="text" name="fullname" placeholder="name" value="<?php if(isset($_POST['fullname'])){ echo $_POST['fullname'];} ?>"></p>
-				<p>Gender
+				<p>Gender:
 				<br><label class="radio-inline">
 					<input type="radio" name="optradio"  value="Male"<?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Male') 
 					     echo ' checked="checked"'; ?>>Male
@@ -158,7 +155,7 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 				<p>Email: 
 				<br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
 				<p>Username: 
-				<br><input type="text" name="username" placeholder="Enter Email or Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>"></p>
+				<br><input type="text" name="username" placeholder="Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>"></p>
 				<p>Password: 
 				<br><input type="Password" name="password" placeholder="*********" value="<?php if(isset($_POST['password'])){ echo $_POST['password'];} ?>"></p>
                 <p>Faculty:
@@ -168,12 +165,12 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 					<option value="yes"<?php if (isset($_POST['role']) && $_POST['role'] == 'yes') 
 					    echo ' selected="selected"'; ?> >Yes</option>
 				</select></p>
-				<form>
-				 <input type="submit" name="submit" value="Submit">  
-				<p><a href="login.php"> Log In</a></p>
+				
+                <p><input type="submit" name="submit" value="Submit"> </p> 
+				<p><br><a href="login.php"> Log In</a></p>
 				<p><a href="forgotPassword.php">Forget Password?</a></p>
 				<p><a href="FirstPage.php">Main Page</a></p>
-			   </form>
+			   
             </form>
 		</div>
         </div>    
