@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,7 +19,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Faculty Upload</a>
+			<a class="navbar-brand" href="facultyProfilePage.php">Profile Page</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
@@ -37,15 +33,13 @@
     <div class="jumbotron">
     <div class="container">
      <div class = "universityupload">   
-<h2>Upload Your University's offered list of clubs(PDF format Only)</h2>
+<h2>Upload Your University's Clubs(PDF format Only)</h2>
     
 		
 <form method="post" enctype="multipart/form-data" >
     <p>Upload File:
     <input type="file" name="f"/></p>
-<p>Enter the name of your University:</p>
-<p><input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/></p>
-					
+
     <p><input type ="submit" name="submit1" value="submit"/></p>
 </form>
     </div>
@@ -56,36 +50,43 @@
 </body>
 </html>    
 <?php 
+session_start();//starts session
+$runiversity = $_SESSION['runiversity'];
+$_SESSION['message'] = '';
+$servername = "localhost";
+$user = "root";
+$passwd = "";
+$dbname ="accounts";
+$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+//Check if university has existing club pdf 
+$sql="SELECT club_path FROM universities WHERE name='".$runiversity."' AND club_path IS NOT NULL";
+$queryResult=$mysqli->query($sql);
+$foundRows = $queryResult->num_rows;
+if($foundRows > 0){
+    
+    print "<br/>There is already a Club PDF available for " .$runiversity. " .";
+    print "<br/>If you upload a document the current document will be replaced.";
+}    
 if(isset($_POST['submit1'])){ 
-
-    if(!$_POST['university']){
-        echo "<br/>-Please enter the name of your university";
-    }
+    //if(!$_POST['university']){
+       // echo "<br/>-Please enter the name of your university";
+    //}
     if(!$_FILES['f']){
         echo "<br/>-Please select a file";
     }
-    if(isset($_POST['university'])){
-        session_start();//starts session
-        $_SESSION['message'] = '';
-        $servername = "localhost";
-        $user = "root";
-        $passwd = "";
-        $dbname ="accounts";
-        
-        $runiversity = $_POST['university'];
-        
-        $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-        // Check connection
-        if ($mysqli->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+   
+       
         $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $runiversity ."'";
         $queryResult = $mysqli->query($selectFirstQuery);
         $foundRows = $queryResult->num_rows;
         //if row is found university is in database
         if($foundRows > 0){
             $_SESSION['university']= $runiversity;
-           // echo "<br/>Your college has been found.";
+            //echo "<br/>Your college has been found.";
             while($row = mysqli_fetch_assoc($queryResult)){
                 
                 $_SESSION['runivid'] = $row['univid'];
@@ -94,16 +95,18 @@ if(isset($_POST['submit1'])){
             $runivid=$_SESSION['runivid'];
             
             //checking if a file exists to prevent university from having more than 1 
-            //list of clubs
+            //club info file
             $sql="SELECT club_path FROM universities WHERE univid='".$runivid."' AND club_path IS NOT NULL";
             $queryResult=$mysqli->query($sql);
             
             $foundRows = $queryResult->num_rows;
             if($foundRows > 0){
                 
+                
                 while($row = mysqli_fetch_assoc($queryResult)){
                     
                     $pdfname = $row['club_path'];
+                    
                     
                 }
                 
@@ -144,7 +147,6 @@ if(isset($_POST['submit1'])){
                 echo "Please upload a pdf file. This format is unsupported";
             }
         }
-    }//2nd isset
-    
+ 
 }//isset post submit1
 ?>
