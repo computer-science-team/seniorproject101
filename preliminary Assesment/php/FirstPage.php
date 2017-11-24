@@ -59,6 +59,28 @@ print $pageStart;
     header( "refresh:2; url=loadingpage.php" );
 }
 else{
+     //check if university is already registered
+    $selectFirstQuery = "SELECT * FROM universities WHERE name  = '". $university ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    //No university found - University is being registered
+    if($foundRows == 0)
+    {
+        $sql = "INSERT INTO universities(name)" . "VALUES ('$university')";
+        echo "The university can be registered.";
+        if ($mysqli->query($sql)==true)
+        {   //university
+            $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $university ."'";
+            $queryResult = $mysqli->query($selectFirstQuery);
+            $foundRows = $queryResult->num_rows;
+            //get university id num
+            if($foundRows > 0){
+                while($row=mysqli_fetch_assoc($queryResult)){
+                    $_SESSION['univid'] = $row['univid'];
+                } 
+            }
+        }
+    }
 $pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
