@@ -178,7 +178,7 @@ $go = "";
 		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    echo"These are all the tools for the fculty member";
+		    echo"These are all the tools for the faculty member";
 		    echo "<table border='5' style ='border-collapse: collapse;
     width: 100%;'>";
 		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
