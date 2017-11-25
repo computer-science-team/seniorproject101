@@ -14,7 +14,7 @@ $_SESSION['runivid'] = $runivid;
 $_SESSION['runiversity']=$runiversity;
 $servername = "localhost";
 $username = "root";
-$password = "kkp123";
+$password = "";
 $dbname = "accounts";
 //Prints Guidelines for success is unavailable for download if no file is present
 if (!empty($_SESSION['message'])) {
