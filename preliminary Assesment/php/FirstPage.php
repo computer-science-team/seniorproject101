@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "kkp123";
 $dbname ="accounts";
 $university = $_POST['university'];
 //var_dump($university);
@@ -56,7 +56,7 @@ print $pageStart;
     	$_SESSION['univid'] = $row['univid'];
     }
     echo "<br/>You will be redirected to the Sign up page.";
-    header( "refresh:2; url=loadingpage.php" );
+    header( "refresh:2; url=signup.php");
 }
 else{
      //check if university is already registered

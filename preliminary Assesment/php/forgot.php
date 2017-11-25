@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "kkp123";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection

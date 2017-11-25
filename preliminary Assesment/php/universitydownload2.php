@@ -1,11 +1,9 @@
-
-
 <?php 
             session_start();//starts session
             $_SESSION['message'] = '';
             $servername = "localhost";
             $user = "root";
-            $passwd = "";
+            $passwd = "kkp123";
             $dbname ="accounts";
             $runiversity = $_SESSION['university'];
             $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
@@ -46,9 +44,9 @@
                     exit;
                 }
             }
-            //no list of clubs is available-redirect to profile page with message 
+            //no club info is available-redirect to profile page with message 
             if($foundRows===0){
-                $_SESSION['message'] = "No list of clubs is avilable for ".$runiversity."";
+                $_SESSION['message'] = "No Club document is available to download for ".$runiversity."";
                 header("location:studentProfilePage.php");
                 
             //Row not found-file not in database

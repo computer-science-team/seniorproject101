@@ -2,13 +2,25 @@
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
-$runiversity= ($_SESSION['university']);
+$runiversity= ($_SESSION['university']);//
 $runivid= ($_SESSION['univid']);
 //var_dump($_SESSION['university']);
+//$_SESSION['fid']=$fid;
+$_SESSION['id']=$id;
+$_SESSION['username']=$username;
+$_SESSION['runivid'] = $runivid;
+//$_SESSION['university']=$university;
+//$_SESSION['faculty']=$faculty;
+$_SESSION['runiversity']=$runiversity;
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "kkp123";
 $dbname = "accounts";
+//Prints Guidelines for success is unavailable for download if no file is present
+if (!empty($_SESSION['message'])) {
+    echo '<p class="message"> '.$_SESSION['message'].'</p>';
+    unset($_SESSION['message']);
+}
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -45,9 +57,8 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 				  
-		  <li><a href="changepassword.php">Change Password</a></li>
-		  <li><a href="changeUsername.php">Change Username</a></li>		  
-		  <li><a href="changeName.php">Change Name</a></li>
+				  <li><a href="changepassword.php">Change Password</a></li>
+				  <li><a href="changeName.php">Change Name</a></li>
                   <li><a href="changeEmail.php">Change Email</a></li>
                   <li><a href="changeGender.php">Change Gender</a></li>
                   <li><a href="changeDate.php">Change Date</a></li>
@@ -92,7 +103,7 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-          <a href="universitydownload.php"><span class="glyphicon glyphicon-road glyphicon-large" aria-hidden="true"></span></a>
+          <a href="universitydownload.php"><?php $_SESSION['$runiversity']=$runiversity; ?><span class="glyphicon glyphicon-road glyphicon-large" aria-hidden="true"></span></a>
         <h3>GuideLine of success</h3>
         <p>Our site will give you easy and quick guide of success in your university for CS. </p>
       </div>
