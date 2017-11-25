@@ -42,7 +42,7 @@ $pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "ht
 <body>
  
 <div id="dialog" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the </p>
+  <p>The University is found, you will be directed shorlty.</p>
 </div>
  
  
