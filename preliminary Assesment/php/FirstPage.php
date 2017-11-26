@@ -55,7 +55,7 @@ print $pageStart;
     	//$univid=$row['univid'];
     	$_SESSION['univid'] = $row['univid'];
     }
-    echo "<br/>You will be redirected to the Sign up page.";
+   // echo "<br/>You will be redirected to the Sign up page.";
     header( "refresh:2; url=signup.php");
 }
 else{
