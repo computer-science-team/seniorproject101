@@ -67,7 +67,7 @@ else{
     if($foundRows == 0)
     {
         $sql = "INSERT INTO universities(name)" . "VALUES ('$university')";
-        echo "The university can be registered.";
+        //echo "The university can be registered.";
         if ($mysqli->query($sql)==true)
         {   //university
             $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $university ."'";
