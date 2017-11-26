@@ -109,9 +109,10 @@ if(isset($_POST['signin']))
                 <h2 class="form-signin-heading">Please login</h2>
 
 				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
-              			<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
+              	<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
 				<input type="submit" name="signin" value="Log In">
-				<p><a href="forgot.php">Forget Password?</a></p>
+				<p><a href="forgot.php"> Forgot Password? </p>
+				<p>Don't have an account?	<a href="FirstPage.php">Sign Up!</a></p>
 				
 				
 			</form>
