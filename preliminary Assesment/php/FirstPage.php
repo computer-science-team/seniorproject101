@@ -127,7 +127,7 @@ print $pageStart;
 			<form method="post">
 				
 				<p>Please enter name of your University: </p>
-				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
+				<input type="text" name="university" placeholder="enter your university name" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
 				<input type="submit" name="submit" value="Submit">
 				
 				<p>Already have an account? <a href="login.php">Log In</a></p>
