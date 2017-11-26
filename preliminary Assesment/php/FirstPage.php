@@ -106,7 +106,7 @@ $pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "ht
  
 </body>
 </html>';
-header( "refresh:2; url=signup.php" );
+header( "refresh:30; url=signup.php" );
 print $pageStart;
 }
 }//isset
@@ -131,7 +131,7 @@ print $pageStart;
 				<input type="submit" name="submit" value="Submit">
 				
 				<p>Already have an account? <a href="login.php">Log In</a></p>
-				<p><a href="forgot.php">Forget Password?</a></p>
+				<p><a href="../html/aboutUs.html">About Us!</a></p>
 				
 			</form>
 		</div>
