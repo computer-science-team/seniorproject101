@@ -53,7 +53,7 @@ $result_array3 = array();
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">UserTools</a>
+			<a class="navbar-brand" href="lastpage.php">UserTools</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
