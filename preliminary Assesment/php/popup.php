@@ -143,4 +143,24 @@ $changeDateError = str_replace(
   <p>We were unable to change your birthdate. Pelase try again.</p>
 </div>'
 , $pageStart);
+
+$signupUserAlreadyExist = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Username already exist, please choose different username and try again.</p>
+</div>'
+, $pageStart);
+
+$signupEmailAlreadyExist = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Email already exist, please choose different email and try again.</p>
+</div>'
+, $pageStart);
 ?>
+
+
