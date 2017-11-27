@@ -59,7 +59,7 @@ if(isset($_POST['view'])){
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">University Search</a>
+			<a class="navbar-brand" href="universitysearch.php">University Search</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
@@ -84,7 +84,7 @@ if(isset($_POST['view'])){
         while($row=mysqli_fetch_assoc($queryResult)){
             
             
-            echo "<tr><td>{$row['name']}</td><td><input type='submit' name='view' value = '{$row['univid']}'</td>";
+            echo "<tr><td>{$row['name']}</td><td><input type='submit'  name='view' style = 'color: red;' value = '{$row['univid']}' </td>";
             
            
         }//while      
