@@ -81,9 +81,10 @@ if(isset($_POST['signin']))
  }  //if $result 
  
     else {
+    //echo "0 results";
+    //echo 'Please register or enter the correct username and password';
     include 'popup.php';
-    print $loginerror;
-    
+	print $loginerror;
     }
  }
  
@@ -111,14 +112,12 @@ if(isset($_POST['signin']))
 				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
               	<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
 				<input type="submit" name="signin" value="Log In">
-				<p><a href="forgot.php"> Forgot Password? </p>
-				<p>Don't have an account?	<a href="FirstPage.php">Sign Up!</a></p>
+				<p><a href="forgot.php"> Forgot Password? </a> </p>
+				<p>Don't have an account? <a href="FirstPage.php">Sign Up!</a>
 				
 				
 			</form>
 		</div>
 		</div>
-	    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>
