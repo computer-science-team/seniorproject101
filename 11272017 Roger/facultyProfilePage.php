@@ -4,7 +4,7 @@ $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
 $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
-var_dump($runiversity);
+//var_dump($runiversity);
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -99,7 +99,7 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
         <p>Site will introduce you to all the club which are avilible to CS major students</p>
       </div>
       <div class="col-md-4">
-        <a href="lastpage2.php"><span class="glyphicon glyphicon-console glyphicon-large" aria-hidden="true"></span></a>
+        <a href="lastpage2.php"><?php $_SESSION['university']=$runiversity; $_SESSION['univid']=$runivid; ?><span class="glyphicon glyphicon-console glyphicon-large" aria-hidden="true"></span></a>
         <h3>List Of IDES</h3>
         <p>Site will will give you a way to know about the Most used IDEs by your intructor for perticular language </p>
       </div>
@@ -111,3 +111,4 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
         
   </body>
 </html>
+
