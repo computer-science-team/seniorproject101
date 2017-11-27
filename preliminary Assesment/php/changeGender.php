@@ -24,11 +24,13 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Gender successfully updated! You will be redirected to the profile page';
+				
             	$role2 = "yes";
             
             if (strcmp($role, $role2) !== 0){
-        		header("location:studentProfilePage.php");
+        		include 'popup.php';
+				print $genderChangeSuccessfully;
+				header("refresh: 2; url = studentProfilePage.php");
 			
 			}
 		else{
@@ -37,7 +39,8 @@ else
         } 
         else
         {
-            echo 'Gender can not be changed';
+            include 'popup.php';
+			print $genderChangeError;
         }
 }
 }//if isset
@@ -59,25 +62,24 @@ else
 		<div class="form-signin">
 		<div class="changeGender">
 			<h2>Change Gender</h2>
-			<form method="post">
+			<form method="post" >
 
 			<p>Gender:
 				<label class="radio-inline">
-					<input type="radio" name="optradio"  value="Male"<?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Male') 
-					     echo ' checked="checked"'; ?>>Male
+					<input type="radio" name="optradio"  value="Male"<?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Male' ) 
+					     echo ' checked="checked"';?> required>Male
 				</label>
 				<label class="radio-inline">
 					<input type="radio" name="optradio" value ="Female" <?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Female') 
-					     echo ' checked="checked"'; ?>>Female
+					     echo ' checked="checked"'; ?>required>Female
 				</label>
 				<label class="radio-inline">
 					<input type="radio" name="optradio" value="Other"  <?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Other') 
-					     echo ' checked="checked"'; ?>>Other
+					     echo ' checked="checked"'; ?>required>Other
                 </label></p>
                 <p>
                     <input type="submit" name="submit" value="Change gender"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<p><a href="studentProfilePage.php">Go Back</a></p>			
 				
 			</form>
 		</div>
