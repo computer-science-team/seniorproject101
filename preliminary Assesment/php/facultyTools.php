@@ -56,8 +56,9 @@ if(isset($_POST['Add'])){
    //if tool found then tool is already in kit
    if($foundRows > 0)
    {
-    echo "<br/> ".$var. " is already in your toolkit";
-   
+    //echo "<br/> ".$var. " is already in your toolkit";
+   include 'popup.php';
+   print $facultyToolsPageToolAlreadyExistError;
         
    }
    //if tool not found add to student's toolkit
@@ -237,7 +238,5 @@ $go = "";
 
 		</body>
     
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
 
 </html>
