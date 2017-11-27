@@ -27,11 +27,12 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Name is successfully updated! You will be redirected to the profile page';
-	$role2 = "yes";
-            
+            include 'popup.php';
+			print $namesMatched;
+            header( "refresh:3; url=studentProfilePage.php" );
+			
             if (strcmp($role, $role2) !== 0){
-        		header("location:studentProfilePage.php");
+        		header("url:studentProfilePage.php");
 			
 			}
 		else{
@@ -48,7 +49,8 @@ else
     
     else 
     {
-    echo 'Names do not match!';
+	include 'popup.php';
+    print $namesDoNotMatch;
     
     }
 }
@@ -73,14 +75,13 @@ else
 			<h2>Change Name</h2>
 			<form method="post">
 				<p>Name
-				<br><input type="text" name="password" placeholder="name"></p>
+				<br><input type="text" name="password" placeholder="name" required></p>
 
 				<p>Confirm Name 
-				<br><input type="text" name="password2" placeholder="confirm name"></p>
+				<br><input type="text" name="password2" placeholder="confirm name" required></p>
 				<p> 
 				<input type="submit" name="submit" value="Change name"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<p><a href="studentProfilePage.php">Go Back</a></p>				
 				
 			</form>
 		</div>
