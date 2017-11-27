@@ -108,4 +108,22 @@ $namesMatched = str_replace(
 </div>'
 , $pageStart);
 
+$emailChangedSuccessfully = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Your email has been successfully updated.</p>
+</div>'
+, $pageStart);
+
+$emailCannotChangeError = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>We were unable to change the email. Pelase try again with correct email in both boxes.</p>
+</div>'
+, $pageStart);
+
 ?>
