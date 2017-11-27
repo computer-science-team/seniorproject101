@@ -81,8 +81,8 @@ if(isset($_POST['signin']))
  }  //if $result 
  
     else {
-    //echo "0 results";
-    echo 'Please register or enter the correct username and password';
+    include 'popup.php';
+    print $loginerror;
     
     }
  }
