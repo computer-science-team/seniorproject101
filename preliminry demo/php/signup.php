@@ -6,7 +6,7 @@ session_start();//starts session
  $university=$_SESSION['university'];
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -56,8 +56,8 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
     //if row is found email is in use
     if($foundRows > 0)
     {
-        echo "<br/>Your email is already registered.";
-        echo "<br/>Please use another email or log in.";
+        include 'popup.php';
+		print $signupEmailAlreadyExist;
     }
     //Check to see if username is in use
     $selectFirstQuery = "SELECT * FROM users WHERE username  = '". $username ."'";
@@ -65,8 +65,8 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
     $foundRows = $queryResult->num_rows;
     if($foundRows > 0)
     {
-        echo "<br/>Your username is already registered";
-        echo "<br/>Please choose another username";
+        include 'popup.php';
+		print $signupUserAlreadyExist;
     }
     //Insert info into table-user not in use
     $sql = "INSERT INTO users(name, dob, gender, username, email, password, faculty, univid)"
@@ -100,7 +100,8 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
         }
         else
         {
-            echo 'There is a problem';
+            include 'popup.php';
+			//	print $signupErrorLast;
             
         }
 }
@@ -136,46 +137,43 @@ if(isset($_POST['submit']) && isset($_POST['optradio'])){
 			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form method="post">
 				<p>Name:
-				<br><input type="text" name="fullname" placeholder="name" value="<?php if(isset($_POST['fullname'])){ echo $_POST['fullname'];} ?>"></p>
+				<br><input type="text" name="fullname" placeholder="name" value="<?php if(isset($_POST['fullname'])){ echo $_POST['fullname'];} ?>" required></p>
 				<p>Gender:
 				<br><label class="radio-inline">
 					<input type="radio" name="optradio"  value="Male"<?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Male') 
-					     echo ' checked="checked"'; ?>>Male
+					     echo ' checked="checked"'; ?>required >Male
 				</label>
 				<label class="radio-inline">
 					<input type="radio" name="optradio" value ="Female" <?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Female') 
-					     echo ' checked="checked"'; ?>>Female
+					     echo ' checked="checked"'; ?> required >Female
 				</label>
 				<label class="radio-inline">
 					<input type="radio" name="optradio" value="Other"  <?php if (isset($_POST['optradio']) && $_POST['optradio'] == 'Other') 
-					     echo ' checked="checked"'; ?>>Other
+					     echo ' checked="checked"'; ?>required >Other
 				</label></p>
 				<p>Birthdate: 
-				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>"></p>
+				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>" required ></p>
 				<p>Email: 
-				<br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
+				<br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required ></p>
 				<p>Username: 
-				<br><input type="text" name="username" placeholder="Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>"></p>
+				<br><input type="text" name="username" placeholder="Username" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];} ?>" required ></p>
 				<p>Password: 
-				<br><input type="Password" name="password" placeholder="*********" value="<?php if(isset($_POST['password'])){ echo $_POST['password'];} ?>"></p>
+				<br><input type="Password" name="password" placeholder="*********" value="<?php if(isset($_POST['password'])){ echo $_POST['password'];} ?>" required ></p>
                 <p>Faculty:
 				<select name='role'>
 					<br><option value="no" <?php if (isset($_POST['role']) && $_POST['role'] == 'no') 
-					     echo ' selected="selected"'; ?>>No</option>
+					     echo ' selected="selected"'; ?> required >No</option>
 					<option value="yes"<?php if (isset($_POST['role']) && $_POST['role'] == 'yes') 
-					    echo ' selected="selected"'; ?> >Yes</option>
+					    echo ' selected="selected"'; ?> required >Yes</option>
 				</select></p>
 				
                 <p><input type="submit" name="submit" value="Submit"> </p> 
-				<p><br><a href="login.php"> Log In</a></p>
-				<p><a href="forgotPassword.php">Forget Password?</a></p>
-				<p><a href="FirstPage.php">Main Page</a></p>
+				<p>Already have an account? <br> <a href="login.php"> Log In</a></p>
+				<p><a href="FirstPage.php">Go Back</a></p>
 			   
             </form>
 		</div>
         </div>    
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
 		
         
 	</body>

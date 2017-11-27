@@ -5,7 +5,7 @@ $_SESSION['message'] = '';
 $username = $_SESSION['username'];
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -28,20 +28,22 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Password successfully updated! 
-You will be redirected to the Log In page';
+            include 'popup.php';
+			print $passwordSuccessfullyChanged;
             //header("location: signinpage.php");
-            header( "refresh:4; url=login.php" );
+            header( "refresh:4; url=lastpage.php" );
         } 
         else
         {
-            echo 'Passwords do not match!';
+			include 'popup.php';
+			print $passwordDoNotMatch;
         }
     }
     
     else 
     {
-    echo 'Password can not be changed';
+    include 'popup.php';
+	print $passwordCannotChange;
     }
 }
 }//if isset
@@ -65,13 +67,11 @@ You will be redirected to the Log In page';
 			<h2>Change Password</h2>
 			<form method="post">
 				<p>Password
-				<br><input type="password" name="password" placeholder="password"></p>
+				<br><input type="password" name="password" placeholder="password" required></p>
 				<p>Confirm Password 
-				<br><input type="password" name="password2" placeholder="confirm password"></p>
+				<br><input type="password" name="password2" placeholder="confirm password" required></p>
 				<p> 
-				<input type="submit" name="submit" value="Change Password"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<input type="submit" name="submit" value="Change Password"></p>			
 				
 			</form>
 		</div>

@@ -4,7 +4,7 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -25,11 +25,12 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Birthday was successfully updated! You will be redirected to your profile';
-	 $role2 = "yes";
+            
             
 	 if (strcmp($role, $role2) !== 0){
-        		header("location:studentProfilePage.php");
+        	include 'popup.php';
+			print $dateChangedSuccessfully;
+			header("refresh: 2; url = studentProfilePage.php");
 			
 			}
 	 else{
@@ -38,7 +39,8 @@ else
         } 
         else
         {
-            echo 'Birthday can not be changed';
+            include 'popup.php';
+			print $changeDateError;
         }
  
 }
@@ -63,17 +65,14 @@ else
 			<h2>Change Date</h2>
 			<form method="post">
 				<p>Birthdate:
-				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>"> </p>
+				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>" required> </p>
 				<p> 
 				<input type="submit" name="submit" value="Change date"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<p><a href="studentProfilePage.php">Go back</a></p>				
 				
 			</form>
 		</div>
         </div>
         </div>
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>

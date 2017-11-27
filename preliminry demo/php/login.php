@@ -2,7 +2,7 @@
 session_start();
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
@@ -82,8 +82,9 @@ if(isset($_POST['signin']))
  
     else {
     //echo "0 results";
-    echo 'Please register or enter the correct username and password';
-    
+    //echo 'Please register or enter the correct username and password';
+    include 'popup.php';
+	print $loginerror;
     }
  }
  
@@ -109,15 +110,14 @@ if(isset($_POST['signin']))
                 <h2 class="form-signin-heading">Please login</h2>
 
 				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
-              			<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
+              	<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
 				<input type="submit" name="signin" value="Log In">
-				<p><a href="forgot.php">Forget Password?</a></p>
+				<p><a href="forgot.php"> Forgot Password? </a> </p>
+				<p>Don't have an account? <br> <a href="FirstPage.php">Sign Up!</a>
 				
 				
 			</form>
 		</div>
 		</div>
-	    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>

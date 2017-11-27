@@ -4,7 +4,7 @@ session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $university = $_POST['university'];
 //var_dump($university);
@@ -13,7 +13,6 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-    include 'popup.php';
 //echo "Connected successfully";
 $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $university ."'";
 $queryResult = $mysqli->query($selectFirstQuery);
@@ -24,15 +23,39 @@ $foundRows = $queryResult->num_rows;
 if($foundRows > 0)
 {   
 $_SESSION['university']= $university;
-
-print $pageStart1;
+$pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="Basic dialog">
+  <p>The University is found, you will be directed shorlty.</p>
+</div>
+ 
+ 
+</body>
+</html>';
+print $pageStart;
  
     while($row = mysqli_fetch_assoc($queryResult)){
     	//echo $row['univid'];
     	//$univid=$row['univid'];
     	$_SESSION['univid'] = $row['univid'];
     }
-    echo "<br/>You will be redirected to the Sign up page.";
+    //echo "<br/>You will be redirected to the Sign up page.";
     header( "refresh:2; url=signup.php");
 }
 else{
@@ -44,7 +67,7 @@ else{
     if($foundRows == 0)
     {
         $sql = "INSERT INTO universities(name)" . "VALUES ('$university')";
-        echo "The university can be registered.";
+        //echo "The university can be registered.";
         if ($mysqli->query($sql)==true)
         {   //university
             $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $university ."'";
@@ -58,9 +81,33 @@ else{
             }
         }
     }
-
-header( "refresh:2; url=signup.php" );
-print $pageStart2;
+$pageStart = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="Unable to find your university.">
+  <p>Your university was not found in our database.. <br>You will be redirected to sign up page shortly.. </p>
+</div>
+ 
+ 
+</body>
+</html>';
+header( "refresh:3; url=signup.php" );
+print $pageStart;
 }
 }//isset
 ?>
@@ -79,13 +126,12 @@ print $pageStart2;
 			<h2>Welcome!</h2>
 			<form method="post">
 				
-				<p>Name of your University: </p>
-				<input type="text" name="university" placeholder="university" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>"/>
+				<p>Please enter name of your University: </p>
+				<input type="text" name="university" placeholder="enter your university name" value="<?php if(isset($_POST['university'])){ echo $_POST['university'];} ?>" required />
 				<input type="submit" name="submit" value="Submit">
 				
-				<p>Already have an account?</p>
-				<p><a href="login.php">Log In</a></p>
-				<p><a href="forgot.php">Forget Password?</a></p>
+				<p>Already have an account? <a href="login.php">Log In</a></p>
+				<p><a href="../html/aboutUs.html">About Us!</a></p>
 				
 			</form>
 		</div>
