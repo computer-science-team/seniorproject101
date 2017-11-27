@@ -71,9 +71,7 @@ else
 				<p>Confirm Password 
 				<br><input type="password" name="password2" placeholder="confirm password" required></p>
 				<p> 
-				<input type="submit" name="submit" value="Change Password"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<input type="submit" name="submit" value="Change Password"></p>			
 				
 			</form>
 		</div>
