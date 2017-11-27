@@ -126,4 +126,21 @@ $emailCannotChangeError = str_replace(
 </div>'
 , $pageStart);
 
+$dateChangedSuccessfully = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Your birthdate has been successfully updated.</p>
+</div>'
+, $pageStart);
+
+$changeDateError = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>We were unable to change your birthdate. Pelase try again.</p>
+</div>'
+, $pageStart);
 ?>
