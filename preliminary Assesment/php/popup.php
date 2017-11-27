@@ -90,4 +90,22 @@ $passwordCannotChange = str_replace(
 </div>'
 , $pageStart);
 
+$namesDoNotMatch = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Names, do not match. Please try again. </p>
+</div>'
+, $pageStart);
+
+$namesMatched = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Your name has been changed.</p>
+</div>'
+, $pageStart);
+
 ?>
