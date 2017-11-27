@@ -5,7 +5,7 @@ $pageStart = '<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oops.. Something went wrong.</title>
+  <title>Oops.. Someting went wrong..</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -63,5 +63,31 @@ $facultyToolsPageToolAlreadyExistError = str_replace(
 </div>'
 , $pageStart);
 
+$passwordSuccessfullyChanged = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success!">
+  <p>Your password was changed successfully.</p>
+</div>'
+, $pageStart);
+
+$passwordDoNotMatch = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Password do not match</p>
+</div>'
+, $pageStart);
+
+$passwordCannotChange = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>We were unable to change your password, please try again. </p>
+</div>'
+, $pageStart);
 
 ?>
