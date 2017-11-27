@@ -54,4 +54,14 @@ $loginerror = str_replace(
 </div>'
 , $pageStart);
 
+$facultyToolsPageToolAlreadyExistError = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Oops..">
+  <p>Tool already exist in your toolkit, try adding different tool. </p>
+</div>'
+, $pageStart);
+
+
 ?>
