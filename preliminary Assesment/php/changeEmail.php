@@ -4,7 +4,7 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -27,11 +27,13 @@ else
         
         if ($mysqli->query($sql) === TRUE)
         {
-            echo 'Email successfully updated! You will be redirected to the Log In page';
-	 $role2 = "yes";
+            
+			$role2 = "yes";
             
 	 if (strcmp($role, $role2) !== 0){
-        		header("location:studentProfilePage.php");
+        		include 'popup.php';
+			print $emailChangedSuccessfully;
+			header("refresh: 2; url = studentProfilePage.php");
 			
 			}
 	 else{
@@ -46,7 +48,8 @@ else
     
     else 
     {
-	echo 'Passwords do not match!';
+	include 'popup.php';
+	print $emailCannotChangeError;
     }
 }
 }//if isset
@@ -70,13 +73,12 @@ else
 			<h2>Change Email</h2>
 			<form method="post">
 				<p>Email
-                <br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
+                <br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required></p>
 				<p>Confirm Email
-				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>"></p>
+				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required></p>
 				<p> 
 				<input type="submit" name="submit" value="Change email"></p>
-				<p><a href="signup.php">Sign Up</a></p>
-				<p><a  href="login.php">Log In</a></p>				
+				<p><a href="studentProfilePage.php">Go back</a></p>			
 				
 			</form>
 		</div>
