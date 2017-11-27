@@ -45,6 +45,13 @@ $pageStart2 = str_replace(
 </div>'
 , $pageStart);
 
-
+$loginerror = str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error.. ">
+  <p>Username/password was incorrect.. Please try again with correct credentials. </p>
+</div>'
+, $pageStart);
 
 ?>
