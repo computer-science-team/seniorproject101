@@ -4,7 +4,7 @@ session_start();
 
 $hostname = "localhost";
 $username = "root";
-$password = "Liger124!";
+$password = "";
 $databaseName = "accounts";
 include 'popup.php';
 // connect to mysql database
