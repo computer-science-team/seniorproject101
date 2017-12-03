@@ -6,7 +6,7 @@ if(isset($_SESSION['university'])){
 
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "Liger124!";
 $dbname ="accounts";
 $university = $_SESSION['university'];
 //var_dump($university);
