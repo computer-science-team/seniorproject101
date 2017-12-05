@@ -167,7 +167,7 @@ $go = "";
 		    $pieceOfURL = substr($url2, 0, 30);    
    
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>$pieceOfURL</td><td><button type='submit' name='Add' value = {$row['url']}>Add</button></td>";
+		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>$pieceOfURL</td><td><button type='submit' name='Add' style = 'color :red;' value = {$row['url']}>Add</button></td>";
 		            
 		    }
 		   
@@ -193,6 +193,7 @@ $go = "";
             for (var i = 0; i < arrOptions.length; i++) {
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
+		btnShow.style.color = "red";
                 btnShow.value = js_array2[i];
                 var optionPar = arrOptions[i];
                 btnShow.onclick = (function(opt) {
