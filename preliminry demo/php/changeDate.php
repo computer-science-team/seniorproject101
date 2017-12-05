@@ -2,9 +2,11 @@
 session_start();
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
+
+$role2 = "yes";
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -68,7 +70,7 @@ else
 				<br><input type="date" name="dob" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['dob'])){ echo $_POST['dob'];} ?>" required> </p>
 				<p> 
 				<input type="submit" name="submit" value="Change date"></p>
-				<p><a href="studentProfilePage.php">Go back</a></p>				
+								
 				
 			</form>
 		</div>
