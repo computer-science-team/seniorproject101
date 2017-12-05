@@ -86,7 +86,7 @@ if(isset($_POST['view'])){
         while($row=mysqli_fetch_assoc($queryResult)){
             
             
-            echo "<tr><td>{$row['name']}</td><td><input type='submit' name='view' value = '{$row['id']}'</td>";
+            echo "<tr><td>{$row['name']}</td><td><input type='submit' name='view' style = 'color:red;' value = '{$row['id']}'</td>";
             
            
         }//while      
