@@ -189,4 +189,24 @@ $signupEmailAlreadyExist = str_replace(
 </div>'
 , $pageStart);
 
+$nameCantChange =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>The name can not be changed this way.</p>
+</div>'
+, $pageStart);
+
+$emailCantChange =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Email can not be changed this way.</p>
+</div>'
+, $pageStart);
+
+?>
+
 ?>
