@@ -4,9 +4,11 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+// Check connection
+$role2 = "yes";
 // Check connection
 if (isset($_POST['submit']))
 {
@@ -30,6 +32,7 @@ else
             include 'popup.php';
 			print $namesMatched;
             header( "refresh:3; url=studentProfilePage.php" );
+            
 			
             if (strcmp($role, $role2) !== 0){
         		header("url:studentProfilePage.php");
@@ -42,8 +45,8 @@ else
         } 
         else
         {
-            echo 'Name can not be changed';
-
+            include 'popup.php';
+             print $nameCantChange;
         }
     }
     
@@ -81,7 +84,7 @@ else
 				<br><input type="text" name="password2" placeholder="confirm name" required></p>
 				<p> 
 				<input type="submit" name="submit" value="Change name"></p>
-				<p><a href="studentProfilePage.php">Go Back</a></p>				
+							
 				
 			</form>
 		</div>
