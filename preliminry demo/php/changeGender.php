@@ -4,10 +4,11 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
+
 if (isset($_POST['submit']))
 {
 if ($mysqli->connect_error) 
@@ -79,7 +80,7 @@ else
                 </label></p>
                 <p>
                     <input type="submit" name="submit" value="Change gender"></p>
-				<p><a href="studentProfilePage.php">Go Back</a></p>			
+							
 				
 			</form>
 		</div>
