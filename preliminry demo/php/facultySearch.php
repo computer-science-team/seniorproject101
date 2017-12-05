@@ -86,7 +86,7 @@ if(isset($_POST['view'])){
         while($row=mysqli_fetch_assoc($queryResult)){
             
             
-echo "<tr><td>{$row['name']}</td><td><button style = ' background: red; margin-left: 30%;' type='submit' name='view' value = '{$row['id']}'>Go</button></td>";            
+echo "<tr><td>{$row['name']}</td><td><button style = ' background: red; margin-left: 30%;' type='submit' style = 'color:red;' name='view' value = '{$row['id']}'>Go</button></td>";            
            
         }//while      
     }//foundrows
