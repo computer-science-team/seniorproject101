@@ -5,9 +5,11 @@ $_SESSION['message'] = '';
 $username = $_SESSION['username'];
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+// Check connection
+
 // Check connection
 if (isset($_POST['submit']))
 {
@@ -31,7 +33,7 @@ else
             include 'popup.php';
 			print $passwordSuccessfullyChanged;
             //header("location: signinpage.php");
-            header( "refresh:4; url=lastpage.php" );
+            header( "refresh:2; url=login.php" );
         } 
         else
         {
