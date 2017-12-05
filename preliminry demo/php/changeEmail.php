@@ -4,7 +4,7 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -42,7 +42,8 @@ else
         } 
         else
         {
-            echo 'Password can not be changed';
+           include 'popup.php';
+	        print $emailCantChange;
         }
     }
     
@@ -78,7 +79,7 @@ else
 				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required></p>
 				<p> 
 				<input type="submit" name="submit" value="Change email"></p>
-				<p><a href="studentProfilePage.php">Go back</a></p>			
+							
 				
 			</form>
 		</div>
@@ -87,3 +88,4 @@ else
             
 	</body>
 </html>
+
