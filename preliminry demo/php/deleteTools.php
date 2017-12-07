@@ -5,13 +5,13 @@ $username = ($_SESSION['username']);
 $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
 //Prints tool removed
-if (!empty($_SESSION['message'])) {
-    echo '<p class="message"> '.$_SESSION['message'].'</p>';
-    unset($_SESSION['message']);
-}
+//if (!empty($_SESSION['message'])) {
+    //echo '<p class="message"> '.$_SESSION['message'].'</p>';
+    //unset($_SESSION['message']);
+//}
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -22,7 +22,7 @@ else{
     //echo "Connected successfully";
 }
 if(isset($_POST['Delete'])){
-    echo "pressed";
+    
     //echo "pressed";
 }
 //goes url in student database
@@ -42,11 +42,13 @@ if(isset($_POST['Delete'])){
     
     if ($mysqli->query($selectFirstQuery) === TRUE) {
         //echo "<br/> ".$var. " has been deleted from your toolkit";
-        $_SESSION['message'] = "'".$var."' has been deleted from your tool kit";
+        include 'popup.php';
+        print $toolDeleted;
         //header("location:deleteTools.php");
-        header("Refresh:0");
+        header("refresh: 1; url = deleteTools.php");
     } else {
-        echo "Error deleting record: " . $mysqli->error;
+        include 'popup.php';
+        print $toolDeleteError;
     }
     
     
@@ -130,7 +132,7 @@ if(isset($_POST['Delete'])){
             </div>
             </div>
             </div>
-         <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script> 
+         
     </body>
 </html>
+
