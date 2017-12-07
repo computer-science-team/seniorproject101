@@ -207,6 +207,117 @@ $emailCantChange =  str_replace(
 </div>'
 , $pageStart);
 
-?>
+$toolNameNeeded =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Please enter the tool name.</p>
+</div>'
+, $pageStart);
+
+$catagoryNameNeeded =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Please enter the category name</p>
+</div>'
+, $pageStart);
+
+$urlNeeded =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Please enter the url of the tool</p>
+</div>'
+, $pageStart);
+
+$urlcorrect =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Please make sure that the url address is correct
+  <br>All url addresses must contain http:// or https://</p>
+</div>'
+, $pageStart);
+
+$toolError =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Tool could not be added. There is a problem
+  </p>
+</div>'
+, $pageStart);
+
+$sameUrl =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>The entered URL is already in your kit. It can not be added
+  </p>
+</div>'
+, $pageStart);
+
+$sameUrlUniversity =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>The entered URL is already in universitys  kit. It can not be added again.
+  </p>
+</div>'
+, $pageStart);
+
+$toolAddedUni =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Tool has been added to the university.
+  </p>
+</div>'
+, $pageStart);
+
+$toolAdded =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Tool has been added to the Toolkit of yours.
+  </p>
+</div>'
+, $pageStart);
+
+$toolDeleted =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>Tool has been deleted from the toolkit of yours.
+  </p>
+</div>'
+, $pageStart);
+
+$toolDeleteError =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Tool could not be deleted. There is a problem
+  </p>
+</div>'
+, $pageStart);
+
+
+
+
+
 
 ?>
+
