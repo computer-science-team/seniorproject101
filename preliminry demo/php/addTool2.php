@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
    
     $servername = "localhost";
     $user = "root";
-    $passwd = "kkp123";
+    $passwd = "";
     $dbname ="accounts";
     $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
     // Check connection
@@ -38,24 +38,29 @@ if (isset($_POST['submit'])){
         
     }
     if (!$_POST['toolname']){
-        echo "<br/>-Please enter the tool name";
+            include 'popup.php';
+			print $toolNameNeeded;
+        
     }
     if (!$_POST['category']){
-        echo "<br/>-Please enter the category name";
+        include 'popup.php';
+			print $catagoryNameNeeded;
     }
     if (!$_POST['url']){
-        echo "<br/>-Please enter the url of the tool";
+        include 'popup.php';
+			print $urlNeeded;
     }
     
     if ($_POST['url']){
         if ((strpos($_POST['url'], 'http://') === false) && (strpos($_POST['url'], 'https://') === false) ){
-        echo "<br/>-Please make sure that the url address is correct";
-        echo "<br/>-All url addresses must contain http:// or https://";
+           include 'popup.php';
+			print $urlcorrect;
         }
     } 
      
-    else{
-             echo "</br>Tool could not be added. There is a problem";
+    else{ 
+             include 'popup.php';
+			print $toolError;
         }
     
 }
@@ -99,6 +104,8 @@ if (isset($_POST['submit'])){
         <form method="post">
         <?php 
         if((isset($_POST['submit'])) && ($_POST['toolname']) && ($_POST['category']) && ($_POST['url'])){
+            
+            
             $toolname = $_POST['toolname'];
             $category = $_POST['category'];
             $url = $_POST['url'];
@@ -110,14 +117,16 @@ if (isset($_POST['submit'])){
             //if >0 then tool is in toolkit
             if($foundRows > 0){
            
-                echo "</br>".$url." is already in your kit. It can not be added";
+            include 'popup.php';
+			print $sameUrl;
             }//if
             else{
     
                 $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$id','$category', '$toolname','$url', '$private')";
             
                 if ($mysqli->query($sql)==true){
-                    echo 'Tool added';
+                    include 'popup.php';
+			         print $toolAdded;
                     $selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
                     $queryResult = $mysqli->query($selectFirstQuery);
                     $foundRows = $queryResult->num_rows;
@@ -137,14 +146,16 @@ if (isset($_POST['submit'])){
                     //if >0 then tool is in university's toolkit already
                     if($foundRows > 0){
                         
-                        echo "</br>".$url." is already in the university's kit. It can not be added to the university";
+                        include 'popup.php';
+			            print $sameUrlUniversity ;
                     }//if
                     else{
                         
                         $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$runivid','$category', '$toolname','$url', '$private')";
                         
                         if ($mysqli->query($sql)==true){
-                            echo "</br> Tool has been added to the university";
+                            include 'popup.php';
+			                print $toolAddedUni ;
                             
                         }//if mysql
                     }
@@ -174,8 +185,8 @@ if (isset($_POST['submit'])){
 				
 	  
     </form>
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
+        
+        
 	</div>
     </div> 	
     </body>
