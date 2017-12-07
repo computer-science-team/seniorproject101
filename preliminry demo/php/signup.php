@@ -1,9 +1,109 @@
 <!-- PHP code which will connect to database and that way a user can sign up -->
 <?php
+session_start();
 include 'popup.php';
 
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+$fullname = $_SESSION['fullname'];
+$dob = $_SESSION['dob'];
+$gender = $_SESSION['gender'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
+$role = $_SESSION['role'];
+$univid=$_SESSION['univid'];
+$university=$_SESSION['university'];
+
+$servername = "localhost";
+$user = "root";
+$passwd = "Liger124!";
+$dbname ="accounts";
+$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+    //Check if email is in use
+    
+    $selectFirstQuery = "SELECT * FROM users WHERE email  = '". $email ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    //if row is found email is in use
+    if($foundRows > 0)
+    {
+	print $signupEmailAlreadyExist;
+       //duplicate emails needs to be unique
+		//print $signupEmailAlreadyExist;
+    }
+    else
+	{
+    //Check to see if username is in use
+    $selectFirstQuery = "SELECT * FROM users WHERE username  = '". $username ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    if($foundRows > 0)
+    {
+	print $signupUserAlreadyExist;
+        //duplicate users in database needs to be unique
+		//
+    }
+    else
+{
+    //Insert info into table-user not in use
+    $sql = "INSERT INTO users(name, dob, gender, username, email, password, faculty, univid)"
+        . "VALUES ('$fullname','$dob', '$gender','$username','$email','$password','$role','$univid')";
+        if ($mysqli->query($sql)==true)
+        {
+	    $selectFirstQuery = "SELECT id FROM users WHERE username  = '". $username ."'";
+            $queryResult = $mysqli->query($selectFirstQuery);
+            $foundRows = $queryResult->num_rows;
+            if($foundRows > 0)
+            {
+                
+                while($row=mysqli_fetch_assoc($queryResult)){
+                    $id=$row['id'];
+                }
+            }
+            $_SESSION['id']=$id;
+            $_SESSION['username']=$username;
+            $_SESSION['univid']=$univid;
+            $_SESSION['univeristy']=$university;
+		$role2 = "yes";
+            
+            if (strcmp($role, $role2) !== 0){
+			header( "refresh:2; url=studentProfilePage.php");
+			
+			}
+		else{
+		header( "refresh:2; url=facultyProfilePage.php");
+		    }
+        }
+}
+}
+
+
+}
+}
+
 ?>
-<!-- PHP code ends here -->
+<!-- PHP code ends here -->   
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,27 +144,9 @@ include 'popup.php';
 	
         $.post('signup_receiver.php', { name: Name, gender: Gender,  dob : Dob, email : Email, username : Username, password : Password, role : Role}, function(data){
 
-	if (data == 1) {
-	window.location.href = urlNext;
+	if (data == 0) {
+	location.reload();
         }
-	   else if(data == 2){
-	    var popup = <?php echo json_encode($signupUserAlreadyExist); ?>;
-            $('#response').html(popup);
-	}
-	else if(data == 3){
-	    var popup = <?php echo json_encode($signupEmailAlreadyExist); ?>;
-            $('#response').html(popup);
-	}
-	else if(data == 4){
-	    alert( "sql isn't insserting the database");
-	}
-	else if(data == 0){
-	    alert( "University session doesn't exist");
-	}
-	else{
-		alert( data );
-		//unknown errors
-	}
 
         }).fail(function() {
          
@@ -116,7 +198,7 @@ else
 			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form id='userForm'>
 				<p>Name:
-				<br><input type="text" name="name" id="name" placeholder="Name" /></p>
+				<br><input type="text" name="name" id="name" placeholder="Name" required/></p>
 				<p>Gender:
 
 				<select id="genders" name="gender">
@@ -126,13 +208,13 @@ else
 				</select>
 
 				<p>Birthdate: 
-				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" /></p>
+				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
 				<p>Email: 
-				<br><input type="email" name="email" id="email" placeholder="Email" /></p>
+				<br><input type="email" name="email" id="email" placeholder="Email" required/></p>
 				<p>Username: 
-				<br><input type="text" name="username" id="username" placeholder="Username" /></p>
+				<br><input type="text" name="username" id="username" placeholder="Username" required/></p>
 				<p>Password: 
-				<br><input type="password" name="password" id="password" placeholder="*********" /></p>
+				<br><input type="password" name="password" id="password" placeholder="*********" required/></p>
                 		<p>Faculty:
 				<select id="roles" name="role">
 				<option value="no">No</option>
@@ -148,8 +230,6 @@ else
 			   
             </form>
 		</div>
-        </div>    
-		
-        
+        </div>         
 	</body>
 </html>
