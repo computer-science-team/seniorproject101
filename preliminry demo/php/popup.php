@@ -314,10 +314,74 @@ $toolDeleteError =  str_replace(
 </div>'
 , $pageStart);
 
+$uploadWarning =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Warning">
+  <p>There is already a Guidelines for Success (PDF) available for your university.
+  <br>If you upload a document the current document will be replaced.
+  </p>
+</div>'
+, $pageStart);
+
+$selectFileWarning =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Warning">
+  <p>Please select a file
+  </p>
+</div>'
+, $pageStart);
+
+$uploadSuccess =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Success">
+  <p>File Uploaded.
+  </p>
+</div>'
+, $pageStart);
+
+$uploadFaliure =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>File is not Uploaded.
+  </p>
+</div>'
+, $pageStart);
+
+$wrongFormat =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Wrong Format">
+  <p>The file format is not PDF. Please upload a file in PDF format.
+  </p>
+</div>'
+, $pageStart);
+
+$requestRightFormat =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Request">
+  <p>Please upload a pdf file.
+  </p>
+</div>'
+, $pageStart);
+
+
+
 
 
 
 
 
 ?>
+
 
