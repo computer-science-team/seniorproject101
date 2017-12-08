@@ -51,16 +51,16 @@
 </html>    
 <?php 
 session_start();//starts session
-if (!empty($_SESSION['message'])) {
-    echo '<p class="message"> '.$_SESSION['message'].'</p>';
-    unset($_SESSION['message']);
-}
+//if (!empty($_SESSION['message'])) {
+    //echo '<p class="message"> '.$_SESSION['message'].'</p>';
+    //unset($_SESSION['message']);
+//}
 $runiversity = $_SESSION['runiversity'];
 //$runiversity = $_SESSION['$runiversity'];
 
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -72,17 +72,20 @@ $sql="SELECT guide_path FROM universities WHERE name='".$runiversity."' AND guid
 $queryResult=$mysqli->query($sql);
 $foundRows = $queryResult->num_rows;
 if($foundRows > 0){
-    print "<br/>There is already a Guidelines for Success PDF available for " .$runiversity. " .";
-    print "<br/>If you upload a document the current document will be replaced.";
+    include 'popup.php';
+    print $uploadWarning;
+    
+    
 }    
 if(isset($_POST['submit1'])){ 
     if(!$_FILES['f']){
-        echo "<br/>-Please select a file";
+        include 'popup.php';
+        print $selectFileWarning;
     }
    
         
         $runiversity = $_SESSION['runiversity'];
-        $_SESSION['message'] = '';
+        //$_SESSION['message'] = '';
         
         $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $runiversity ."'";
         $queryResult = $mysqli->query($selectFirstQuery);
@@ -90,7 +93,7 @@ if(isset($_POST['submit1'])){
         //if row is found university is in database
         if($foundRows > 0){
             $_SESSION['university']= $runiversity;
-            echo "<br/>Your college has been found.";
+           // echo "<br/>Your college has been found.";
             while($row = mysqli_fetch_assoc($queryResult)){
                 
                 $_SESSION['runivid'] = $row['univid'];
@@ -143,22 +146,26 @@ if(isset($_POST['submit1'])){
                 $query = "UPDATE universities SET guide_fname = '".$fnm."', guide_path = '".$dst."' WHERE univid = '".$runivid."'";
                 if($mysqli->query($query)== true){
                     //echo "<br/>File Uploaded.";
-                    $_SESSION['message'] = "File uploaded.";
-                    header("Refresh:0");
+                    include 'popup.php';
+                    print $uploadSuccess;
+                    header("Refresh:2");
                 }
                 else{
-                    $_SESSION['message'] = "File not uploaded.";
-                    header("Refresh:0");
+                    include 'popup.php';
+                    print $uploadFaliure;
+                    header("Refresh:2");
                 }
             }
             else{
                 if($allowed!=$file_ext){
-                $_SESSION['message'] = "The file format is not PDF. Please upload a file in PDF format.";
-                header("Refresh:5");
+               include 'popup.php';
+                print $wrongFormat;
+                header("Refresh:2");
             }
                 else{
-                $_SESSION['message'] = "Please upload a pdf file.";
-                header("Refresh:0");
+               include 'popup.php';
+                print $requestRightFormat ;
+                header("Refresh:2");
                 }
                 
             }
