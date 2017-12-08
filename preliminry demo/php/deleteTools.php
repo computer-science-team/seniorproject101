@@ -5,10 +5,10 @@ $username = ($_SESSION['username']);
 $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
 //Prints tool removed
-//if (!empty($_SESSION['message'])) {
-    //echo '<p class="message"> '.$_SESSION['message'].'</p>';
-    //unset($_SESSION['message']);
-//}
+if (!empty($_SESSION['message'])) {
+    echo '<p class="message"> '.$_SESSION['message'].'</p>';
+    unset($_SESSION['message']);
+}
 $servername = "localhost";
 $user = "root";
 $passwd = "";
@@ -18,42 +18,8 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-else{
-    //echo "Connected successfully";
-}
-if(isset($_POST['Delete'])){
-    
-    //echo "pressed";
-}
-//goes url in student database
-if(isset($_POST['Visit'])){
-    //echo "pressed";
-    echo $_POST['Visit'];
-    $var=$_POST['Visit'];
-    
-    header('location:' . $var);
-    
-}
-//Deletes tool to student's tool kit
-if(isset($_POST['Delete'])){
-    
-    $var=($_POST['Delete']);
-    $selectFirstQuery = "DELETE FROM tools WHERE url  = '". $var ."' AND idnums = '".$id."'";
-    
-    if ($mysqli->query($selectFirstQuery) === TRUE) {
-        //echo "<br/> ".$var. " has been deleted from your toolkit";
-        include 'popup.php';
-        print $toolDeleted;
-        //header("location:deleteTools.php");
-        header("refresh: 1; url = deleteTools.php");
-    } else {
-        include 'popup.php';
-        print $toolDeleteError;
-    }
-    
-    
-    
-}
+
+
 ?>
 <!DOCTYPE html>
 
@@ -62,6 +28,39 @@ if(isset($_POST['Delete'])){
 	<html>
 		
 	<head>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+	$("button").click(function(){
+     
+	var me = $(this);
+	var urlDelete = me.val();
+
+	if(urlDelete)
+{
+        $.post('deleteTools_receiver.php', { url: urlDelete}, function(data){
+
+	    if (data == 0) {
+		location.reload();
+        }
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+}
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,7 +97,7 @@ if(isset($_POST['Delete'])){
         <div class="container-fluid">
 		<div class="loginBox">
 		<h3> <?php echo $username;?>  Here are the tools available for deletion:</h3>
-		 <form method="post">
+		 <form id='userForm'>
 		
 		<?php
 		//Display user's toolkit
@@ -132,7 +131,44 @@ if(isset($_POST['Delete'])){
             </div>
             </div>
             </div>
-         
+<?php
+include 'popup.php';
+
+ 
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+	
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+$path = '1';
+$path2 = '2';
+if($_SESSION['path'] == $path)
+{
+//replace with popup that says their already a tool in your toolkit with that url
+print $toolDeleted;
+}
+else if($_SESSION['path'] == $path2)
+{
+print $toolDeleteError;
+}
+}
+ }
+?>
+
+
     </body>
 </html>
-
