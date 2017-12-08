@@ -10,7 +10,7 @@ $role = ($_SESSION['role']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -20,18 +20,7 @@ if ($mysqli->connect_error) {
 else{
     //echo "Connected successfully";
 }
-if(isset($_POST['View'])){
-    //echo "pressed";
-    //echo "pressed";
-}
-//goes url in student database
-if(isset($_POST['Visit'])){
-    //echo "pressed";
-    echo $_POST['Visit'];
-    $var=$_POST['Visit'];
-    
-    header('location:' . $var);
-}
+
 $selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
 $queryResult = $mysqli->query($selectFirstQuery);
 $queryResult2 = $mysqli->query($selectFirstQuery);
@@ -44,53 +33,7 @@ $result_array2 = array();
 		$result_array2[] = $row['toolname'];
             
         }
-//adds tool to student's tool kit
-if(isset($_POST['Add'])){
-    
-   $var=($_POST['Add']);
-   $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."' AND idnums = '".$id."'";
-   $queryResult = $mysqli->query($selectFirstQuery);
-   $foundRows = $queryResult->num_rows;
-   $foundRows2 = $foundRows;
-   
-   //if tool found then tool is already in kit
-   if($foundRows > 0)
-   {
-    echo "<br/> ".$var. " is already in your toolkit";
-   
-        
-   }
-   //if tool not found add to student's toolkit
-   else{
-     //Get tool from university
-     $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."'";
-    $queryResult = $mysqli->query($selectFirstQuery);
-    $foundRows = $queryResult->num_rows;
-    if($foundRows > 0)
-    {
-       while($row=mysqli_fetch_assoc($queryResult)){
-          $tool= $row['toolname'];
-          $cat=$row['category'];
-          
-          
-       }//while
-    }//if
-   
-   //insert tool into tool table
-   $sql = "INSERT INTO tools(idnums, category, toolname, url)"
-       . "VALUES ('$id','$cat', '$tool','$var')";
-       if ($mysqli->query($sql)==true)
-       {
-	header("Refresh:0");
-           
-       }
-	else
-	{
-	echo 'Error: tool could not be added';
-	}
-   }//else
-}
- 
+
 $role2 = "yes";
 $go = "";            
             if (strcmp($role, $role2) !== 0){
@@ -102,11 +45,42 @@ $go = "";
 		    }
 ?>
 <!DOCTYPE html>
-
-<html>
 		
 <html lang="en">
   <head>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+	$("button").click(function(){
+     
+	var me = $(this);
+	var urlAdd = me.val();
+
+	if(urlAdd)
+{
+        $.post('facultyTools&universityTools_receiver.php', { url: urlAdd}, function(data){
+
+	    if (data == 0) {
+		location.reload();
+        }
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+}
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+
 	<style>
 	td {
     text-align: center;
@@ -166,7 +140,7 @@ $go = "";
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
            
-		 <form method="post">
+		 <form id='userForm'>
 		 <div id="divButtons">
 
         </div>
@@ -178,7 +152,7 @@ $go = "";
 		//if row is get toolkit of university
 		if($foundRows > 0)
 		{
-		    echo"These are all the tools for the fculty member";
+		    echo"These are all the tools for the faculty member";
 		    echo "<table border='5' style ='border-collapse: collapse;
     width: 100%;'>";
 		    echo "<tr><td><strong>Name</strong></td><td><strong>Category</strong></td><td ><strong>Website</strong></td><td><strong>Add to Toolkit</strong></td><tr>";
@@ -208,7 +182,7 @@ $go = "";
             for (var i = 0; i < arrOptions.length; i++) {
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
-				btnShow.style.color = "red";
+		btnShow.style.color = "red";
                 btnShow.value = js_array2[i];
                 var optionPar = arrOptions[i];
                 btnShow.onclick = (function(opt) {
@@ -234,11 +208,41 @@ $go = "";
             </div>
             </div>
 </div>
-		
 
-		</body>
-    
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
 
+<?php
+include 'popup.php';
+
+ 
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+	
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+$path = '1';
+if($_SESSION['path'] == $path)
+{
+//replace with popup that says their already a tool in your toolkit with that url
+print $pageStart1;
+}
+}
+ }
+?>		
+
+		</body>  
+       
 </html>
