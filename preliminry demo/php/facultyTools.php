@@ -10,7 +10,7 @@ $role = ($_SESSION['role']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "rowanphysicssweng";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -208,6 +208,7 @@ $go = "";
             for (var i = 0; i < arrOptions.length; i++) {
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
+				btnShow.style.color = "red";
                 btnShow.value = js_array2[i];
                 var optionPar = arrOptions[i];
                 btnShow.onclick = (function(opt) {
