@@ -53,7 +53,7 @@ if(isset($_POST['signin']))
         $foundRows = $queryResult->num_rows;
         if($foundRows > 0)
         {
-            echo 'id found';
+            //echo 'id found';
             while($row=mysqli_fetch_assoc($queryResult)){
                 $id=$row['id'];
                 $role=$row['faculty'];
