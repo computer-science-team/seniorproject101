@@ -115,6 +115,7 @@ $result_array3 = array();
 	
                 var btnShow = document.createElement("input");
                 btnShow.setAttribute("type", "button");
+		btnShow.style.color = "red";
                 btnShow.value = "Go";
                 var optionPar = arrOptions[i];
                 btnShow.onclick = (function(opt) {
