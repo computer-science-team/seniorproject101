@@ -8,7 +8,7 @@ $role = ($_SESSION['role']);
 //echo $username;
 $servername = "localhost";
 $user = "root";
-$passwd = "kkp123";
+$passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
@@ -42,52 +42,6 @@ $result_array2 = array();
 		$result_array2[] = $row['toolname'];
             
         }
-//adds tool to student's tool kit
-if(isset($_POST['Add'])){
-    
-   $var=($_POST['Add']);
-   $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."' AND idnums = '".$id."'";
-   $queryResult = $mysqli->query($selectFirstQuery);
-   $foundRows = $queryResult->num_rows;
-   $foundRows2 = $foundRows;
-   
-   //if tool found then tool is already in kit
-   if($foundRows > 0)
-   {
-    echo "<br/> ".$var. " is already in your toolkit";
-   
-        
-   }
-   //if tool not found add to student's toolkit
-   else{
-     //Get tool from university
-     $selectFirstQuery = "SELECT * FROM tools WHERE url  = '". $var ."'";
-    $queryResult = $mysqli->query($selectFirstQuery);
-    $foundRows = $queryResult->num_rows;
-    if($foundRows > 0)
-    {
-       while($row=mysqli_fetch_assoc($queryResult)){
-          $tool= $row['toolname'];
-          $cat=$row['category'];
-          
-          
-       }//while
-    }//if
-   
-   //insert tool into tool table
-   $sql = "INSERT INTO tools(idnums, category, toolname, url)"
-       . "VALUES ('$id','$cat', '$tool','$var')";
-       if ($mysqli->query($sql)==true)
-       {
-	header("Refresh:0");
-           
-       }
-	else
-	{
-	echo 'Error: tool could not be added';
-	}
-   }//else
-}
 $role2 = "yes";
 $go = "";            
             if (strcmp($role, $role2) !== 0){
@@ -103,6 +57,42 @@ $go = "";
 
 <html lang="en">
   <head>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+	$("button").click(function(){
+     
+	var me = $(this);
+	var urlAdd = me.val();
+
+	if(urlAdd)
+{
+        $.post('facultyTools&universityTools_receiver.php', { url: urlAdd}, function(data){
+
+	    if (data == 0) {
+		location.reload();
+        }
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+}
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -146,7 +136,7 @@ $go = "";
         <div class="container">  
 		<div class="loginBox">
 		<h3> Welcome <?php echo $username;?> !! Hope you are having a good day.</h3>
-		 <form method="post">
+		 <form id='userForm'>
 		 <div id="divButtons">
 
         </div>
@@ -167,7 +157,7 @@ $go = "";
 		    $pieceOfURL = substr($url2, 0, 30);    
    
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
-		        echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>$pieceOfURL</td><td><button type='submit' name='Add' style = 'color :red;' value = {$row['url']}>Add</button></td>";
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: red; margin-left: 30%;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
 		            
 		    }
 		   
@@ -214,10 +204,38 @@ $go = "";
             </div>
 </div>
 		
+<?php
+include 'popup.php';
 
+ 
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+	
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+$path = '1';
+if($_SESSION['path'] == $path)
+{
+//replace with popup that says their already a tool in your toolkit with that url
+print $pageStart1;
+}
+}
+ }
+?>
 		</body>
-    
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
 
 </html>
