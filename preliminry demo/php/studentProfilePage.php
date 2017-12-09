@@ -14,13 +14,50 @@ $_SESSION['runivid'] = $runivid;
 $_SESSION['runiversity']=$runiversity;
 $servername = "localhost";
 $username = "root";
-$password = "kkp123";
+$password = "";
 $dbname = "accounts";
 //Prints Guidelines for success is unavailable for download if no file is present
 if (!empty($_SESSION['message'])) {
-    echo '<p class="message"> '.$_SESSION['message'].'</p>';
-    unset($_SESSION['message']);
-}
+//echo '<p class="message"> '.$_SESSION['message'].'</p>';
+    //unset($_SESSION['message']);
+	$PageSrt='<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Example of Auto Loading Bootstrap Modal on Page Load</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myModal").modal("show");
+	});
+</script>
+</head>
+<body>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+            </div>
+            <div class="modal-body">
+				
+                <p>No document is available for download at this time.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html> ';
+print  $PageSrt;
+unset($_SESSION['message']);
+//$_SESSION['message']===NULL;
+}             
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -54,7 +91,6 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-                <li><a href="../html/studentManual.html">Manual</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 				  
