@@ -204,12 +204,14 @@ $go = "";
             </div>
 </div>
 		
+<script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>       
 <?php
 include 'popup.php';
 
  
 function ifsessionExists(){
-    //check if session exists?
+    //check if session        <script src="../js/bootstrap.min.js"></script> exists?
     if (isset($_SESSION['count'])){
     return true;
     }
@@ -231,7 +233,7 @@ $path = '1';
 if($_SESSION['path'] == $path)
 {
 //replace with popup that says their already a tool in your toolkit with that url
-print $pageStart1;
+print $sameTools;
 }
 }
  }
@@ -239,3 +241,4 @@ print $pageStart1;
 		</body>
 
 </html>
+
