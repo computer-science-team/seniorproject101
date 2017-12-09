@@ -1,0 +1,3 @@
+
+I just want to let everyone know that I figured why the download pages gives you guys an error. You have to have full access to the folder. You have to go edit the rights for the user's on your pc. 
+If you already have files in the upload folder you must delete them and upload new pdf files. For some reason the full access won't work with things that are already the folder. You must also delete the path and file name on phpadmin. Go into php admin and edit the university. There will be a check box next to the attributes for the files. Check them and click "go". Then upload your new pdf and try downloading them. To delete the files in the upload folder you simply need to go in the actual folder and delete them. See the word doc labeled View Me for more info.
