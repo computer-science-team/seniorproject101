@@ -375,6 +375,15 @@ $requestRightFormat =  str_replace(
 </div>'
 , $pageStart);
 
+$sameTools =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>The tool is already in your toolkit.
+  </p>
+</div>'
+, $pageStart);
 
 
 
