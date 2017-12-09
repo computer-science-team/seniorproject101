@@ -4,6 +4,7 @@ $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
 $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
+$role = ($_SESSION['role']);
 //Prints tool removed
 if (!empty($_SESSION['message'])) {
     echo '<p class="message"> '.$_SESSION['message'].'</p>';
@@ -18,7 +19,16 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+  
+$role2 = "yes";
+$go = "";            
+            if (strcmp($role, $role2) !== 0){
+        		$go = "lastpage.php";
+			
+			}
+		else{
+		$go ="lastpage2.php";
+		    }
 
 ?>
 <!DOCTYPE html>
@@ -79,8 +89,7 @@ if ($mysqli->connect_error) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="lastpage.php"><?php $_SESSION['id']=$id;
-		$_SESSION['username']=$username; $_SESSION['runiversity']=$runiversity;  $_SESSION['runivid']=$runivid; ?>View Toolkit</a>
+			<a class="navbar-brand" href= "<?php echo $go ?>">view Toolkit</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
@@ -131,6 +140,8 @@ if ($mysqli->connect_error) {
             </div>
             </div>
             </div>
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 <?php
 include 'popup.php';
 
