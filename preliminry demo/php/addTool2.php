@@ -1,73 +1,42 @@
-<?php 
-session_start();
-//$role = $_SESSION['role'];
-$id = $_SESSION['id'];
-$username = $_SESSION['username'];
-$runiversity = $_SESSION['runiversity'];
-$runivid = $_SESSION['runivid'];
-//goes url in student database
-if(isset($_POST['Visit'])){
-   
-    $var=$_POST['Visit'];
-    
-    header('location:' . $var);
-    
-}
-if (isset($_POST['submit'])){
-    
-   
-    $servername = "localhost";
-    $user = "root";
-    $passwd = "";
-    $dbname ="accounts";
-    $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-    // Check connection
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    else{
-        //echo "Connected successfully";
-    }
-    //goes url in student database
-    if(isset($_POST['Visit'])){
-        //echo "pressed";
-        echo $_POST['Visit'];
-        $var=$_POST['Visit'];
-        
-        //header('location:' . $var);
-        
-    }
-    if (!$_POST['toolname']){
-            include 'popup.php';
-			print $toolNameNeeded;
-        
-    }
-    if (!$_POST['category']){
-        include 'popup.php';
-			print $catagoryNameNeeded;
-    }
-    if (!$_POST['url']){
-        include 'popup.php';
-			print $urlNeeded;
-    }
-    
-    if ($_POST['url']){
-        if ((strpos($_POST['url'], 'http://') === false) && (strpos($_POST['url'], 'https://') === false) ){
-           include 'popup.php';
-			print $urlcorrect;
-        }
-    } 
-     
-    else{ 
-             include 'popup.php';
-			print $toolError;
-        }
-    
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+<!------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+	$('#userForm').submit(function(){
+     
+	var Toolname = $("#toolname").val();
+	var Category = $("#category").val();
+	var Url = $("#url").val();
+	var Private = $("#privates").val();
+
+
+        $.post('addTool2_receiver.php', { toolname: Toolname, category: Category, url: Url, private: Private}, function(data){
+	    if (data == 0) {
+
+	//alert(data);
+		location.reload();
+        }
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+<!------------------------------------------------------->
+
      <title>New Tool</title>
   		<meta charset="utf-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,93 +70,81 @@ if (isset($_POST['submit'])){
         <div class = "wrapper">
 		<div class="form-signin">
             <h1> Add to your Toolkit</h1>
-        <form method="post">
-        <?php 
-        if((isset($_POST['submit'])) && ($_POST['toolname']) && ($_POST['category']) && ($_POST['url'])){
-            
-            
-            $toolname = $_POST['toolname'];
-            $category = $_POST['category'];
-            $url = $_POST['url'];
-            $private = $_POST['private'];
-            //check if tool is already in tool kit
-            $selectFirstQuery = "SELECT url FROM tools WHERE url  = '". $url ."' AND idnums = '".$id."'";
-            $queryResult = $mysqli->query($selectFirstQuery);
-            $foundRows = $queryResult->num_rows;
-            //if >0 then tool is in toolkit
-            if($foundRows > 0){
-           
-            include 'popup.php';
-			print $sameUrl;
-            }//if
-            else{
-    
-                $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$id','$category', '$toolname','$url', '$private')";
-            
-                if ($mysqli->query($sql)==true){
-                    include 'popup.php';
-			         print $toolAdded;
-                    $selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
-                    $queryResult = $mysqli->query($selectFirstQuery);
-                    $foundRows = $queryResult->num_rows;
-                    //if found tool kit displayed
-                    if($foundRows > 0)
-                    {
-                       
-                        
-                        
-                    }//rows  
-                }//if mysql
-                //university
-                if($private=='no'){
-                    $selectFirstQuery = "SELECT url FROM tools WHERE url  = '". $url ."' AND idnums = '".$runivid."' ";
-                    $queryResult = $mysqli->query($selectFirstQuery);
-                    $foundRows = $queryResult->num_rows;
-                    //if >0 then tool is in university's toolkit already
-                    if($foundRows > 0){
-                        
-                        include 'popup.php';
-			            print $sameUrlUniversity ;
-                    }//if
-                    else{
-                        
-                        $sql = "INSERT INTO tools(idnums, category, toolname, url, private)" . "VALUES ('$runivid','$category', '$toolname','$url', '$private')";
-                        
-                        if ($mysqli->query($sql)==true){
-                            include 'popup.php';
-			                print $toolAddedUni ;
-                            
-                        }//if mysql
-                    }
-                    
-                }//private
-                   
-            }//else
-    }//
-    ?>
-         
+         <form id='userForm'>
         <p>By creating your tool</p>
 		<p>Tool: 
-				<br><input type="text" name="toolname" placeholder="toolname" value="<?php if(isset($_POST['toolname'])){ echo $_POST['toolname'];} ?>" /></p>
+				<br><input type="text" name="toolname" id="toolname" placeholder="toolname" required/></p>
 		<p>Category: 
-				<br><input type="text" name="category" placeholder="category" value="<?php if(isset($_POST['category'])){ echo $_POST['category'];} ?>"/> </p>
+				<br><input type="text" name="category" id="category" placeholder="category" required/></p>
 		<p>Location: 
-				<br><input type="text" name="url" placeholder="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'];} ?>"/> </p>
+				<br><input type="text" name="url" id="url" placeholder="url" required/></p>
             <p>Private Tool:
-				<br><select name='private'>
-					<option value="no" <?php if (isset($_POST['private']) && $_POST['private'] == 'No') 
-					     echo ' selected="selected"'; ?>>No</option>
-					<option value="yes"<?php if (isset($_POST['private']) && $_POST['private'] == 'Yes') 
-					    echo ' selected="selected"'; ?> >Yes</option>
+				<br><select id="privates" name="private">
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
 				</select></p>
+
 				
-		<p> <input type="submit" name="submit" value="submit"></p>
+		<p><input type='submit' value='Submit' /></p>
 				
 	  
     </form>
         
         
 	</div>
-    </div> 	
+    </div>
+<?php 
+  session_start();
+  include 'popup.php';
+
+ 
+  function ifsessionExists(){
+    //check if session exists?
+  if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+  if(ifsessionExists())
+{
+	
+    $count = '1';
+    if($_SESSION['count'] == $count)
+    {
+    $_SESSION['count'] = '0';
+
+    $path = '1';
+    $path2 = '2';
+    $path3 = '3';
+    $path4 = '4';
+    $path5 = '5';
+
+    if($_SESSION['path'] == $path)
+    {
+      print $urlcorrect;
+    }
+    else if($_SESSION['path'] == $path2)
+    {
+      print $sameUrl;
+    }
+    else if($_SESSION['path'] == $path3)
+    {
+      print $toolAdded;
+    }
+    else if($_SESSION['path'] == $path4)
+    {
+      print $sameUrlUniversity;
+    }
+    else if($_SESSION['path'] == $path5)
+    {
+      print $toolAddedUni;
+    }
+}
+}
+?> 	
     </body>
 </html>
