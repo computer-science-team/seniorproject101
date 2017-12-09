@@ -1,8 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+<!------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+	$('#userForm').submit(function(){
+     
+	var Username = $("#username").val();
+	var Password = $("#password").val();
+
+        $.post('login_receiver.php', { username: Username, password: Password}, function(data){
+	    if (data == 0) {
+		//alert(data);
+		location.reload();
+        }
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+<!------------------------------------------------------->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Login</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+	</head>
+
+	<body class="loginpage">
+		<div class="signInBox">
+			<div class="wrapper">
+			
+			<form id='userForm' class="form-signin">
+                <h2 class="form-signin-heading">Please login</h2>
+		
+				<p><input type="text" name="username" id="username" placeholder="Username" required/></p>
+              			<p><input type="password" name="password" id="password" placeholder="Password" required/></p>     
+				<input type='submit' value='Submit' />
+				<p><a href="forgot.php"> Forgot Password? </a> </p>
+				<p>Don't have an account? <br> <a href="FirstPage.php">Sign Up!</a>
+				
+				
+			</form>
+		</div>
+		</div>
+
 <?php 
 session_start();
 $servername = "localhost";
 $user = "root";
-$passwd = "rowanphysicssweng";
+$passwd = "";
 $dbname ="accounts";
 
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
@@ -10,14 +71,26 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-else{
-//echo 'connected';
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
 }
-if(isset($_POST['signin']))
+ 
+if(ifsessionExists())
 {
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
   // echo 'Everything good!';//test
-   $username= $_POST['username'];
-   $password=md5($_POST['password']);
+   $username= $_SESSION['username'];
+   $password=md5($_SESSION['password']);
     $sql = "SELECT  * FROM users WHERE username  = '". $username ."' AND password = '".$password."'";
     
     //$result = mysqli_result object
@@ -65,59 +138,26 @@ if(isset($_POST['signin']))
         $role2 = "yes";
             
             if (strcmp($role, $role2) !== 0){
-        		header("location:studentProfilePage.php");
-			
+		header( "refresh:2; url = studentProfilePage.php");
+
 			}
 		else{
-		header("location:facultyProfilePage.php");
+		header( "refresh:2; url = facultyProfilePage.php");
 		    }
         }
-        else
-        {
-            echo "There's an issue";
-        }
-    //while
     
  }  //if $result 
- 
-    else {
+else {
     //echo "0 results";
     //echo 'Please register or enter the correct username and password';
     include 'popup.php';
 	print $loginerror;
     }
+
  }
+}
  
     
  ?>
- 
- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Login</title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/styles.css" rel="stylesheet">
-	</head>
-
-	<body class="loginpage">
-		<div class="signInBox">
-			<div class="wrapper">
-			
-			<form method="post" class="form-signin">
-                <h2 class="form-signin-heading">Please login</h2>
-
-				<p><input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /></p>
-              	<p><input type="password" class="form-control" name="password" placeholder="Password" required=""/></p>     
-				<input type="submit" name="signin" value="Log In">
-				<p><a href="forgot.php"> Forgot Password? </a> </p>
-				<p>Don't have an account? <br> <a href="FirstPage.php">Sign Up!</a>
-				
-				
-			</form>
-		</div>
-		</div>
 	</body>
 </html>
