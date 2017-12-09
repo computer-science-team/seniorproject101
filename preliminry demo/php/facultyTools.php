@@ -208,7 +208,9 @@ $go = "";
             </div>
             </div>
 </div>
-
+ 
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
 <?php
 include 'popup.php';
@@ -237,7 +239,7 @@ $path = '1';
 if($_SESSION['path'] == $path)
 {
 //replace with popup that says their already a tool in your toolkit with that url
-print $pageStart1;
+print $sameTools;
 }
 }
  }
