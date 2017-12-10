@@ -6,7 +6,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
      
@@ -16,15 +15,11 @@
 	
 	if(Name && Dob && Username)
 {
-
         $.post('forgot_receiver.php', { name: Name,  dob : Dob, username : Username}, function(data){
 	if (data == 0) {
 	//alert( data );
-
 	location.reload();
-
         }
-
         }).fail(function() {
          
             // just in case posting your form failed
@@ -44,7 +39,6 @@ else
 });
 </script>
 <!------------------------------------------------------->
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +68,6 @@ else
         </div>
         </div>
 <?php
-
 session_start();//starts session
 $_SESSION['message'] = '';
 $servername = "localhost";
@@ -86,8 +79,6 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-
 function ifsessionExists(){
     //check if session exists?
     if (isset($_SESSION['count'])){
@@ -123,12 +114,12 @@ $_SESSION['count'] = '0';
     }
     else 
     {
-        echo "Info does not match. Password can not be changed";
+        include 'popup.php';
+        print $infoIsNotRightF;
     }
     
 }
 }
-
 ?>
     
 	</body>
