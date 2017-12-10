@@ -1,38 +1,132 @@
 <?php
 session_start();
+$role = ($_SESSION['role']);
+$role2 = "yes";
+$go = "";            
+            if (strcmp($role, $role2) !== 0){
+        		$go = "studentProfilePage.php";
+			
+			}
+		else{
+		$go ="facultyProfilePage.php";
+		    }
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+<!------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+	$(document).ready(function(){
+	$('#userForm').submit(function(){
+     
+	var Dob = $("#dob").val();
+	
+	if(Dob)
+{
+
+        $.post('changeDate_receiver.php', {dob: Dob}, function(data){
+	if (data == 0) {
+	//alert( data );
+
+	location.reload();
+
+        }
+
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+}
+else
+{
+	 alert( "value is empty");
+}
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+<!------------------------------------------------------->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Edit Date</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+        <div class = "wrapper">
+		<div class="form-signin">
+		<div class="changeDate">
+			<h2>Change Date</h2>
+			<form id='userForm'>
+				<p>Birthdate:
+				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
+				<p> 
+				<input type='submit' value='Change date' /></p>
+				<p><a href= "<?php echo $go ?>" >Profile</a></p>
+								
+				
+			</form>
+		</div>
+        </div>
+        </div>
+
+<?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
+
+$role2 = "yes";
 $servername = "localhost";
 $user = "root";
 $passwd = "";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
-if (isset($_POST['submit']))
-{
 if ($mysqli->connect_error) 
 {
     die("Connection failed: " . $conn->connect_error);
 }
-else 
-{
-    //echo "Good";
-    //$username=$_POST['username'];
-    $email = ($_POST['email']);
-    $email2 = ($_POST['email2']);
-    
-    if ($email == $email2)
+
+
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
     {
-        $sql= "UPDATE users SET email= '".$email."' WHERE id = '".$id."'";
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+    $password = ($_SESSION['dob']);
+    
+
+        $sql= "UPDATE users SET dob= '".$password."' WHERE id = '".$id."'";
         
         if ($mysqli->query($sql) === TRUE)
         {
             
-			$role2 = "yes";
             
 	 if (strcmp($role, $role2) !== 0){
         	include 'popup.php';
-			print $emailChangedSuccessfully;
+			print $dateChangedSuccessfully;
 			header("refresh: 2; url = studentProfilePage.php");
 			
 			}
@@ -42,50 +136,13 @@ else
         } 
         else
         {
-           include 'popup.php';
-	        print $emailCantChange;
+            include 'popup.php';
+			print $changeDateError;
         }
-    }
-    
-    else 
-    {
-	include 'popup.php';
-	print $emailCannotChangeError;
-    }
+ 
 }
 }//if isset
 ?>
 
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Edit Email</title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/styles.css" rel="stylesheet">
-	</head>
-	<body>
-        <div class = "wrapper">
-		<div class="form-signin">
-		<div class="changeEmail">
-			<h2>Change Email</h2>
-			<form method="post">
-				<p>Email
-                <br><input type="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required></p>
-				<p>Confirm Email
-				<br><input type="email" name="email2" placeholder="Confirm Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'];} ?>" required></p>
-				<p> 
-				<input type="submit" name="submit" value="Change email"></p>
-							
-				
-			</form>
-		</div>
-        </div>
-        </div>
-            
 	</body>
 </html>
-
