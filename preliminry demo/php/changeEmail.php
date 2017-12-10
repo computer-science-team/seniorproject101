@@ -14,6 +14,7 @@ $go = "";
 <!doctype html>
 <html lang="en">
   <head>
+
 <!------------------------------------------------------->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -22,12 +23,13 @@ $go = "";
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
      
-	var Dob = $("#dob").val();
+	var Email = $("#email").val();
+	var Email2 = $("#email2").val();
 	
-	if(Dob)
+	if(Email && Email2)
 {
 
-        $.post('changeDate_receiver.php', {dob: Dob}, function(data){
+        $.post('changeEmail_receiver.php', {email: Email,  email2 : Email2}, function(data){
 	if (data == 0) {
 	//alert( data );
 
@@ -58,45 +60,37 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Edit Date</title>
+		<title>Edit Email</title>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
         <div class = "wrapper">
 		<div class="form-signin">
-		<div class="changeDate">
-			<h2>Change Date</h2>
+		<div class="changeEmail">
+			<h2>Change Email</h2>
 			<form id='userForm'>
-				<p>Birthdate:
-				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
+				<p>New Email
+                		<br><input type="email" name="email" id="email" placeholder="Email" required/></p>
+				<p>Confirm Email
+				<br><input type="email" name="email" id="email2" placeholder="Confirm Email" required/></p>
 				<p> 
-				<input type='submit' value='Change date' /></p>
-				<p><a href= "<?php echo $go ?>" >Profile</a></p>
-								
+				<input type='submit' value='Change Email' /></p>
+				<p><a href= "<?php echo $go ?>" >Profile</a></p>		
 				
 			</form>
 		</div>
         </div>
         </div>
-
 <?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
-
-$role2 = "yes";
 $servername = "localhost";
 $user = "root";
-$passwd = "";
+$passwd = "Liger124!";
 $dbname ="accounts";
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
-if ($mysqli->connect_error) 
-{
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
 function ifsessionExists(){
     //check if session exists?
     if (isset($_SESSION['count'])){
@@ -114,19 +108,40 @@ if(ifsessionExists())
     if($_SESSION['count'] == $count)
 {
 $_SESSION['count'] = '0';
-
-    $password = ($_SESSION['dob']);
+if ($mysqli->connect_error) 
+{
+    die("Connection failed: " . $conn->connect_error);
+}
+    //echo "Good";
+    //$username=$_POST['username'];
+    $email = ($_SESSION['email']);
+    $email2 = ($_SESSION['email2']);
     
+    if ($email == $email2)
+    {
 
-        $sql= "UPDATE users SET dob= '".$password."' WHERE id = '".$id."'";
+    $selectFirstQuery = "SELECT * FROM users WHERE email  = '". $email ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    //if row is found email is in use
+
+            if($foundRows > 0)
+    {
+	include 'popup.php';
+	print $signupEmailAlreadyExist;
+       //duplicate emails needs to be unique
+		//print $signupEmailAlreadyExist;
+    }
+    else{
+        $sql= "UPDATE users SET email= '".$email."' WHERE id = '".$id."'";
         
         if ($mysqli->query($sql) === TRUE)
         {
-            
+			$role2 = "yes";
             
 	 if (strcmp($role, $role2) !== 0){
         	include 'popup.php';
-			print $dateChangedSuccessfully;
+			print $emailChangedSuccessfully;
 			header("refresh: 2; url = studentProfilePage.php");
 			
 			}
@@ -134,15 +149,18 @@ $_SESSION['count'] = '0';
 		header("location:facultyProfilePage.php");
 		    }
         } 
-        else
-        {
-            include 'popup.php';
-			print $changeDateError;
-        }
- 
-}
-}//if isset
-?>
+    }
+    
 
+}
+    else 
+    {
+	include 'popup.php';
+	print $emailCannotChangeError;
+    }
+}
+}
+
+?>
 	</body>
 </html>
