@@ -385,6 +385,16 @@ $sameTools =  str_replace(
 </div>'
 , $pageStart);
 
+$infoIsNotRightF =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Error">
+  <p>Info does not match. Password can not be changed
+  </p>
+</div>'
+, $pageStart);
+
 
 
 
