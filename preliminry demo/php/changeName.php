@@ -1,5 +1,90 @@
 <?php
 session_start();
+$role = ($_SESSION['role']);
+$role2 = "yes";
+$go = "";            
+            if (strcmp($role, $role2) !== 0){
+        		$go = "studentProfilePage.php";
+			
+			}
+		else{
+		$go ="facultyProfilePage.php";
+		    }
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+
+<!------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+	$(document).ready(function(){
+	$('#userForm').submit(function(){
+     
+	var Name = $("#name").val();
+	var Name2 = $("#name2").val();
+	
+	if(Name && Name2)
+{
+
+        $.post('changeName_receiver.php', {name: Name,  name2 : Name2}, function(data){
+	if (data == 0) {
+	//alert( data );
+
+	location.reload();
+
+        }
+
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+}
+else
+{
+	 alert( "value is empty");
+}
+ 	
+        // to prevent refreshing the whole page page
+        return false;
+ 
+    });
+});
+</script>
+<!------------------------------------------------------->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Edit Name</title>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+        <div class = "wrapper">
+		<div class="form-signin">
+		<div class="changeName">
+			<h2>Change Name</h2>
+			<form id='userForm'>
+				<p> New Name
+				<br><input type="text" name="name" id="name" placeholder="New Name" required/></p>
+				<p>Confirm Name
+				<br><input type="text" name="name" id="name2" placeholder="Confirm Name" required/></p>
+				<p>
+				<input type='submit' value='Change Name' /></p>			
+				<p><a href= "<?php echo $go ?>" >Profile</a></p>
+			</form>
+							
+				
+			</form>
+		</div>
+        </div>
+        </div>
+<?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 $servername = "localhost";
@@ -10,22 +95,36 @@ $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
 $role2 = "yes";
 // Check connection
-if (isset($_POST['submit']))
-{
 if ($mysqli->connect_error) 
 {
     die("Connection failed: " . $conn->connect_error);
 }
-else 
+
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
 {
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
     //echo "Good";
     //$username=$_POST['username'];
-    $password = ($_POST['password']);
-    $password2 = ($_POST['password2']);
+    $name = ($_SESSION['name']);
+    $name2 = ($_SESSION['name2']);
     
-    if ($password==$password2)
+    if ($name==$name2)
     {
-        $sql= "UPDATE users SET name= '".$password."' WHERE id = '".$id."'";
+        $sql= "UPDATE users SET name= '".$name."' WHERE id = '".$id."'";
         
         if ($mysqli->query($sql) === TRUE)
         {
@@ -42,11 +141,6 @@ else
 		header("location:facultyProfilePage.php");
 		    }
             
-        } 
-        else
-        {
-            include 'popup.php';
-             print $nameCantChange;
         }
     }
     
@@ -59,36 +153,5 @@ else
 }
 }//if isset
 ?>
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Edit Name</title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/styles.css" rel="stylesheet">
-	</head>
-	<body>
-        <div class = "wrapper">
-		<div class="form-signin">
-		<div class="changeName">
-			<h2>Change Name</h2>
-			<form method="post">
-				<p>Name
-				<br><input type="text" name="password" placeholder="name" required></p>
-
-				<p>Confirm Name 
-				<br><input type="text" name="password2" placeholder="confirm name" required></p>
-				<p> 
-				<input type="submit" name="submit" value="Change name"></p>
-							
-				
-			</form>
-		</div>
-        </div>
-        </div>
 	</body>
 </html>
