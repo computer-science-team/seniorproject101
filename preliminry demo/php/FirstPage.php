@@ -39,7 +39,7 @@ var sel = document.getElementById('subjects');
   var option = sel.options[sel.selectedIndex].value;
   var option2 = option.toString();
 
-        $.post('post_receiver.php', { name: option2}, function(data){
+        $.post('FirstPage_receiver.php', { name: option2}, function(data){
 	    if (data == 0) {
 
 	//location.replace('FirstPage.php');
