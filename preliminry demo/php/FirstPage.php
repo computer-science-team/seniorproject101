@@ -4,7 +4,7 @@
 
 $servername = "localhost";
 $user = "root";
-$passwd = "Liger124!";
+$passwd = "";
 $dbname ="accounts";
 
 // connect to mysql database
