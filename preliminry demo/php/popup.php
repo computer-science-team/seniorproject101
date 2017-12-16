@@ -41,7 +41,7 @@ $pageStart2 = str_replace(
   <p>Basic dialog</p>
 </div>',
 '<div id="dialog" title="Basic dialog">
-  <p>University is not found</p>
+  <p>University has been added</p>
 </div>'
 , $pageStart);
 
