@@ -1,5 +1,28 @@
 <?php
 
+// php select option value from database
+
+$servername = "localhost";
+$user = "root";
+$passwd = "Liger124!";
+$dbname ="accounts";
+
+// connect to mysql database
+
+$connect = mysqli_connect($servername, $user, $passwd, $dbname);
+
+// mysql select query
+$query = "SELECT * FROM `universities`";
+
+$result = mysqli_query($connect, $query);
+
+$options = "";
+
+while($row = mysqli_fetch_array($result))
+{
+    $options = $options."<option>$row[name]</option>";
+}
+
 ?>
 <!doctype html>
 <html>
@@ -8,26 +31,28 @@
 <!------------------------------------------------------->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script>
-	$(document).ready(function(){
-	$('#userForm').submit(function(){
+$(document).ready(function(){
+    $('#userForm').submit(function(){
      
-	var university = $("#university").val();
+var sel = document.getElementById('subjects');
+  var option = sel.options[sel.selectedIndex].value;
+  var option2 = option.toString();
 
-        $.post('FirstPage_receiver.php', { name: university}, function(data){
+        $.post('post_receiver.php', { name: option2}, function(data){
 	    if (data == 0) {
 
 	//location.replace('FirstPage.php');
 		location.reload();
         }
+             
         }).fail(function() {
          
             // just in case posting your form failed
             alert( "Posting failed." );
              
         });
- 	
+ 
         // to prevent refreshing the whole page page
         return false;
  
@@ -52,12 +77,15 @@
 			<h2>Welcome!</h2>
 			<form id='userForm'>
 				
-				<p>Please enter name of your University: </p>
-				<input type="text" name="university" id="university" placeholder="enter your university name" required/>
+				<p>Please choose your University: </p>
+				<select id="subjects">
+    				<?php echo $options;?>
+				</select>
 				<input type='submit' value='Submit' />
 				
 				<p>Already have an account?</p>
 			        <p><a href="login.php">Log In</a></p>
+				<p><a href="addUniversity.php">Add University</a></p>
 				<p><a href="../html/aboutUs.html">About Us!</a></p>
 				
 			</form>
@@ -85,10 +113,6 @@ if(ifsessionExists())
     if($_SESSION['count'] == $count)
 {
 $_SESSION['count'] = '0';
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
 $university = $_SESSION['university'];
 //var_dump($university);
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
@@ -117,36 +141,6 @@ print $pageStart1;
 
     
 }
-else{
-     //check if university is already registered
-    $selectFirstQuery = "SELECT * FROM universities WHERE name  = '". $university ."'";
-    $queryResult = $mysqli->query($selectFirstQuery);
-    $foundRows = $queryResult->num_rows;
-    //No university found - University is being registered
-    if($foundRows == 0)
-    {
-        $sql = "INSERT INTO universities(name)" . "VALUES ('$university')";
-       
-        if ($mysqli->query($sql)==true)
-        {   //university
-            $selectFirstQuery = "SELECT univid FROM universities WHERE name  = '". $university ."'";
-            $queryResult = $mysqli->query($selectFirstQuery);
-            $foundRows = $queryResult->num_rows;
-            //get university id num
-            if($foundRows > 0){
-                while($row=mysqli_fetch_assoc($queryResult)){
-                    $_SESSION['univid'] = $row['univid'];
-                } 
-            }
-        }
-    }
-print $pageStart2;
-header( "refresh:2; url=signup.php");
-}
-
-
-
-
   }
 }
 
