@@ -1,109 +1,3 @@
-<!-- PHP code which will connect to database and that way a user can sign up -->
-<?php
-session_start();
-include 'popup.php';
-
-function ifsessionExists(){
-    //check if session exists?
-    if (isset($_SESSION['count'])){
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-}
- 
-if(ifsessionExists())
-{
-    $count = '1';
-    if($_SESSION['count'] == $count)
-{
-$_SESSION['count'] = '0';
-
-$fullname = $_SESSION['fullname'];
-$dob = $_SESSION['dob'];
-$gender = $_SESSION['gender'];
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-$role = $_SESSION['role'];
-$univid=$_SESSION['univid'];
-$university=$_SESSION['university'];
-
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
-$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-    //Check if email is in use
-    
-    $selectFirstQuery = "SELECT * FROM users WHERE email  = '". $email ."'";
-    $queryResult = $mysqli->query($selectFirstQuery);
-    $foundRows = $queryResult->num_rows;
-    //if row is found email is in use
-    if($foundRows > 0)
-    {
-	print $signupEmailAlreadyExist;
-       //duplicate emails needs to be unique
-		//print $signupEmailAlreadyExist;
-    }
-    else
-	{
-    //Check to see if username is in use
-    $selectFirstQuery = "SELECT * FROM users WHERE username  = '". $username ."'";
-    $queryResult = $mysqli->query($selectFirstQuery);
-    $foundRows = $queryResult->num_rows;
-    if($foundRows > 0)
-    {
-	print $signupUserAlreadyExist;
-        //duplicate users in database needs to be unique
-		//
-    }
-    else
-{
-    //Insert info into table-user not in use
-    $sql = "INSERT INTO users(name, dob, gender, username, email, password, faculty, univid)"
-        . "VALUES ('$fullname','$dob', '$gender','$username','$email','$password','$role','$univid')";
-        if ($mysqli->query($sql)==true)
-        {
-	    $selectFirstQuery = "SELECT id FROM users WHERE username  = '". $username ."'";
-            $queryResult = $mysqli->query($selectFirstQuery);
-            $foundRows = $queryResult->num_rows;
-            if($foundRows > 0)
-            {
-                
-                while($row=mysqli_fetch_assoc($queryResult)){
-                    $id=$row['id'];
-                }
-            }
-            $_SESSION['id']=$id;
-            $_SESSION['username']=$username;
-            $_SESSION['univid']=$univid;
-            $_SESSION['univeristy']=$university;
-		$role2 = "yes";
-            
-            if (strcmp($role, $role2) !== 0){
-			header( "refresh:2; url=studentProfilePage.php");
-			
-			}
-		else{
-		header( "refresh:2; url=facultyProfilePage.php");
-		    }
-        }
-}
-}
-
-
-}
-}
-
-?>
-<!-- PHP code ends here -->   
 <!doctype html>
 <html lang="en">
   <head>
@@ -230,6 +124,111 @@ else
 			   
             </form>
 		</div>
-        </div>         
+        </div>
+<?php
+session_start();
+include 'popup.php';
+
+function ifsessionExists(){
+    //check if session exists?
+    if (isset($_SESSION['count'])){
+    return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+ 
+if(ifsessionExists())
+{
+    $count = '1';
+    if($_SESSION['count'] == $count)
+{
+$_SESSION['count'] = '0';
+
+$fullname = $_SESSION['fullname'];
+$dob = $_SESSION['dob'];
+$gender = $_SESSION['gender'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
+$role = $_SESSION['role'];
+$univid=$_SESSION['univid'];
+$university=$_SESSION['university'];
+
+$servername = "localhost";
+$user = "root";
+$passwd = "";
+$dbname ="accounts";
+$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+    //Check if email is in use
+    
+    $selectFirstQuery = "SELECT * FROM users WHERE email  = '". $email ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    //if row is found email is in use
+    if($foundRows > 0)
+    {
+	print $signupEmailAlreadyExist;
+       //duplicate emails needs to be unique
+		//print $signupEmailAlreadyExist;
+    }
+    else
+	{
+    //Check to see if username is in use
+    $selectFirstQuery = "SELECT * FROM users WHERE username  = '". $username ."'";
+    $queryResult = $mysqli->query($selectFirstQuery);
+    $foundRows = $queryResult->num_rows;
+    if($foundRows > 0)
+    {
+	print $signupUserAlreadyExist;
+        //duplicate users in database needs to be unique
+		//
+    }
+    else
+{
+    //Insert info into table-user not in use
+    $sql = "INSERT INTO users(name, dob, gender, username, email, password, faculty, univid)"
+        . "VALUES ('$fullname','$dob', '$gender','$username','$email','$password','$role','$univid')";
+        if ($mysqli->query($sql)==true)
+        {
+	    $selectFirstQuery = "SELECT id FROM users WHERE username  = '". $username ."'";
+            $queryResult = $mysqli->query($selectFirstQuery);
+            $foundRows = $queryResult->num_rows;
+            if($foundRows > 0)
+            {
+                
+                while($row=mysqli_fetch_assoc($queryResult)){
+                    $id=$row['id'];
+                }
+            }
+            $_SESSION['id']=$id;
+            $_SESSION['username']=$username;
+            $_SESSION['univid']=$univid;
+            $_SESSION['univeristy']=$university;
+		$role2 = "yes";
+            
+            if (strcmp($role, $role2) !== 0){
+			header( "refresh:2; url=studentProfilePage.php");
+			
+			}
+		else{
+		header( "refresh:2; url=facultyProfilePage.php");
+		    }
+        }
+}
+}
+
+
+}
+}
+
+?>
+<!-- PHP code ends here --> 
 	</body>
 </html>
