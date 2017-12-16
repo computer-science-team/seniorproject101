@@ -87,7 +87,7 @@ if(ifsessionExists())
 $_SESSION['count'] = '0';
 $servername = "localhost";
 $user = "root";
-$passwd = "Liger124!";
+$passwd = "";
 $dbname ="accounts";
 $university = $_SESSION['university'];
 //var_dump($university);
@@ -112,7 +112,7 @@ print $pageStart1;
     while($row = mysqli_fetch_assoc($queryResult)){
     	$_SESSION['univid'] = $row['univid'];
     }
-	header( "refresh:2; url=FirstPage.php");
+	header( "refresh:2; url=signup.php");
     //You will be redirected to the Sign up page.
 
     
