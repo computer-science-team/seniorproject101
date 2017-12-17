@@ -93,7 +93,8 @@ p {
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color:#27A967; 
-  border: 2px solid white;
+  border: 2px solid seagreen;
+  border-radius: 50px;    
 }
 
 	.form-control {
@@ -252,5 +253,35 @@ tr:nth-child(even){background-color:seagreen}
   background-color: #550055;
   color:#eeeeee;
 }
+input.button{
+    background-color:black;
+     width:100px;
+    height:40px;
+    border-radius:50px;
+    color: aliceblue;
+}
+
+input.buttonUpload{
+    background-color:black;
+     width:100px;
+    height:50px;
+    border-radius:50px;
+    color: aliceblue;
+}
+
+input.upload{
+   
+    border:solid 1px black;
+    padding:10px;
+}
+
+input
+{
+      
+    border-radius: 50px;
+    border:solid 1px black;
+    padding:5px;
+}
+
 
 /*css style for tables ends here*/
