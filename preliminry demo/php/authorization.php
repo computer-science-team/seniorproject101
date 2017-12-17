@@ -14,16 +14,6 @@
 	
 if(Role)
 {
-	role2 = "yes";
-	var urlNext = "";
-	  if(Role == role2)
-	{
-		urlNext = "addUniversity.php";
-	}
-	 else
-	{
-		urlNext = "FirstPage.php";
-	}
 
         $.post('authorization_receiver.php', { role : Role}, function(data){
 	    if (data == 0) {
@@ -101,26 +91,19 @@ if(ifsessionExists())
 {
 $_SESSION['count'] = '0';
 
-$role = $_SESSION['role'];
+$role = $_SESSION['role2'];
 
-include 'config.php';
-$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-    //the code below should work yousuf but for some reason it is not i think you can figur out what i am trying to do here
     
-		//$role2 = "yes";
+		$role2 = "yes";
             
-            //if (strcmp($role, $role2) !== 0){
-			//header( "refresh:2; url=FirstPage.php");
-			//       print $universit;yCantBeAdded
-          //  }
-		//else{
-		//header( "refresh:2; url=addUniversity.php");
-             //print $welcomeAddUni;
-		   // }
+            if(strcmp($role, $role2) !== 0){
+			header( "refresh:2; url=FirstPage.php");
+			       print $universityCantBeAdded;
+            }
+		else{
+		header( "refresh:2; url=addUniversity.php");
+             print $welcomeAddUni;
+		   }
         
 }
 }
