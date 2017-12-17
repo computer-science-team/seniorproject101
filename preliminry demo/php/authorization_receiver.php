@@ -1,6 +1,6 @@
 <?php
 session_start();
-     $_SESSION['university'] = "$_POST[name]";
+     $_SESSION['role2'] = "$_POST[role]";
 	$_SESSION['count'] = '1';
 echo 0;
 ?>
