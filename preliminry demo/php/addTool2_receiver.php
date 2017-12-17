@@ -1,10 +1,7 @@
 <?php 
 session_start();
 
-    $servername = "localhost";
-    $user = "root";
-    $passwd = "";
-    $dbname ="accounts";
+    include 'config.php';
     $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
     // Check connection
     if ($mysqli->connect_error) {

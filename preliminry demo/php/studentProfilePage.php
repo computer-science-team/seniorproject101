@@ -12,10 +12,7 @@ $_SESSION['runivid'] = $runivid;
 //$_SESSION['university']=$university;
 //$_SESSION['faculty']=$faculty;
 $_SESSION['runiversity']=$runiversity;
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "accounts";
+include 'config.php';
 //Prints Guidelines for success is unavailable for download if no file is present
 if (!empty($_SESSION['message'])) {
 //echo '<p class="message"> '.$_SESSION['message'].'</p>';
@@ -59,7 +56,7 @@ unset($_SESSION['message']);
 //$_SESSION['message']===NULL;
 }             
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $user, $passwd, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

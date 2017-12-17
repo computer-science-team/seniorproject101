@@ -10,12 +10,9 @@ if (!empty($_SESSION['message'])) {
     echo '<p class="message"> '.$_SESSION['message'].'</p>';
     unset($_SESSION['message']);
 }
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -124,7 +121,7 @@ $go = "";
 		    $url2 = $row['url'];
 		    $pieceOfURL = substr($url2, 0, 30);
 			     
-		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: red; margin-left: 30%;' type='submit' name='Delete' value = {$row['url']}>Delete</button></th>";
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: black; margin-left: 30%; border-radius:50px;' type='submit' name='Delete' value = {$row['url']}>Delete</button></th>";
 		            
 		    }
 		   

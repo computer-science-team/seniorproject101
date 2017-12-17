@@ -52,16 +52,16 @@ else
 		<div class="passwordRecovery">
 			<h2>Password Recovery!</h2>
 			<form id='userForm'>
-				<p>Username
+                <p><strong>Username:</strong>
 				<br><input type="text" name="username" id="username" placeholder="Username" required/></p>
-				<p>Fullname 
+                <p><strong>Fullname:</strong> 
 				<br><input type="text" name="name" id="name" placeholder="Name" required/></p>
-				<p>Birthdate
+                <p><strong>Birthdate:</strong>
 				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
 				<p> 
-				<input type='submit' value='Change Password' /></p>
+				<input type='submit' value='submit' class="button"/></p>
 				
-				<p><a  href="login.php">Sign In</a></p>				
+				<p><a  href="login.php">LogIn</a></p>				
 				
 			</form>
 		</div>
@@ -70,12 +70,9 @@ else
 <?php
 session_start();//starts session
 $_SESSION['message'] = '';
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection        
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

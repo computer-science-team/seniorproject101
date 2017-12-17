@@ -71,21 +71,21 @@
 		<div class="form-signin">
             <h1> Add to your Toolkit</h1>
          <form id='userForm'>
-        <p>By creating your tool</p>
-		<p>Tool: 
-				<br><input type="text" name="toolname" id="toolname" placeholder="toolname" required/></p>
-		<p>Category: 
-				<br><input type="text" name="category" id="category" placeholder="category" required/></p>
-		<p>Location: 
-				<br><input type="text" name="url" id="url" placeholder="url" required/></p>
-            <p>Private Tool:
+             <p><strong>By creating your tool</strong></p>
+             <p><strong>Tool:</strong> 
+				<br><input type="text" name="toolname" id="toolname" class="form-control form-rounded"  placeholder="toolname" required/></p>
+             <p><strong>Category:</strong> 
+				<br><input type="text" name="category" id="category" class="form-control form-rounded"  placeholder="category" required/></p>
+             <p><strong>Location:</strong> 
+				<br><input type="text" name="url" class="form-control form-rounded"  id="url" placeholder="url" required/></p>
+             <p><strong>Private Tool:</strong>
 				<br><select id="privates" name="private">
 				<option value="yes">Yes</option>
 				<option value="no">No</option>
 				</select></p>
 
 				
-		<p><input type='submit' value='Submit' /></p>
+		<p><input type='submit' value='Submit' class="button" /></p>
 				
 	  
     </form>

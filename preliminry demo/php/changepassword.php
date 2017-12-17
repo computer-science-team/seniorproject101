@@ -56,12 +56,12 @@ else
 		<div class="changePassword">
 			<h2>Change Password</h2>
 			<form id='userForm'>
-				<p> New Password
-				<br><input type="password" name="password" id="password" placeholder="*********" required/></p>
-				<p>Confirm Password 
-				<br><input type="password" name="password" id="password2" placeholder="*********" required/></p>
+                <p><strong> New Password: </strong>
+				<br><input type="password" name="password" id="password" placeholder="*********" class="form-control form-rounded" required/></p>
+                <p><strong>Confirm Password: </strong>
+				<br><input type="password" name="password" id="password2" placeholder="*********" class="form-control form-rounded" required/></p>
 				<p>
-				<input type='submit' value='Submit' /></p>			
+				<input type='submit' value='Submit' class="button" /></p>			
 				
 			</form>
 		</div>
@@ -72,12 +72,9 @@ session_start();//starts session
 $_SESSION['message'] = '';
 
 $username = $_SESSION['username'];
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection        
 if ($mysqli->connect_error) 
 {
     die("Connection failed: " . $conn->connect_error);

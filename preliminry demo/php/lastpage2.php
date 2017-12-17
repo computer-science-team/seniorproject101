@@ -6,12 +6,9 @@ $runiversity= ($_SESSION['university']);
 $runivid= ($_SESSION['univid']);
 //var_dump($_SESSION['university']);
 //echo $username;
-$servername = "localhost";
-$user = "root";
-$passwd = "kkp123";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

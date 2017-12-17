@@ -2,12 +2,9 @@
 session_start();
 $id = ($_SESSION['id']);
 
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

@@ -70,29 +70,26 @@ else
 		<div class="changeName">
 			<h2>Change Name</h2>
 			<form id='userForm'>
-				<p> New Name
-				<br><input type="text" name="name" id="name" placeholder="New Name" required/></p>
-				<p>Confirm Name
-				<br><input type="text" name="name" id="name2" placeholder="Confirm Name" required/></p>
+                <p> <strong>New Name:</strong>
+				<br><input type="text" name="name" id="name" placeholder="New Name" class="form-control form-rounded" required/></p>
+                <p><strong>Confirm Name:</strong>
+				<br><input type="text" name="name" id="name2" placeholder="Confirm Name" class="form-control form-rounded" required/></p>
 				<p>
-				<input type='submit' value='Change Name' /></p>			
-				<p><a href= "<?php echo $go ?>" >Profile</a></p>
+				<input type='submit' value='submit' class="button" /></p>			
+				
 			</form>
 							
 				
-			</form>
+			
 		</div>
         </div>
         </div>
 <?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection                      
 $role2 = "yes";
 // Check connection
 if ($mysqli->connect_error) 

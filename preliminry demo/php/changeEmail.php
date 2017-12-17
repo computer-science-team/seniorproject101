@@ -70,13 +70,13 @@ else
 		<div class="changeEmail">
 			<h2>Change Email</h2>
 			<form id='userForm'>
-				<p>New Email
-                		<br><input type="email" name="email" id="email" placeholder="Email" required/></p>
-				<p>Confirm Email
-				<br><input type="email" name="email" id="email2" placeholder="Confirm Email" required/></p>
+                <p><strong>New Email:</strong>
+                		<br><input type="email" name="email" id="email" class="form-control form-rounded" placeholder="Email" required/></p>
+                <p><strong>Confirm Email:</strong>
+				<br><input type="email" name="email" id="email2" class="form-control form-rounded"placeholder="Confirm Email" required/></p>
 				<p> 
-				<input type='submit' value='Change Email' /></p>
-				<p><a href= "<?php echo $go ?>" >Profile</a></p>		
+				<input type='submit' value='submit' class="button" /></p>
+						
 				
 			</form>
 		</div>
@@ -85,12 +85,9 @@ else
 <?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
-$servername = "localhost";
-$user = "root";
-$passwd = "Liger124!";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection                      
 function ifsessionExists(){
     //check if session exists?
     if (isset($_SESSION['count'])){

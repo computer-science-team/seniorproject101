@@ -1,13 +1,11 @@
 <?php 
             session_start();//starts session
             $_SESSION['message'] = '';
-            $servername = "localhost";
-            $user = "root";
-            $passwd = "kkp123";
-            $dbname ="accounts";
+            
             $runiversity = $_SESSION['university'];
+            include 'config.php';
             $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-            // Check connection
+    // Check connection
             if ($mysqli->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }

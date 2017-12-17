@@ -69,16 +69,16 @@ else
 		<div class="changeGender">
 			<h2>Change Gender</h2>
 			<form id='userForm'>
-			<p>Gender:</p>
-				<p>
+                <p><strong>Gender:</strong>
+				
 				<select id="genders" name="gender">
   				<option value="Male">Male</option>
   				<option value="Female">Female</option>
   				<option value="Other">Other</option>
 				</select>
 				</p>
-			<input type='submit' value='Change Gender' />
-			<p><a href= "<?php echo $go ?>" >Profile</a></p>
+			<input type='submit' value='submit' class="button" />
+			
 							
 				
 			</form>
@@ -88,12 +88,9 @@ else
 <?php
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection                  
 if ($mysqli->connect_error) 
 {
     die("Connection failed: " . $conn->connect_error);

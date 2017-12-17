@@ -48,11 +48,11 @@
 			<form id='userForm' class="form-signin">
                 <h2 class="form-signin-heading">Please login</h2>
 		
-				<p><input type="text" name="username" id="username" placeholder="Username" required/></p>
-              			<p><input type="password" name="password" id="password" placeholder="Password" required/></p>     
-				<input type='submit' value='Submit' />
+				<p><input type="text" name="username" class="form-control form-rounded" id="username" placeholder="Username" required/></p>
+              			<p><input type="password" name="password" id="password" class="form-control form-rounded"placeholder="Password" required/></p>     
+                <p><input type='submit' value='Submit'class="button" /></p>
 				<p><a href="forgot.php"> Forgot Password? </a> </p>
-				<p>Don't have an account? <br> <a href="FirstPage.php">Sign Up!</a>
+                <p><strong>Don't have an account? </strong><br> <a href="FirstPage.php">Sign Up!</a></p>
 				
 				
 			</form>
@@ -61,13 +61,9 @@
 
 <?php 
 session_start();
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
-
-$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);
-// Check connection
+include 'config.php';
+$mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
+    // Check connection        
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

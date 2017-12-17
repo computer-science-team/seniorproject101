@@ -8,12 +8,9 @@ $university=$_SESSION['university'];
 //$univid= "1";
 $id=$_SESSION['id'];
 $username=$_SESSION['username'];
-$servername = "localhost";
-$user = "root";
-$passwd = "kkp123";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -86,7 +83,7 @@ if(isset($_POST['view'])){
         while($row=mysqli_fetch_assoc($queryResult)){
             
             
-echo "<tr><td>{$row['name']}</td><td><button style = ' background: red; margin-left: 30%;' type='submit' style = 'color:red;' name='view' value = '{$row['id']}'>Go</button></td>";            
+echo "<tr><td>{$row['name']}</td><td><button style = ' background:black; margin-left: 30%; border-radius:50px;border: 2px solid black;' type='submit' style = 'color:red;' name='view' value = '{$row['id']}'>Go</button></td>";            
            
         }//while      
     }//foundrows

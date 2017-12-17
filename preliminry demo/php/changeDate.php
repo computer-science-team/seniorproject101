@@ -68,11 +68,11 @@ else
 		<div class="changeDate">
 			<h2>Change Date</h2>
 			<form id='userForm'>
-				<p>Birthdate:
-				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
+                <p><strong>Birthdate:</strong>
+				<br><input type="date" name="dob" id="dob" class="form-control form-rounded" placeholder="MM/DD/YYYY" required/></p>
 				<p> 
-				<input type='submit' value='Change date' /></p>
-				<p><a href= "<?php echo $go ?>" >Profile</a></p>
+				<input type='submit' value='submit' class="button"/></p>
+				
 								
 				
 			</form>
@@ -85,12 +85,9 @@ $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 
 $role2 = "yes";
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection                      
 if ($mysqli->connect_error) 
 {
     die("Connection failed: " . $conn->connect_error);

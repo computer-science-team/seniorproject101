@@ -38,9 +38,9 @@
 		
 <form method="post" enctype="multipart/form-data" >
     <p>Upload File:
-    <input type="file" name="f"/></p>
+    <input type="file" name="f" class="upload" /></p>
 
-    <p><input type ="submit" name="submit1" value="submit"/></p>
+    <p><input type ="submit" name="submit1" value="submit" class="buttonUpload" /></p>
 </form>
     </div>
     </div>
@@ -58,12 +58,9 @@ session_start();//starts session
 $runiversity = $_SESSION['runiversity'];
 //$runiversity = $_SESSION['$runiversity'];
 //$_SESSION['message'] = '';
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

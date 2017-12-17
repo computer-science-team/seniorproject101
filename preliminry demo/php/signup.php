@@ -6,9 +6,7 @@
 <!------------------------------------------------------->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script>
-
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
      
@@ -22,10 +20,8 @@
 	
 	if(Name && Gender && Dob && Email && Username && Password && Role )
 {
-
 	role2 = "yes";
 	var urlNext = "";
-
 	  if(Role == role2)
 	{
 		urlNext = "facultyProfilePage.php";
@@ -34,14 +30,11 @@
 	{
 		urlNext = "studentProfilePage.php";
 	}
-
 	
         $.post('signup_receiver.php', { name: Name, gender: Gender,  dob : Dob, email : Email, username : Username, password : Password, role : Role}, function(data){
-
 	if (data == 0) {
 	location.reload();
         }
-
         }).fail(function() {
          
             // just in case posting your form failed
@@ -61,8 +54,6 @@ else
 });
 </script>
 <!------------------------------------------------------->
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,7 +83,7 @@ else
 			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form id='userForm'>
 				<p>Name:
-				<br><input type="text" name="name" id="name" placeholder="Name" required/></p>
+				<br><input type="text" name="name" id="name" placeholder="Name" class="form-control form-rounded"required/></p>
 				<p>Gender:
 
 				<select id="genders" name="gender">
@@ -102,13 +93,13 @@ else
 				</select>
 
 				<p>Birthdate: 
-				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" required/></p>
+				<br><input type="date" name="dob" id="dob" placeholder="MM/DD/YYYY" class="form-control form-rounded" required/></p>
 				<p>Email: 
-				<br><input type="email" name="email" id="email" placeholder="Email" required/></p>
+				<br><input type="email" name="email" id="email" placeholder="Email"  class="form-control form-rounded" required/></p>
 				<p>Username: 
-				<br><input type="text" name="username" id="username" placeholder="Username" required/></p>
+				<br><input type="text" name="username" id="username" class="form-control form-rounded" placeholder="Username" required/></p>
 				<p>Password: 
-				<br><input type="password" name="password" id="password" placeholder="*********" required/></p>
+				<br><input type="password" name="password" id="password" class="form-control form-rounded" placeholder="*********" required/></p>
                 		<p>Faculty:
 				<select id="roles" name="role">
 				<option value="no">No</option>
@@ -118,9 +109,9 @@ else
 
 
 				
-                <p><input type='submit' value='Submit' /></p> 
-				<p>Already have an account? <br> <a href="login.php"> Log In</a></p>
-				<p><a href="FirstPage.php">Go Back</a></p>
+                <p><input type='submit' value='Submit'class="button" /></p> 
+                <p><strong>Already have an account?</strong> <br> <a href="login.php"> Log In</a></p>
+				
 			   
             </form>
 		</div>
@@ -128,7 +119,6 @@ else
 <?php
 session_start();
 include 'popup.php';
-
 function ifsessionExists(){
     //check if session exists?
     if (isset($_SESSION['count'])){
@@ -146,7 +136,6 @@ if(ifsessionExists())
     if($_SESSION['count'] == $count)
 {
 $_SESSION['count'] = '0';
-
 $fullname = $_SESSION['fullname'];
 $dob = $_SESSION['dob'];
 $gender = $_SESSION['gender'];
@@ -156,11 +145,7 @@ $password = $_SESSION['password'];
 $role = $_SESSION['role'];
 $univid=$_SESSION['univid'];
 $university=$_SESSION['university'];
-
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
 // Check connection
 if ($mysqli->connect_error) {
@@ -223,11 +208,8 @@ if ($mysqli->connect_error) {
         }
 }
 }
-
-
 }
 }
-
 ?>
 <!-- PHP code ends here --> 
 	</body>

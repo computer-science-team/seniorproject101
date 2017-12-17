@@ -1,5 +1,4 @@
 <?php
-
 $pageStart = '<!DOCTYPE html>
 <html xmlns>
 <head>
@@ -17,7 +16,6 @@ $pageStart = '<!DOCTYPE html>
   </script>
 </head>
 <body>
-
 <div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
 </div>
@@ -25,7 +23,6 @@ $pageStart = '<!DOCTYPE html>
  
 </body>
 </html>';
-
 $pageStart1 = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -34,8 +31,6 @@ $pageStart1 = str_replace(
   <p>University is found</p>
 </div>'
 , $pageStart);
-
-
 $pageStart2 = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -44,7 +39,6 @@ $pageStart2 = str_replace(
   <p>University has been added</p>
 </div>'
 , $pageStart);
-
 $loginerror = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -53,7 +47,6 @@ $loginerror = str_replace(
   <p>Username/password was incorrect.. Please try again with correct credentials. </p>
 </div>'
 , $pageStart);
-
 $facultyToolsPageToolAlreadyExistError = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -62,7 +55,6 @@ $facultyToolsPageToolAlreadyExistError = str_replace(
   <p>Tool already exist in your toolkit, try adding different tool. </p>
 </div>'
 , $pageStart);
-
 $passwordSuccessfullyChanged = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -71,7 +63,6 @@ $passwordSuccessfullyChanged = str_replace(
   <p>Your password was changed successfully.</p>
 </div>'
 , $pageStart);
-
 $passwordDoNotMatch = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -80,7 +71,6 @@ $passwordDoNotMatch = str_replace(
   <p>Password do not match</p>
 </div>'
 , $pageStart);
-
 $passwordCannotChange = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -89,7 +79,6 @@ $passwordCannotChange = str_replace(
   <p>We were unable to change your password, please try again. </p>
 </div>'
 , $pageStart);
-
 $namesDoNotMatch = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -98,7 +87,6 @@ $namesDoNotMatch = str_replace(
   <p>Names, do not match. Please try again. </p>
 </div>'
 , $pageStart);
-
 $namesMatched = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -107,7 +95,6 @@ $namesMatched = str_replace(
   <p>Your name has been changed.</p>
 </div>'
 , $pageStart);
-
 $emailChangedSuccessfully = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -116,7 +103,6 @@ $emailChangedSuccessfully = str_replace(
   <p>Your email has been successfully updated.</p>
 </div>'
 , $pageStart);
-
 $emailCannotChangeError = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -125,7 +111,6 @@ $emailCannotChangeError = str_replace(
   <p>We were unable to change the email. Pelase try again with correct email in both boxes.</p>
 </div>'
 , $pageStart);
-
 $genderChangeSuccessfully = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -134,7 +119,6 @@ $genderChangeSuccessfully = str_replace(
   <p>Your gender has been successfully updated.</p>
 </div>'
 , $pageStart);
-
 $genderChangeError = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -143,7 +127,6 @@ $genderChangeError = str_replace(
   <p>We were unable to change gender. Pelase try again.</p>
 </div>'
 , $pageStart);
-
 $dateChangedSuccessfully = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -152,7 +135,6 @@ $dateChangedSuccessfully = str_replace(
   <p>Your birthdate has been successfully updated.</p>
 </div>'
 , $pageStart);
-
 $changeDateError = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -161,7 +143,6 @@ $changeDateError = str_replace(
   <p>We were unable to change your birthdate. Pelase try again.</p>
 </div>'
 , $pageStart);
-
 $signupErrorLast = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -170,7 +151,6 @@ $signupErrorLast = str_replace(
   <p>We were unable to sign you up. Please try again. </p>
 </div>'
 , $pageStart);
-
 $signupUserAlreadyExist = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -179,7 +159,6 @@ $signupUserAlreadyExist = str_replace(
   <p>Username already exist, please choose different username and try again.</p>
 </div>'
 , $pageStart);
-
 $signupEmailAlreadyExist = str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -188,7 +167,6 @@ $signupEmailAlreadyExist = str_replace(
   <p>Email already exist, please choose different email and try again.</p>
 </div>'
 , $pageStart);
-
 $nameCantChange =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -197,7 +175,6 @@ $nameCantChange =  str_replace(
   <p>The name can not be changed this way.</p>
 </div>'
 , $pageStart);
-
 $emailCantChange =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -206,7 +183,6 @@ $emailCantChange =  str_replace(
   <p>Email can not be changed this way.</p>
 </div>'
 , $pageStart);
-
 $toolNameNeeded =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -215,7 +191,6 @@ $toolNameNeeded =  str_replace(
   <p>Please enter the tool name.</p>
 </div>'
 , $pageStart);
-
 $catagoryNameNeeded =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -224,7 +199,6 @@ $catagoryNameNeeded =  str_replace(
   <p>Please enter the category name</p>
 </div>'
 , $pageStart);
-
 $urlNeeded =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -233,7 +207,6 @@ $urlNeeded =  str_replace(
   <p>Please enter the url of the tool</p>
 </div>'
 , $pageStart);
-
 $urlcorrect =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -243,7 +216,6 @@ $urlcorrect =  str_replace(
   <br>All url addresses must contain http:// or https://</p>
 </div>'
 , $pageStart);
-
 $toolError =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -253,7 +225,6 @@ $toolError =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $sameUrl =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -263,7 +234,6 @@ $sameUrl =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $sameUrlUniversity =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -273,7 +243,6 @@ $sameUrlUniversity =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $toolAddedUni =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -283,7 +252,6 @@ $toolAddedUni =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $toolAdded =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -293,7 +261,6 @@ $toolAdded =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $toolDeleted =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -303,7 +270,6 @@ $toolDeleted =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $toolDeleteError =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -313,7 +279,6 @@ $toolDeleteError =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $uploadWarning =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -324,7 +289,6 @@ $uploadWarning =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $selectFileWarning =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -334,7 +298,6 @@ $selectFileWarning =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $uploadSuccess =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -344,7 +307,6 @@ $uploadSuccess =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $uploadFaliure =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -354,7 +316,6 @@ $uploadFaliure =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $wrongFormat =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -364,7 +325,6 @@ $wrongFormat =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $requestRightFormat =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -374,7 +334,6 @@ $requestRightFormat =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $sameTools =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -384,7 +343,6 @@ $sameTools =  str_replace(
   </p>
 </div>'
 , $pageStart);
-
 $infoIsNotRightF =  str_replace(
 '<div id="dialog" title="Basic dialog">
   <p>Basic dialog</p>
@@ -395,12 +353,23 @@ $infoIsNotRightF =  str_replace(
 </div>'
 , $pageStart);
 
+$welcomeAddUni =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Welcome!!">
+  <p>Welcome. You will be prompted to add your university shorlty.
+  </p>
+</div>'
+, $pageStart);
 
-
-
-
-
-
+$universityCantBeAdded =  str_replace(
+'<div id="dialog" title="Basic dialog">
+  <p>Basic dialog</p>
+</div>',
+'<div id="dialog" title="Sorry">
+  <p>You can not add university as student.
+  </p>
+</div>'
+, $pageStart);
 ?>
-
-

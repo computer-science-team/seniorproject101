@@ -8,12 +8,9 @@ $runivid= ($_SESSION['univid']);
 $role = ($_SESSION['role']);
 //var_dump($_SESSION['university']);
 //echo $username;
-$servername = "localhost";
-$user = "root";
-$passwd = "";
-$dbname ="accounts";
+include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
-// Check connection
+    // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -162,7 +159,7 @@ $go = "";
 		    $pieceOfURL = substr($url2, 0, 30);
 			     
 		        
-		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: red; margin-left: 30%;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
+		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background: black; margin-left: 30%; border-radius:50px;border: 2px solid black;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
 		            
 		    }
 		   
