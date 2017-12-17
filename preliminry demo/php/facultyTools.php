@@ -115,7 +115,7 @@ $go = "";
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigation<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 				  
 				  <li><a href= "<?php echo $go ?>">Profile Page</a></li>

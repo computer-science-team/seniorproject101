@@ -41,7 +41,7 @@ $sql = "SELECT id, name, gender, email, username, dob FROM users WHERE id = $id"
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
                 <li><a href="../html/facultyManual.html">Manual</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile<span class="caret"></span></a>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 		  <li><a href="changepassword.php">Change Password</a></li>
 		  

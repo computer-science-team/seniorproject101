@@ -5,7 +5,6 @@
 <!------------------------------------------------------->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script>
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
@@ -14,7 +13,6 @@
 	
 if(Role)
 {
-
         $.post('authorization_receiver.php', { role : Role}, function(data){
 	    if (data == 0) {
 		//alert(data);
@@ -39,7 +37,6 @@ else
 });
 </script>
 <!------------------------------------------------------->
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,7 +44,6 @@ else
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
-
 	<body class="loginpage">
 		<div class="signInBox">
 			<div class="wrapper">
@@ -90,9 +86,7 @@ if(ifsessionExists())
  if($_SESSION['count'] == $count)
 {
 $_SESSION['count'] = '0';
-
 $role = $_SESSION['role2'];
-
     
 		$role2 = "yes";
             
@@ -107,8 +101,6 @@ $role = $_SESSION['role2'];
         
 }
 }
-
-
 ?>
 <!-- PHP code ends here -->         
         
