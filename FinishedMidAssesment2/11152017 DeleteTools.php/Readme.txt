@@ -1,1 +1,0 @@
-This file will delete the users tools. Please make sure you are using the latest database otherwise it will not work. The latest tool database has a toolnm column. If you don't see that column in the tools table then the code will not work
