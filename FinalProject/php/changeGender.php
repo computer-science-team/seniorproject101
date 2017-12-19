@@ -1,4 +1,5 @@
 <?php
+//Starting session with session tokens 
 session_start();
 $role = ($_SESSION['role']);
 $role2 = "yes";
@@ -67,6 +68,7 @@ else
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="changeGender">
+			<!--Creating form for user to change the gender.-->
 			<h2>Change Gender</h2>
 			<form id='userForm'>
                 <p><strong>Gender:</strong>
@@ -86,6 +88,7 @@ else
         </div>
         </div>
 <?php
+		//PHP code to validate the changeas in database. 
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 include 'config.php';
