@@ -1,4 +1,5 @@
 <?php
+// Used Php to validate/change date of user from database. 
 session_start();
 $role = ($_SESSION['role']);
 $role2 = "yes";
@@ -63,6 +64,7 @@ else
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+	<!--Form for HTML starts from here. -->
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="changeDate">
@@ -81,6 +83,7 @@ else
         </div>
 
 <?php
+//PHP code to validate users input. 
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 
