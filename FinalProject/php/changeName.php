@@ -1,4 +1,5 @@
 <?php
+//Starting session with session token 
 session_start();
 $role = ($_SESSION['role']);
 $role2 = "yes";
@@ -65,6 +66,7 @@ else
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+	<!--Creating form for users to change Name. -->
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="changeName">
@@ -85,6 +87,7 @@ else
         </div>
         </div>
 <?php
+		//PHP code to validate that change in Database. 
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 include 'config.php';
