@@ -1,4 +1,5 @@
 <?php
+//Starting session
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
@@ -40,6 +41,7 @@ $go = "";
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+	//Script will load data from database.
 	$(document).ready(function(){
 	$("button").click(function(){
      
@@ -110,6 +112,7 @@ $go = "";
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $id ."'";
 		$queryResult = $mysqli->query($selectFirstQuery);
 		$foundRows = $queryResult->num_rows;
+		//Creating table using PHP injecting HTML.
 		//checks if anything in tool kit
 		if($foundRows > 0)
 		{
