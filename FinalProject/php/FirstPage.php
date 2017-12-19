@@ -1,4 +1,6 @@
 <?php
+//FirstPage.php is the very first page after user clicks on login button on
+// main page of our Web Application. 
 // php select option value from database
 include 'config.php';
 // connect to mysql database
