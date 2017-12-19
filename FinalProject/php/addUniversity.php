@@ -42,7 +42,7 @@
 		<div class="signUpBox">
 			<h2>Welcome!</h2>
 			<form id='userForm'>
-				
+		<!--Html form for user to input name of the university-->		
                 <p><strong>Please enter name of your University:</strong> </p>
                 <p><input type="text" name="university" id="university" class="form-control form-rounded"  placeholder="enter your university name" required/></p>
                 <p><input type='submit' value='Submit' class="button" /></p>
@@ -55,6 +55,7 @@
 		</div>
         </div>
         </div>
+<!--PHP code to validate univeristy-->
 <?php
 session_start();
 include 'popup.php';
