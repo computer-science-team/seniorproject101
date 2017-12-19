@@ -1,4 +1,6 @@
 <?php
+//After a faculty logs in, Web App takes them here. Which displays their profile details. 
+
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
