@@ -1,4 +1,5 @@
 <?php
+// Starting the session 
 session_start();
 $role = ($_SESSION['role']);
 $role2 = "yes";
@@ -65,6 +66,7 @@ else
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+	<!--Creating Form for changeing email for user. -->
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="changeEmail">
@@ -83,6 +85,7 @@ else
         </div>
         </div>
 <?php
+//PHP to validate and change users input. 
 $id = ($_SESSION['id']);
 $role = ($_SESSION['role']);
 include 'config.php';
