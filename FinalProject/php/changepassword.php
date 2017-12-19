@@ -51,6 +51,7 @@ else
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+	<!--Creating form to change password for user-->
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="changePassword">
@@ -68,6 +69,7 @@ else
         </div>
         </div>
 <?php
+		//PHHP code to validate that change in Database. 
 session_start();//starts session
 $_SESSION['message'] = '';
 
