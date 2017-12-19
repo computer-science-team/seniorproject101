@@ -6,7 +6,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+  
 <script>
+	//Adding java script to add item in a table
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
      
@@ -67,6 +69,8 @@
 		</div>
 	</div>
 </nav>
+
+		<!--Creating table to display tools. -->
         <div class = "wrapper">
 		<div class="form-signin">
             <h1> Add to your Toolkit</h1>
@@ -93,6 +97,7 @@
         
 	</div>
     </div>
+	<!--Pop Up Code begins from here. -->
 <?php 
   session_start();
   include 'popup.php';
