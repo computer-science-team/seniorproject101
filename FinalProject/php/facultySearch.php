@@ -6,6 +6,8 @@ $runiversity=$_SESSION['university'];
 $university=$_SESSION['university'];
 //$university = "Rowan University";
 //$univid= "1";
+//Starting session for facultySearch.php here. This page allows user to search for faculty who
+//are alredy registered on web application. 
 $id=$_SESSION['id'];
 $username=$_SESSION['username'];
 include 'config.php';
@@ -81,7 +83,8 @@ if(isset($_POST['view'])){
         echo "<br/>Here are faculty from ".$university. ":";
         echo "<tr><td>Faculty Name</td><td>View Tools</td><rr>";
         while($row=mysqli_fetch_assoc($queryResult)){
-            
+		//Table code starts here. 
+		//Used PHP and injected HTML to create new table. 
             
 echo "<tr><td>{$row['name']}</td><td><button style = ' background:black; margin-left: 30%; border-radius:50px;border: 2px solid black;' type='submit' style = 'color:red;' name='view' value = '{$row['id']}'>Go</button></td>";            
            
