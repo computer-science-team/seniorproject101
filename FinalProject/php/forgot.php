@@ -1,4 +1,5 @@
 <!doctype html>
+<!--This page allows users to change their password if they forgot password or unable to log in for some reason. -->
 <html lang="en">
   <head>
 
@@ -6,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+	//Java Script
 	$(document).ready(function(){
 	$('#userForm').submit(function(){
      
@@ -47,6 +49,7 @@ else
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
 	<body>
+		<!--Password form for user to put in their new password-->
         <div class = "wrapper">
 		<div class="form-signin">
 		<div class="passwordRecovery">
@@ -68,6 +71,7 @@ else
         </div>
         </div>
 <?php
+//PHP session to validate users change. 
 session_start();//starts session
 $_SESSION['message'] = '';
 include 'config.php';
