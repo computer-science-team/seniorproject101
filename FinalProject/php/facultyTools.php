@@ -1,4 +1,5 @@
 <?php 
+//Starting new session here. 
 session_start();
 $id = ($_SESSION['id']);
 $fid = $_SESSION['fid'];
@@ -48,7 +49,7 @@ $go = "";
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<!--Java Script to load Faculty tools. -->
 <script>
 	$(document).ready(function(){
 	$("button").click(function(){
@@ -77,7 +78,7 @@ $go = "";
     });
 });
 </script>
-
+	
 	<style>
 	td {
     text-align: center;
@@ -141,6 +142,8 @@ $go = "";
 		 <div id="divButtons">
 
         </div>
+		<!--Creating new table with Bold Title using <Strong> tags. 
+		    Used <Tr> <TD> tags to create row and col for the table. -->
 	     <p id="demo"></p>
 		<?php
 		$selectFirstQuery = "SELECT * FROM tools WHERE idnums  = '". $fid ."'";
