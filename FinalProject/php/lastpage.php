@@ -1,4 +1,5 @@
 <?php
+//Starting  session 
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
@@ -29,7 +30,8 @@ $result_array3 = array();
         }
 ?>
 <!DOCTYPE html>
-
+<!--This is one of the main page for web app. which allows users to interact with different activities and functionality provided by-->
+   <!-- web app-->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -87,7 +89,7 @@ $result_array3 = array();
         </div>
 
 
-
+	<!-- Creating table with the help of Java script-->
 
 
         <script type="text/javascript">
