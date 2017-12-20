@@ -1,4 +1,5 @@
 <?php
+//Starting new session here. 
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
@@ -32,6 +33,7 @@ if (!empty($_SESSION['message'])) {
 </script>
 </head>
 <body>
+<!--After user logs in. User will be directed here for further assistance. -->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
