@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- After user's university was found/not found, user will be directed to signup page for further assistence with web application. -->
 <html lang="en">
   <head>
 
@@ -63,7 +64,7 @@ else
 	</head>
 	<body class = "singinpage">
 	<!-- Page menu starts here -->
-
+	
 	<div id='response'></div>
 
 		<nav class="navbar navbar-inverse">
@@ -82,6 +83,8 @@ else
 		<div class="form-signin">
 			<h2 class="form-signin-heading">Sign Up!</h2>
 			<form id='userForm'>
+				<!--Form for user to interact and fill required information.-->
+				<!--User will not be able to submit their form untill all the items are full filled. -->
 				<p>Name:
 				<br><input type="text" name="name" id="name" placeholder="Name" class="form-control form-rounded"required/></p>
 				<p>Gender:
@@ -117,6 +120,7 @@ else
 		</div>
         </div>
 <?php
+		//PHP code to validate the form and connect it to database to store new users information.
 session_start();
 include 'popup.php';
 function ifsessionExists(){
