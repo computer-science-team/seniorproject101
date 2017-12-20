@@ -1,4 +1,5 @@
 <!doctype html>
+<!--This page allows user to login to our system. It will give you error if your username of password are incorrect or not found in database using popup.-->
 <html lang="en">
   <head>
 
@@ -40,7 +41,7 @@
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/styles.css" rel="stylesheet">
 	</head>
-
+	<!--Form for user to put in their information. -->
 	<body class="loginpage">
 		<div class="signInBox">
 			<div class="wrapper">
@@ -60,6 +61,7 @@
 		</div>
 
 <?php 
+		//Starting session which will connect database
 session_start();
 include 'config.php';
 $mysqli =mysqli_connect($servername,$user,$passwd,$dbname);//login to database
