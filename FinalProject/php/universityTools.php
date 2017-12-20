@@ -1,4 +1,5 @@
 <?php 
+//Starting new session. 
 session_start();
 $id = ($_SESSION['id']);
 $username = ($_SESSION['username']);
@@ -59,7 +60,7 @@ $go = "";
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<!--Script . -->
 <script>
 	$(document).ready(function(){
 	$("button").click(function(){
@@ -152,7 +153,7 @@ $go = "";
 		        
 		    $url2 = $row['url'];
 		    $pieceOfURL = substr($url2, 0, 30);    
-   
+   			//Creating table using PHP injection of HTML. 
 		        //echo "<tr><td>{$row['toolname']}</td><td>{$row['category']}</td><td>{$row['url']}</td><td>{$row['url']}</td>";
 		        echo "<tr><th>{$row['toolname']}</th><th>{$row['category']}</th><th id = 'temp'>$pieceOfURL</th><th ><button style = ' background:black; margin-left: 30%;border-radius:50px;border: 2px solid black;' type='submit' name='Add' value = {$row['url']}>Add</button></th>";
 		            
