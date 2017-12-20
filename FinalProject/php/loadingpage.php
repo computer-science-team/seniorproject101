@@ -1,4 +1,6 @@
 <?php
+// Loading page was used to take user form firstpage.php to signup.php. This Idea was eventually chucked by group members 
+// As of now we are using pop ups using. jQuery. 
  header( "refresh:2; url=signup.php" );
 ?>
 <!DOCTYPE html>
